@@ -1,0 +1,111 @@
+<!--
+ * @Author: Ian
+ * @Date: 2022-02-17 10:48:08
+ * @LastEditTime: 2022-02-18 11:04:46
+ * @LastEditors: Ian
+ * @Description: 
+ * @FilePath: \sunfounder_controller\index.html
+ * 可以输入预定的版权声明、个性签名、空行等
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SunFounder Controller</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <div id="download">
+        <div id="weChart" class="dis_none">
+            <div class="tip">
+                <p>请使用本地浏览器打开</p>
+                <p>
+                    点击右上角，选择在默认浏览器打开
+                </p>
+                <img src="./open_local_browser.png" alt="">
+            </div>
+        </div>
+        <div id="browser" class="">
+            <div id="sunFounder_intro">
+                <div class="product_cards">
+                    <div class="icon">
+                        <img src="sunfounder_icon.webp" alt="">
+                    </div>
+                    <div class="text_intro">
+                        <p class="name">SunFounder Controller</p>
+                        <p class="desc">专属你的遥控器</p>
+                    </div>
+                    <div class="detail_intro">
+                        <p>SunFounder Controller是一款虚拟远程控制APP，用于控制基于ESP32和Raspberry Pi的机器人套件。</p>
+                        <p class="intro2">该APP集成了雷达测距、三通道跟踪、滑块、按钮和方向键等控件。用户可以根据自己的喜好来定制这些控制的安排。</p>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div id="footer">
+                    <div class="small_icon">
+                        <img src="./sunfounder_icon.webp" alt="">
+                    </div>
+                    <div class="small_title">
+                        <p class="small_name">SunFounder Controller</p>
+                        <p class="small_desc">专属你的遥控器</p>
+
+                    </div>
+                    <div class="download_link">
+                        <a id="download_url" href="#">
+                            <button>立即下载</button>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            /*浏览器版本信息*/
+            let browser = function () {
+                let u = navigator.userAgent;
+                return {//移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, // IE
+                    presto: u.indexOf('Presto') > -1, // opera
+                    webKit: u.indexOf('AppleWebKit') > -1 || u.indexOf('Mac') > -1, // 苹果、谷歌
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, // 火狐
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), // 是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), // ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, // android终端或者uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, // 是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, // 是否iPad
+                    webApp: u.indexOf('Safari') == -1, // 是否web应该程序，没有头部与底部,
+                    weChart: u.indexOf('MicroMessenger') > -1
+                };
+            }
+
+            let getLink = document.getElementById("download_url");
+            if (browser().iPad || browser().iPhone) {
+                getLink.href = "https://apps.apple.com/cn/app/sunfounder-controller/id1538719422"; // ios版本的下载地址
+            } else if (browser().android) {
+                getLink.addEventListener('click', function () {
+                    if (browser().weChart) {
+                        document.getElementById("browser").classList.add('dis_none');
+                        document.getElementById("weChart").classList.remove('dis_none');
+                    } else {
+                        document.getElementById("weChart").classList.add('dis_none');
+                        document.getElementById("browser").classList.remove('dis_none');
+                    }
+                })
+                if (!browser().weChart) {
+                    getLink.href = "https://ezblock.com.cn/app_v2/sunfounder_controller.apk"
+                }
+            } else if (browser().webKit) {
+                getLink.href = "https://ezblock.com.cn/app_v2/sunfounder_controller.apk"
+            }
+        })
+
+    </script>
+</body>
+
+</html>

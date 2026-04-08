@@ -1,0 +1,245 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+    box-sizing: border-box;
+}
+html,body,#download,#weChart,#browser,#sunFounder_intro{
+    width: 100%;
+    height: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+}
+#weChart{
+    padding-top: 15%;
+}
+#browser{
+    padding-top: 20%;
+}
+
+.tip{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+}
+.tip>p{
+    font-size: 20px;
+    color: #728095;
+    letter-spacing:  1px;
+    line-height: 1.5;
+    margin-bottom: 5%;
+
+}
+.tip>img{
+    width: 80%;
+    height: auto;
+    max-width: 293px;
+    margin: 0 auto;
+    display: inline-block;
+}
+.icon>img{
+    width: 23%;
+    height: auto;
+    display: inline-block;
+    margin: 0 auto;
+}
+.icon{
+    margin-bottom: 5%;
+}
+.text_intro>p{
+    font-size: 20px;
+    letter-spacing: normal;
+    line-height: 1.5;
+}
+.text_intro .name{
+    font-weight: bold;
+}
+.text_intro .desc{
+    font-size: 18px;
+}
+
+
+.detail_intro{
+    width: 88%;
+    /* height: auto; */
+    height: 24rem;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.6);
+    padding: 5%;
+    margin-top: 8%;
+    overflow: hidden;
+    overflow-y: auto;
+    border-radius: 2rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+.detail_intro>p{
+    text-align: left;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    color: #666;
+    font-size: 12px;
+}
+.detail_intro .intro2{
+    padding-top:10px ;
+}
+
+/* footer{
+    position: relative;
+} */
+#footer{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    max-width: 960px;
+    padding: 15px;
+    /* min-height: 60px; */
+    background-color:#fff ;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transform: translate(-50%,0);
+}
+.small_icon{
+    width: 12%;
+    max-width: 43px;
+    height: auto;
+    float: left;
+}
+.small_icon>img{
+    width: 100%;
+    height: auto;
+}
+.download_link{
+    /* float: right; */
+    width: 150px;
+    height: 100px;
+}
+.download_link button{
+    padding: 8px;
+    color: #fff;
+    background-color: #00A29A;
+    border: none;
+    border-radius: 1em;
+    margin-top: 5px;
+}
+#download_apk_zh{
+    padding-top: 20px
+}
+/* #download_apk button{
+    width: 130px;
+    height: 45px;
+    background-color: #00A29A;
+    border-radius: 10px;
+    border: 1px solid #00A29A;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 15px;
+    color: white;
+} */
+.download_btn{
+    width: 130px;
+    height: 45px;
+    background-color: #00A29A;
+    border-radius: 10px;
+    border: 1px solid #00A29A;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 15px;
+    color: white; 
+}
+.dis_none{
+    display: none !important;
+}
+.small_title{
+    float: left;
+    padding-left: 10px;
+}
+.small_name{
+    font-weight: 600;
+}
+.small_desc{
+    padding-top: 5px;
+    color: #666;
+    font-size: 12px;
+    /* text-align: left; */
+}
+.app_version{
+    font-size: 15px !important;
+    padding-top: 10px !important;
+}
+.updates{
+    font-weight: bold;
+    font-size: 14px;
+}
+.version{
+    float: left;
+    padding-left: 10px;
+}
+.detail_intro::-webkit-scrollbar{
+    display: none;
+}
+.updates_content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+.updates_content span{
+    font-size: 12px;
+}
+.updates_content span:first-child{
+    margin: 10px 0;
+}
+.updates_content span:not(:first-child){
+    margin: 5px 0;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    text-align: left;
+    color: #666;
+}
+.googlePlay{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+#googlePlay_link{
+    width: 200px;
+    display: none;
+}
+.googlePlay_img{
+    width: 100%;
+}
+#download_url{
+    display: none;
+    font-size: 15px;
+    text-decoration: underline;
+}
+.AppStore{
+    display: none;
+}
+@media screen and (min-width:960px) {
+    .icon{
+        margin-bottom: 2%;
+    }
+    .icon>img{
+        width: 10%;
+    }
+    #browser{
+        padding-top: 5%;
+    }
+    .detail_intro{
+        margin-top: 5%;
+        padding: 3%;
+        margin-bottom: 100px;
+    }
+    
+    
+}
+    

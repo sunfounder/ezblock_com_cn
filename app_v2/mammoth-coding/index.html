@@ -1,0 +1,169 @@
+<!--
+ * @Author: Ian
+ * @Date: 2022-02-17 10:48:08
+ * @LastEditTime: 2022-02-18 11:04:46
+ * @LastEditors: Ian
+ * @Description: 
+ * @FilePath: \sunfounder_controller\index.html
+ * 可以输入预定的版权声明、个性签名、空行等
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长毛象编程</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+</head>
+<body>
+    <div id = "download">
+        <div id="weChart" class="dis_none">
+            <div class="tip">
+                <p>请使用本地浏览器打开</p>
+                <p>
+                    点击右上角，选择在默认浏览器打开
+                </p>
+                <img src="./open_local_browser.png" alt="">
+            </div>
+        </div>
+        <div id="browser" class="">
+            <div id="sunFounder_intro">
+                <div class="product_cards">
+                    <div class="icon">
+                        <img src="icon.webp" alt="">
+                    </div>
+                    <div class="text_intro">
+                        <p class="name">长毛象编程</p>
+                        <p class="app_version">版本：1.0.5</p>
+                    </div>
+                    <div class="detail_intro">
+                        <p class="intro1">长毛象编程是一款创新的图形化编程软件，适用于小学至初中阶段的学生以及入门的编程爱好者。</p>
+                        <p class="intro2">能够通过蓝牙连接百变积木控制板，让孩子们在手机或平板上轻松学习编程，激发创造力，制作属于自己的项目。</p>
+                        
+                        <div class="updates_content">
+                            <span class="updates">更新内容</span>
+                            <span>长毛象编程正式版本已经发布。欢迎下载使用！</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="googlePlay">
+                    <a  id="googlePlay_link" href="#">
+                        <img class="googlePlay_img" alt='' src=''/>
+                    </a>
+                    <a id="appStore" href="https://apps.apple.com/cn/app/%E9%95%BF%E6%AF%9B%E8%B1%A1%E7%BC%96%E7%A8%8B/id6448233669" 
+                        style="display: inline-block; overflow: hidden; border-radius: 13px; width: 200px; height: 83px;">
+                        <img class="AppStore" src="" alt="Download on the App Store" style="border-radius: 13px; width: 200px; height: 83px;">
+                    </a>
+                    <a id="download_url" href="#">下载APK</a>
+                    <div id="download_apk_zh">
+                        <a id="download_apk" href="#">
+                            <button class="download_btn">立即下载</button>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- <footer>
+                <div id="footer">
+                    <div class="small_icon">
+                        <img src="icon.webp" alt="">
+                    </div>
+                    <div class="small_title">
+                        <p class="small_name">长毛象编程</p> 
+                        <p class="small_desc">版本：1.0.2</p>
+
+                    </div>
+                    <div class="download_link">
+                        <a id="download_apk" href="#">
+                            <button>Download APK</button>
+                        </a>
+                        <a id="download_url" href="#">
+                            <button>立即下载</button>
+                        </a>
+                    </div>
+                </div>
+            </footer> -->
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load',function(){
+             /*浏览器版本信息*/
+             let browser = function () {
+                let u = navigator.userAgent;
+                return {//移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, // IE
+                    presto: u.indexOf('Presto') > -1, // opera
+                    webKit: u.indexOf('AppleWebKit') > -1 || u.indexOf('Mac') > -1, // 苹果、谷歌
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, // 火狐
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), // 是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), // ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, // android终端或者uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, // 是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, // 是否iPad
+                    webApp: u.indexOf('Safari') == -1, // 是否web应该程序，没有头部与底部,
+                    weChart:u.indexOf('MicroMessenger')>-1
+                };
+            }
+            var url = window.location.href;
+            if (!url.includes('lang=en')) {
+                document.querySelector('#appStore').style.display = "none";
+            }else{
+                document.querySelector('#googlePlay_link img').src = "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png";
+                document.querySelector('#appStore img').src = "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1685491200"
+                document.querySelector('.AppStore').style.display = "block";
+                document.querySelector('#appStore').style.display = "block";
+                document.querySelector('.name').textContent = "Mammoth Coding";
+                document.querySelector('.intro1').textContent = "Mammoth Coding is an innovative graphical programming software for elementary to middle school level students and introductory programming enthusiasts.";
+                document.querySelector('.intro2').textContent = "It allows students to learn programming easily on their phones or tablets by connecting to the versatile building block controller via Bluetooth, inspiring creativity and enabling them to create their own projects.";
+                document.querySelector('.updates').textContent = "Updates";
+                document.querySelector('.updates_content span:nth-child(2)').textContent = "Mammoth Coding official version has been released. Feel free to download and use!";
+                document.querySelector('.app_version').textContent = "version: 1.0.5";
+                document.querySelector('#download_url').textContent = "Download APK";
+                
+                if (!browser().iPad || !browser().iPhone){
+                    document.querySelector('#appStore').style.display = "none";
+                }
+                document.querySelector('#download_apk_zh').style.display = 'none';
+                let googlePlay_link = document.getElementById('googlePlay_link');
+                googlePlay_link.href = 'https://play.google.com/store/apps/details?id=com.mammotheducation.mammothcoding&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'
+                document.querySelector('#googlePlay_link').style.display = 'block';
+                document.querySelector('#download_url').style.display = 'block';
+            }
+           
+
+            let getLinkApk = document.getElementById("download_apk");
+            let getLinkApks = document.getElementById("download_url");
+            if (browser().iPad || browser().iPhone) {
+                getLinkApk.href = "https://apps.apple.com/cn/app/%E9%95%BF%E6%AF%9B%E8%B1%A1%E7%BC%96%E7%A8%8B/id6448233669"; // ios版本的下载地址
+                getLinkApks.href = "https://apps.apple.com/cn/app/%E9%95%BF%E6%AF%9B%E8%B1%A1%E7%BC%96%E7%A8%8B/id6448233669"; // ios版本的下载地址
+                if(url.includes('lang=en')){
+                    document.querySelector('#appStore').style.display = 'block';
+                }
+                document.querySelector('#googlePlay_link').style.display = 'none';
+                document.querySelector('#download_url').style.display = 'none';
+            } else if (browser().android) {
+                getLinkApk.addEventListener('click',function(){
+                    if(browser().weChart){
+                        document.getElementById("browser").classList.add('dis_none');
+                        document.getElementById("weChart").classList.remove('dis_none');
+                    }else{
+                        document.getElementById("weChart").classList.add('dis_none');
+                        document.getElementById("browser").classList.remove('dis_none');
+                    }
+                })
+                if(!browser().weChart){
+                    getLinkApk.href = "https://ezblock.com.cn/app_v2/mammoth-coding-1.0.6.apk"; 
+                    getLinkApks.href = "https://ezblock.com.cn/app_v2/mammoth-coding-1.0.6.apk"; 
+                }
+            }else if(browser().webKit){
+                    getLinkApk.href = "https://ezblock.com.cn/app_v2/mammoth-coding-1.0.6.apk";
+                    getLinkApks.href = "https://ezblock.com.cn/app_v2/mammoth-coding-1.0.6.apk";
+            }
+            
+        })
+
+    </script>
+</body>
+</html>

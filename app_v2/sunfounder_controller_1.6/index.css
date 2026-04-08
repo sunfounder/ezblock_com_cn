@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-size: 16px;
+    text-align: center;
+    color: #333;
+    box-sizing: border-box;
+}
+html,body,#download,#weChart,#browser,#sunFounder_intro{
+    width: 100%;
+    height: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+}
+#weChart{
+    padding-top: 15%;
+}
+#browser{
+    padding-top: 20%;
+}
+
+.tip{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+}
+.tip>p{
+    font-size: 20px;
+    color: #728095;
+    letter-spacing:  1px;
+    line-height: 1.5;
+    margin-bottom: 5%;
+
+}
+.tip>img{
+    width: 80%;
+    height: auto;
+    max-width: 293px;
+    margin: 0 auto;
+    display: inline-block;
+}
+.icon>img{
+    width: 23%;
+    height: auto;
+    display: inline-block;
+    margin: 0 auto;
+}
+.icon{
+    margin-bottom: 5%;
+}
+.text_intro>p{
+    font-size: 20px;
+    letter-spacing: normal;
+    line-height: 1.5;
+}
+.text_intro .name{
+    font-weight: bold;
+}
+.text_intro .desc{
+    font-size: 18px;
+}
+
+
+.detail_intro{
+    width: 88%;
+    height: auto;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.6);
+    padding: 8%;
+    margin-top: 15%;
+    overflow: hidden;
+    border-radius: 5%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+.detail_intro>p{
+    text-align: left;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    color: #666;
+}
+.detail_intro .intro2{
+    padding-top:10px ;
+}
+
+/* footer{
+    position: relative;
+} */
+#footer{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    max-width: 960px;
+    padding: 15px;
+    /* min-height: 60px; */
+    background-color:#fff ;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transform: translate(-50%,0);
+}
+.small_icon{
+    width: 12%;
+    max-width: 43px;
+    height: auto;
+    float: left;
+}
+.small_icon>img{
+    width: 100%;
+    height: auto;
+}
+.download_link{
+    float: right;
+}
+.download_link button{
+    padding: 8px;
+    color: #fff;
+    background-color: #0a8eca;
+    border: none;
+    border-radius: 1em;
+    margin-top: 5px;
+}
+.dis_none{
+    display: none !important;
+}
+.small_title{
+    float: left;
+    padding-left: 10px;
+}
+.small_name{
+    font-weight: 600;
+}
+.small_desc{
+    padding-top: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+@media screen and (min-width:960px) {
+    .icon{
+        margin-bottom: 2%;
+    }
+    .icon>img{
+        width: 10%;
+    }
+    #browser{
+        padding-top: 5%;
+    }
+    .detail_intro{
+        margin-top: 5%;
+        padding: 5%;
+        margin-bottom: 100px;
+    }
+}
