@@ -1,0 +1,262 @@
+@charset "utf-8";
+.cl {
+    zoom: 1
+}
+
+.cl:after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: "\200B"
+}
+
+
+
+.about-box {
+    padding: 30px 0 60px;
+    zoom: 1
+}
+
+.about-box:after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: "\200B"
+}
+
+.about-box:after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: "\200B"
+}
+
+.about-left {
+    overflow: hidden;
+    width: 290px
+}
+
+.about-right {
+    overflow: hidden;
+    width: 910px;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    
+}
+
+.about-right p{
+    word-break: break-word;
+ }
+.about-nav {
+    overflow: hidden;
+    padding: 11px 0;
+    background: #fff;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+
+.about-nav li {
+    position: relative;
+    padding: 11px 0
+}
+
+.about-nav li:hover, .about-nav li:active {
+    background: rgb(255, 202, 75);
+}
+
+
+.about-nav li a {
+    display: block;
+    padding: 0 30px;
+    border-left: 3px solid #fff;
+    color: #555;
+    line-height: 30px;
+    font-size: 14px
+}
+
+.about-nav li a:hover, .about-nav li a.cur {
+    color: #222;
+    border-left: 3px solid rgb(255, 202, 75);
+    font-weight: 700
+}
+
+.about-tit {
+    padding: 6px 32px 0;
+    line-height: 65px;
+    border-bottom: 1px solid #f1f1f1
+}
+
+.about-tit h2 {
+    font-size: 16px;
+    color: #333
+}
+
+.about-cont {
+    zoom: 1;
+    padding: 40px 32px 20px;
+    font-size: 14px;
+    color: #444;
+    line-height: 32px;
+    text-align: justify
+}
+
+.about-cont:after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: "\200B"
+}
+
+.about-cont:after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: "\200B"
+}
+
+.about-cont p {
+    margin: 32px 0
+}
+
+.about-cont #allmap {
+    width: 845px;
+    height: 350px
+}
+
+.about-us {
+    background: #fff
+}
+
+.about-us img {
+    display: block;
+    margin-bottom: 50px
+}
+
+.about-us .img img {
+    margin: 0
+}
+
+.about-us .img .info {
+    padding: 16px 0 0;
+    line-height: 20px;
+    font-size: 14px;
+    color: #aaa;
+    text-align: right
+}
+
+.about-help .about-tit h2 {
+    font-size: 14px;
+    font-weight: 700
+}
+
+.about-help .about-cont {
+    padding: 23px 32px 30px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #555;
+}
+
+.about-help .about-cont p {
+    margin: 0
+}
+
+.about-help .about-cont dt {
+    cursor: pointer
+}
+
+.about-help .about-cont dd {
+    overflow: hidden;
+    max-height: 0;
+    zoom: 1;
+    -webkit-transition: all .5s cubic-bezier(.215, .61, .355, 1) 0s;
+    -moz-transition: all .5s cubic-bezier(.215, .61, .355, 1) 0s;
+    -ms-transition: all .5s cubic-bezier(.215, .61, .355, 1) 0s;
+    transition: all .5s cubic-bezier(.215, .61, .355, 1) 0s
+}
+
+.about-help .about-cont dd:after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: "\200B"
+}
+
+.about-help .about-cont dd:after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: "\200B"
+}
+
+.about-help .about-cont dd>div {
+    padding: 20px;
+    margin: 10px 0;
+    background: #ededed;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    text-align: justify
+}
+
+.about-help .about-cont dd img {
+    display: inline-block;
+    display: inline;
+    zoom: 1;
+    vertical-align: middle;
+    width: 17px;
+    margin: -3px 12px 0 0;
+}
+
+.about-help .about-cont dd .icon-recommend {
+    display: inline-block;
+    display: inline;
+    zoom: 1;
+    vertical-align: middle;
+    margin: -3px 12px 0 0;
+    font-size: 18px
+}
+
+.about-help .about-cont dl {
+    margin: 10px 0;
+}
+
+ .about-help .about-cont dl:hover>dd {
+    max-height: 992px
+}
+
+#faq .about-help .about-cont dl:hover>dd {
+    max-height: 0 !important;
+}
+#faq .about-help .about-cont dl:active>dd {
+    max-height: 992px
+}
+
+
+.page-title {
+    padding: 6px 0px;
+    line-height: 65px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.page-title h1 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.serviceterms_content dl {
+    padding: 40px 10px;
+}
+
+.serviceterms_content dl dt {
+    margin: 15px 0;
+}
+
+.serviceterms_content dl  p {
+    line-height: 25px;
+}
+

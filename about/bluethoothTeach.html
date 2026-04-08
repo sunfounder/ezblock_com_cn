@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Help - Ezblock</title>
+    <meta charset="utf-8">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #helpLink{
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .helpLinkBox{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .helpContent{
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="helpLink">
+        <div class="helpLinkBox">
+            <iframe class="helpContent" style="width: 100%;height: 100%;margin-left: 0;"  src="https://ezblock.readthedocs.io/en/latest/"></iframe>
+        </div>
+    </div>
+</body>
+<script>
+    var iframes = document.getElementsByClassName("helpContent")[0];
+    var iframeHeight = window.innerHeight;
+    var iframeWidth = window.innerWidth;
+    iframes.style.height = iframeHeight+"px";
+    iframes.style.marginLeft = iframeWidth*0.2+"px";
+</script>
