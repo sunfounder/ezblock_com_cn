@@ -1,0 +1,92 @@
+*{
+   font-family: "Verdana" ! important;
+}
+
+
+.setMenu{
+      overflow-y: hidden;
+}
+.setMenu::-webkit-scrollbar {
+    background: transparent;
+    height: 4px;
+}
+/* .setMenu::-webkit-scrollbar-track{
+    background-color: #019cda;
+    height: 5px;
+} */
+.setMenu::-webkit-scrollbar-track-piece {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: #ccc;
+    
+} 
+.setMenu::-webkit-scrollbar-thumb{
+    background: #019cda;
+    height: 4px;
+
+}
+/* .highlight{
+    background-color: #d3d7d4 !important;
+} */
+
+
+
+.sunFounderIcon .iconImg{
+    width: 178px;
+    border-radius: 0;
+    height: auto;
+    padding: 0;
+    margin: auto;
+}
+.rasPad .iconImg{
+    width: 178px;
+    border-radius: 0;
+    height: auto;
+    padding: 0;
+    margin: auto auto .809em auto;
+
+}
+.readTheDocIcon{
+    margin: auto auto .809em auto;
+    display: block;
+}
+
+.readTheDocIcon .readIconImg{
+    width: 99px;
+    height: auto;
+    border-radius: 0px;
+    background-image: url("https://ezblock.cc/readDocFile/readTheDoc.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 15px 15px ;
+    color: #fff;
+    padding-left: 30px ;
+
+    
+}
+footer {
+    opacity: 0;
+}
+.icon-home, .version {
+    opacity: 0;
+}
+
+
+
+/* .eapps-social-share-buttons-position-left .eapps-social-share-buttons-container{
+    left :auto !important;
+    right: 0 !important;
+} */
+
+.addthis-smartlayers #at4-share , .addthis-smartlayers #at4-soc {
+    right: 0!important;
+    left: auto !important;
+    top: 35%!important;
+    animation-name: false !important;
+}
+#at4-scc{
+    display: none !important;
+}
+.addthis_inline_share_toolbox{
+    display: none !important;
+}

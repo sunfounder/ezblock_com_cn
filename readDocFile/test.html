@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script>
+        fetch('http://ezblock.cc/readDocFile/keyword.xlsx'
+        // {
+        //     headers:{
+        //         'Access-Control-Allow-Origin':'*'
+        //     },
+        //     mode:'no-cors'
+        // }
+        )
+            .then(res=>{
+                console.log(res);
+                return res.arrayBuffer();
+            }).then((res)=>{
+                let data = new Uint8Array(res);
+                let workbook = XLSX.read(data, {
+                    type: "array"
+                });
+                let first_sheet_name = workbook.SheetNames[0];
+                let worksheet = workbook.Sheets[first_sheet_name];
+                let _JsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+                let arrPage = [],arrLink = [],arrText = [];
+                _JsonData.forEach(function(item){
+                    arrPage.push(item['课程页面']);
+                    arrLink.push(item['跳转链接']);
+                    arrText.push(item['锚文本']);
+                });
+                let localUrl = location.href;
+                var curIndex = null;
+                // 获取当前页面在数据中的位置
+                arrLink.forEach(function (item,index) {
+                    if(item.indexOf(localUrl) >= 0 ){
+                        console.log(index);
+                        curIndex = index;
+                    };
+                });
+                // 获取当前页面的关键字
+                if(curIndex >= 0){
+                    let curText = arrText[curIndex]; 
+                };
+
+                // 获取所有关键字字段
+                let allP = document.getElementsByTagName("p");
+                allP = [...allP];
+                // 获取页面关键字的长度
+                let keyWordLength = 0;
+                // 添加标签
+                allP.forEach(function(item,index){
+                    if(item.innerText.indexOf(curText) >= 0){
+                        keyWordLength = keyWordLength + 1;
+                        // if(keyWordLength < 10 ){
+                        item.innerHTML = item.innerHTML.replace(curText,`<a href="${arrLink[curIndex]}">${curText}</a>`);
+                        // } 
+                    };
+                });
+
+                
+                console.log (JSON.stringify(arrPage));
+                console.log (JSON.stringify(arrLink));
+                console.log (JSON.stringify(arrText));
+
+                
+
+            });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,782 @@
+*{
+    box-sizing: border-box;
+}
+#login *,#loginSuccess *,#loginFail * ,#myLoading *,#errorAlert *,#learnMore *,#connectAgent *,#createTutorials *{
+    font-family: "Microsoft Yahei" !important;
+
+}
+#login,#loginSuccess,#loginFail,#myLoading,#errorAlert{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+
+}
+#errorAlert{
+    z-index: 10001;
+}
+.loginBox,.successContent,.failContent,.loadingContent,.errorContent{
+    position: absolute;
+    width: 550px;
+    height: 425px;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    transform: translate(-50%,-50%);
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    border-top: 15px solid #3a85d9;
+}
+.errorContent{
+    height: auto;
+}
+.errorMain{
+    width: 425px;
+    margin: 35px auto;
+}
+.loginBox_form,.failBox,.loadingBox{
+    position: absolute;
+    width: 425px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+    
+}
+.failBox.de{
+    width: 90%;
+}
+.loginBox_title{
+    display: block;
+    margin-bottom: 32px;
+    cursor:default ;
+}
+.loginBox_title,.fail_title,.loading_title,.errorTitle{
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 550;
+}
+
+.loginBox_form .inputSize{
+    border: 1px solid #e4e4e4;
+    height: 60px;
+    font-size: 16px;
+    width: 100%;
+    margin: 0 auto 10px;
+    padding: 0;
+    padding-left: 25px;
+    border-radius: 5px;
+    box-shadow: none !important;
+
+}
+.loginBox_form .inputSize::-webkit-input-placeholder{
+    color: #b9b9b9;
+}
+
+.loginBox_form .inputSize:focus{
+    outline: none;
+    border: 1px solid #3a85d9;
+}
+.login_submit,.contentConfirm{
+    margin: 0;
+    background-color: #3a85d9;
+    color: #fff;
+    font-size: 20px;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border: 1px solid #3a85d9;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+
+}
+
+.error{
+    display: block;
+    color: #e26161;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+
+}
+
+
+.successContent{
+    padding: 40px 65px 40px 65px;
+    position: relative;
+}
+.successContent>div{
+   
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    
+}
+.contentTitle{
+    font-size: 24px;
+}
+.contentDesc{
+    line-height: 257px;
+}
+.contentConfirm{
+    line-height: 60px;  
+
+    
+}
+
+.fail_title,  .fail_desc,.loading_title{
+    display: block;
+}  
+.fail_desc,.errorDesc{
+    font-size: 18px;
+    line-height: 40px;
+    color: #505050;
+    margin: 50px 0;
+}
+.fail_button{
+    font-size: 0;
+}
+.fail_button .btn{
+    width: 40%;
+    background-color: #3a85d9;
+    border: 1px solid #3a85d9;
+    border-radius: 5px;
+    height: 60px;
+    /* line-height: 60px; */
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+.fail_button .btn.de{
+    width: auto;
+}
+.fail_button .btn.retry.de{
+    margin-right: 14.5%;
+}
+.fail_button .btn a {
+    text-decoration: none;
+    color: #fff;
+}
+.fail_button .btn .download{
+    text-decoration: none;
+    color: #fff;
+}
+.retry{
+    margin-right: 20%;
+}
+
+.loadingbox{
+    width: 100%;
+    height: 250px;
+}
+.loading_title{
+    margin-bottom: 80px;
+}
+
+.spinner {
+    display: block;
+    margin: 75px auto;
+    animation: rotator 1.4s linear infinite;
+
+}
+  
+@keyframes rotator {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(270deg); }
+}
+
+.path {
+stroke-dasharray: 408.2;
+stroke-dashoffset: 0;
+transform-origin: center;
+animation:dash 1.4s ease-in-out infinite,
+colors 5.6s ease-in-out infinite;
+}
+
+@keyframes colors {
+    0% { stroke: #3a85d9}
+100% { stroke: #3a85d9 }
+}
+
+@keyframes dash {
+    0% { stroke-dashoffset:408.2; }
+    50% {
+        stroke-dashoffset: 102.05;
+        transform:rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: 408.2;
+        transform:rotate(450deg);
+    }
+}
+
+#connectAgent .connect{
+    display: inline-block;
+    width: auto;
+    height: 35px;
+    line-height: 35px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: auto;
+    padding-left: 30px;
+}
+#connectAgent .connect_IP{
+    background-image: url("https://ezblock.cc/readDocFile/readTheDoc/img/connect.png");
+    cursor: pointer;
+    display: none;
+}
+#connectAgent .disconnect_IP{
+    background-image: url("https://ezblock.cc/readDocFile/readTheDoc/img/disconnect.png");
+    cursor: pointer;
+}
+#connectAgent .disconnect_IP:hover{
+    background-color: #3a85d9;
+    border: 1px solid #3a85d9;
+    border-radius: 5px;
+    color: #fff;
+    background-image: none;
+    padding: 0 22px;
+    text-align: center;
+}
+.closeConnect{
+    position: absolute;
+    top: 7%;
+    text-align: center;
+    line-height: 34px;
+    height: 35px;
+    padding: 0 20px ;
+    cursor: pointer;
+    display: none;
+    color: #fff;
+    background-color: #3a85d9 !important;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+    border-radius: 5px;
+
+}
+.descContent{
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+.outPut{
+    width: 100%;
+    height: 150px;
+    border: 1px solid #6f6f6f;
+    overflow: auto;
+    font-size: 14px;
+    position: relative;
+    display: none;
+}
+
+.codeEditContent{
+    width: 100%;
+    height: auto;
+}
+
+.codeBar,.codeEdit{
+    width: 100%;
+}
+.codeBar{
+    height: 47px;
+    background-color: #ededed;
+    padding:10px;
+    border: 1px solid #6f6f6f ;
+}
+.language{
+    float: left;
+    color: #c2c2c2;
+    line-height: 27px;
+}
+.codeBtn{
+    float: right;
+}
+.functionBtn{
+    background-color:#1bafea;
+    min-width: 52px ;
+    color: #fff;
+    height: 27px;
+    line-height: 25px;
+    border: 1px solid #1bafea;
+    border-radius: 5px;
+    margin: 0 0 0 10px;
+    padding: 0;
+    cursor: pointer;
+    width:auto;
+
+}
+.functionBtn.stop{
+    background-color: #e26161;
+    border: 1px solid #e26161;
+
+}
+.codeEdit{
+    width: 100%;
+    height: 223px;
+    border: 1px solid #6f6f6f;
+    border-top: none;
+}
+.codeEdit.codeLittle{
+    height: 90px;
+}
+.codeEdit.codeMiddle{
+    height: 180px;
+}
+
+
+.ace-tm .ace_gutter{
+    background-color: #ededed !important;
+    text-align: center !important;
+    border-right: 1px solid #6f6f6f;
+}
+.ace_gutter-cell {
+    text-align: center !important;
+    padding-left: 13px !important;
+}
+.outPut pre{
+    padding: 0 !important;
+    margin: 0 !important ;
+
+}
+.outPut pre code{
+    display: block;
+    margin: 0 !important ;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    height: auto !important;
+    white-space: pre-wrap !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+}
+.copyText{
+    font-size: 0;
+    height: 0;
+    padding: 0;
+    position: absolute;
+    opacity: 0;
+}
+/* #edit{
+  
+}
+#codeEdit{
+    width: 100%;
+    height: 270px;
+    
+} */
+
+.contextClear{
+    width: 80px;
+    height: 25px;
+    line-height: 24px;
+    border: 1px  solid #6f6f6f;
+    z-index: 9999;
+    position: fixed;
+    top:50%;
+    left:50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ace-tm .ace_marker-layer .ace_selection{
+    background: none !important;
+}
+
+/* 解决光标问题 */
+.ace_editor, .ace_editor *{
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace !important;
+    font-size: 16px !important;
+}
+.wy-breadcrumbs-aside{
+    opacity: 0;
+}
+
+
+
+
+#terminal{
+    /* width: 700px;
+    height: 400px; */
+    position: fixed;
+    right: 0px;
+    top: 0;
+    bottom: auto;
+    left: auto;
+    /* transform: translate(0,-50%); */
+    z-index: -1;   
+    background-color: #ededed;
+    border: 1px solid #6f6f6f;
+    overflow: hidden;
+    opacity: 0;
+    animation: all 1s linear;
+
+}
+.terminal_left{
+    float: left;
+    width: 5%;
+    height: 100%;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+}
+.Telescoping{
+    display: inline-block;
+    width: 100%;
+    height: 24px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #1bafea;
+    font-size: 0px;
+    background-image: url("https://ezblock.cc/readDocFile/readTheDoc/img/Abbreviations.png");
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: center;
+}
+.terminal_right{
+    float: right;
+    width: 95%;
+    height: 100%;
+}
+#terminal_Box{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace !important;
+    /* font-family: Consolas !important; */
+}
+/* #terminal_Box *{
+    font-family: consolas !important;
+} */
+#terminal_Box .terminal.xterm{
+    /* position: relative;
+    height: 100%; */
+}
+#terminal_Box .xterm .xterm-screen {
+  /* width: 100% !important; 
+  height: 100% !important; */
+}
+.xterm-screen>canvas{
+     /* width: 100% !important;
+   height: 100% !important; */
+
+} 
+/* .topBar{
+    height: 30px;
+    border-left: 1px solid #6f6f6f;
+}
+.topBar span{
+    line-height: 30px;
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+} */
+@media screen and (max-width : 1500px){
+    #terminal{
+        bottom: 0;
+        left: 0;
+        top: auto;
+        right: auto;
+        height: 40%;
+        width: 100%;
+        /* width: 500px;
+        height: 350px; */
+    }
+    .terminal_left{
+        float: none;
+        width: 100%;
+        height: 30px;
+        vertical-align: middle;
+        position: relative;
+        cursor: pointer;
+    }
+    .terminal_right{
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+
+    #terminal_Box{
+        width: 100%;
+        height: auto;
+        position: relative;
+        /* font-family: consolas !important; */
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace !important;
+    }
+    /* #terminal_Box *{
+        font-family: consolas !important;
+    } */
+    .Telescoping{
+        transform: translate(-50%,-50%) rotateY(0deg) rotateZ(90deg);
+    }
+   
+}
+
+.xterm-dom-renderer-owner-1 .xterm-rows span{
+    /* width: auto !important;
+    font-size: 16px; */
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace !important;
+    /* font-family: consolas !important; */
+}
+/* #terminal_Box *{
+    font-family: consolas !important;
+} */
+
+
+/* 引导页 */
+#learnMore{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 1000;
+
+    /* background-image: url("https://ezblock.cc/readDocFile/readTheDoc/img/learnMore.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;  */
+
+}
+.learn{
+    width: 40%;
+    min-width: 623px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+.learnMore_content{
+    padding: 30px 8%;
+    border-top: 15px solid #3a85d9;
+}
+.learnMore_content.de{
+    padding: 30px 4%;
+}
+.learnMore_title,.learnMore_desc{
+    width: 100%;
+    text-align: center;
+    color: #666;
+}
+.learnMore_title{
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #000;
+    font-weight: 550;
+}
+.learnMore_title span{
+    display: inline-block;
+    background-image: url("https://ezblock.cc/readDocFile/readTheDoc/img/learnMore.svg");
+    background-repeat: no-repeat;
+    background-size:28px 28px ;
+    background-position: left center;
+    padding-left :40px;
+}
+.learnMore_desc{
+    font-size: 18px;
+    line-height: 36px;
+    margin-bottom: 40px;
+    text-align: left;
+    letter-spacing:-1px
+
+}
+.learnMore_desc p,.learnMore_desc a {
+    margin: 0;
+    font-size: 18px;
+    line-height: 36px;
+    text-align: left;
+
+}
+.learnMore_btn{
+    display: inline-block;
+    width: 100%;
+}
+.openAgent,.downAgent{
+    padding:15px 8px;
+    background-color: #3a85d9;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+
+}
+.openAgent{
+    float:  left;
+
+}
+.downAgent{
+    float: right;
+}
+.downAgent>a{
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+
+
+}
+/* 遇到问题 */
+.gotProblem{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #1bafea;
+}
+
+/* 提示框 */
+#myMessage{
+    position: fixed;
+    width: 28%;
+    min-width: 500px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    display: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+.message_content{
+    padding: 30px 40px;
+    border-top: 15px solid #3a85d9;
+}
+.message_title{
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 550;
+    margin-bottom: 20px;
+}
+.message_desc{
+    color: #666;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.message_confirm{
+    text-align: center;
+}
+.message_confirm span{
+
+    width: auto;
+    padding: 5px 40px;
+    background-color: #3a85d9;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    
+
+}
+
+.wy-side-nav-search img{
+    background-color: transparent !important;
+}
+button:focus{
+    outline: none;
+}
+
+body[data-font="linux"],#terminal_Box[data-font="linux"],.xterm-dom-renderer-owner-1 .xterm-rows span[data-font="linux"]{
+    font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif !important;
+}
+
+
+
+
+/*  createTutorials  */
+#createTutorials{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+}
+.tutorials_content{
+    position: absolute;
+    width: 550px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    transform: translate(-50%,-50%);
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    border-top: 15px solid #3a85d9;
+}
+.tutorials_top{
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 550;
+    margin-top: 30px;
+}
+.tutorials_main{
+    padding: 30px 40px 40px 40px;
+}
+.tutorials_main_desc{
+    font-size: 18px;
+    line-height: 36px;  
+    color: #666;
+}
+.tutorials_main_desc p{
+    font-size: 18px;
+    line-height: 36px;  
+    color: #666;
+    margin: 0;
+}
+.tutorials_main_desc span{
+    /* display: inline-block; */
+}
+.tutorials_main_button button{
+    padding: 15px 20px;
+    background-color: #3a85d9;
+    border: 1px solid #3a85d9;
+
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+}
+.tutorials_button_intro{
+    float: left;
+}
+.tutorials_button_faq{
+    float: right;
+}
+.tutorials_button_faq a {
+    color:#fff;
+}
+.tutorials_main_button{
+    margin-top: 30px;
+}
+.tutorials_main_button:after{
+    clear:both;
+    content:'.';
+    display:block;
+    width: 0;
+    height: 0;
+    visibility:hidden;
+}

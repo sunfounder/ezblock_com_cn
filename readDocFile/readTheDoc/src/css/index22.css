@@ -1,0 +1,368 @@
+*{
+    box-sizing: border-box;
+}
+#login,#loginSuccess,#loginFail,#myLoading,#errorAlert{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+
+}
+.loginBox,.successContent,.failContent,.loadingContent,.errorContent{
+    position: absolute;
+    width: 550px;
+    height: 425px;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    transform: translate(-50%,-50%);
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+    border-radius: 15px;
+}
+.errorContent{
+    height: auto;
+}
+.errorMain{
+    width: 425px;
+    margin: 35px auto;
+}
+.loginBox_form,.failBox,.loadingBox{
+    position: absolute;
+    width: 425px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+    
+}
+.loginBox_title{
+    display: block;
+    margin-bottom: 32px;
+    cursor:default ;
+}
+.loginBox_title,.fail_title,.loading_title,.errorTitle{
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+}
+
+.loginBox_form .inputSize{
+    border: 1px solid #e4e4e4;
+    height: 60px;
+    font-size: 16px;
+    width: 100%;
+    margin: 0 auto 10px;
+    padding: 0;
+    padding-left: 25px;
+    border-radius: 5px;
+    box-shadow: none !important;
+
+}
+.loginBox_form .inputSize::-webkit-input-placeholder{
+    color: #b9b9b9;
+}
+
+.loginBox_form .inputSize:focus{
+    outline: none;
+    border: 1px solid #3a85d9;
+}
+.login_submit,.contentConfirm{
+    margin: 0;
+    background-color: #3a85d9;
+    color: #fff;
+    font-size: 20px;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border: 1px solid #3a85d9;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+
+}
+
+.error{
+    display: block;
+    color: #e26161;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+
+}
+
+
+.successContent{
+    padding: 40px 65px 40px 65px;
+    position: relative;
+}
+.successContent>div{
+   
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    
+}
+.contentTitle{
+    font-size: 24px;
+}
+.contentDesc{
+    line-height: 257px;
+}
+.contentConfirm{
+    line-height: 60px;  
+
+    
+}
+
+.fail_title,  .fail_desc,.loading_title{
+    display: block;
+}  
+.fail_desc,.errorDesc{
+    font-size: 18px;
+    line-height: 40px;
+    color: #505050;
+    margin: 50px 0;
+}
+.fail_button{
+    font-size: 0;
+}
+.fail_button .btn{
+    width: 40%;
+    background-color: #3a85d9;
+    border: 1px solid #3a85d9;
+    border-radius: 5px;
+    height: 60px;
+    /* line-height: 60px; */
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+.fail_button .btn .download{
+    text-decoration: none;
+    color: #fff;
+}
+.retry{
+    margin-right: 20%;
+}
+
+.loadingbox{
+    width: 100%;
+    height: 250px;
+}
+.loading_title{
+    margin-bottom: 80px;
+}
+
+.spinner {
+    display: block;
+    margin: 75px auto;
+    animation: rotator 1.4s linear infinite;
+
+}
+  
+@keyframes rotator {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(270deg); }
+}
+
+.path {
+stroke-dasharray: 408.2;
+stroke-dashoffset: 0;
+transform-origin: center;
+animation:dash 1.4s ease-in-out infinite,
+colors 5.6s ease-in-out infinite;
+}
+
+@keyframes colors {
+    0% { stroke: #3a85d9}
+100% { stroke: #3a85d9 }
+}
+
+@keyframes dash {
+    0% { stroke-dashoffset:408.2; }
+    50% {
+        stroke-dashoffset: 102.05;
+        transform:rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: 408.2;
+        transform:rotate(450deg);
+    }
+}
+
+#connectAgent .connect{
+    display: inline-block;
+    width: auto;
+    height: 35px;
+    line-height: 35px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: auto;
+    padding-left: 30px;
+}
+#connectAgent .connect_IP{
+    background-image: url("https://ezblock.cc/readDocFile/readTheDoc/img/connect.png");
+    cursor: pointer;
+    display: none;
+}
+#connectAgent .disconnect_IP{
+    background-image: url("https://ezblock.cc/readDocFile/readTheDoc/img/disconnect.png");
+    cursor: pointer;
+}
+#connectAgent .disconnect_IP:hover{
+    background-color: #3a85d9;
+    border: 1px solid #3a85d9;
+    border-radius: 5px;
+    color: #fff;
+    background-image: none;
+    padding: 0 22px;
+    text-align: center;
+}
+.closeConnect{
+    position: absolute;
+    top: 60px;
+    /* left: 5px; */
+    border: 1px solid #6f6f6f;
+    text-align: center;
+    line-height: 34px;
+    height: 35px;
+    padding: 0 20px ;
+    cursor: pointer;
+    display: none;
+    background-color: #fff !important;
+}
+.descContent{
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+.outPut{
+    width: 100%;
+    height: 150px;
+    border: 1px solid #6f6f6f;
+    overflow: auto;
+    font-size: 14px;
+    position: relative;
+    display: none;
+}
+
+.codeEditContent{
+    width: 100%;
+    height: 270px;
+}
+
+.codeBar,.codeEdit{
+    width: 100%;
+}
+.codeBar{
+    height: 47px;
+    background-color: #ededed;
+    padding:10px;
+    border: 1px solid #6f6f6f ;
+}
+.language{
+    float: left;
+    color: #c2c2c2;
+    line-height: 27px;
+}
+.codeBtn{
+    float: right;
+}
+.functionBtn{
+    background-color:#1bafea;
+    width: 52px ;
+    color: #fff;
+    height: 27px;
+    line-height: 25px;
+    border: 1px solid #1bafea;
+    border-radius: 5px;
+    margin: 0 0 0 10px;
+    padding: 0;
+    cursor: pointer;
+
+}
+.functionBtn.stop{
+    background-color: #e26161;
+    border: 1px solid #e26161;
+
+}
+.codeEdit{
+    width: 100%;
+    height: 223px;
+    border: 1px solid #6f6f6f;
+    border-top: none;
+}
+
+
+.ace-tm .ace_gutter{
+    background-color: #ededed !important;
+    text-align: center !important;
+    border-right: 1px solid #6f6f6f;
+}
+.ace_gutter-cell {
+    text-align: center !important;
+    padding-left: 13px !important;
+}
+.outPut pre{
+    padding: 0 !important;
+    margin: 0 !important ;
+
+}
+.outPut pre code{
+    display: block;
+    margin: 0 !important ;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    height: auto !important;
+    white-space: pre-wrap !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+}
+.copyText{
+    font-size: 0;
+    height: 0;
+    padding: 0;
+    position: absolute;
+    opacity: 0;
+}
+/* #edit{
+  
+}
+#codeEdit{
+    width: 100%;
+    height: 270px;
+    
+} */
+
+.contextClear{
+    width: 80px;
+    height: 25px;
+    line-height: 24px;
+    border: 1px  solid #6f6f6f;
+    z-index: 99;
+    position: fixed;
+    top:50%;
+    left:50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ace-tm .ace_marker-layer .ace_selection{
+    background: none !important;
+}
+
+/* 解决光标问题 */
+.ace_editor, .ace_editor *{
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace !important;
+    font-size: 16px !important;
+}
+.wy-breadcrumbs-aside{
+    opacity: 0;
+}
