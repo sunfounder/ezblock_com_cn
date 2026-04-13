@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>EzblockStudio/download</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/animate.min.css">
+  <link rel="stylesheet" href="../css/header&footer.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="./css/download.css">
+  <script type="text/javascript" src="../js/tohttps.js"></script>
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+
+  <style>
+    .toEzblockBtn {
+      width: 145px;
+      height: 40px;
+      margin-top: 20px;
+      color: #ffffff;
+      font-size: 18px;
+      text-align: center;
+      background: rgb(255, 202, 75);
+      border-radius: 20px;
+      line-height: 40px;
+      border: 0;
+    }
+
+    .versionmove {
+      position: relative;
+      left: 23px;
+    }
+
+    .fonversion {
+      color: black;
+      position: relative;
+      left: 11px;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <!-- 头部 start -->
+  <section id="header" class="no-header"></section>
+  <!--/#header-->
+
+  <div class="banner" style="margin-bottom:100px">
+    <div class="banner-title" set-lan="html:download_title3"></div>
+    <!-- <div class="banner-img">
+            <img src="./images/download/banner-img.png">
+        </div> -->
+  </div>
+  <!-- <div class="card-title">Ezblock Studio&nbsp;<span set-lan="html:download_beta"></span></div> -->
+
+  <div class="card-title">Raspberry Pi OS with Ezblock Pre-installed</div>
+  <div class="download_item">
+    <div class="container">
+      <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-6 no-padding download_item_left">
+            <img class="img-fluid" src="./images/ezblock+rasbian.jpg" alt="">
+          </div>
+          <div class="col-lg-6 no-padding download_item_right">
+            <h2 set-lan="html:io_title"></h2>
+            <p set-lan="html:img_description_latest" style="color: #2a2a2a; font-size: 15px; line-height: normal;">
+            </p>
+            <div class="details_info">
+              <div>
+                <strong set-lan="html:t_date"></strong><span set-lan="html:img_date_latest"></span>
+              </div>
+              <div>
+                <strong set-lan="html:t_version"></strong><span set-lan="html:img_version_latest"></span>
+              </div>
+              <div style="margin-bottom: 10px;">
+                <strong set-lan="html:t_size"></strong><span set-lan="html:img_size_latest"></span>
+              </div>
+              <div>
+                <a set-lan="html:io_release_Beta" href="./release_notes_Beta.txt" target="_blank"
+                  style="color: red; text-decoration: underline;">发行说明</a>
+              </div>
+            </div>
+            <div class="download_info">
+              <!-- <a href="https://1drv.ms/u/s!AqKAi6T8L7jzjAMDXepHCbaHph-_?e=ZFcU8U">     -->
+              <!-- <a
+                                href="https://sunfounder.s3.amazonaws.com/Raspberry/images/2019-07-10-raspbian-buster-lite-ezblock-v0.5.img.zip"> -->
+              <!-- <a
+                                href="https://ezblock.com.cn/Raspberry/images/2020-05-27-raspios-buster-lite-armhf-ezblock-v2.0.8.zip"> -->
+              <img src="images/banner_btn.png"
+                style="width: 145px;height:40px;top: 5px; position: relative; cursor:pointer;" alt=""
+                class="downlaod_btn" onclick="downloadImage()">
+            </div>
+
+            <div>
+              <a set-lan="html:io_old_version" target="_blank"
+                href="https://1drv.ms/u/s!AqKAi6T8L7jzjAEejpus9dbB1_ii?e=tvJm6n"
+                style="display: block;margin-left: 8px; margin-top: 20px; color: gray; text-decoration: underline;">历史版本</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beta -->
+  <div class="download_item">
+    <div class="container">
+      <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-6 no-padding download_item_left">
+            <img class="img-fluid" src="./images/ezblock+rasbian.jpg" alt="">
+          </div>
+          <div class="col-lg-6 no-padding download_item_right">
+            <h2 set-lan="html:io_title"></h2>
+            <p set-lan="html:img_description_latestBeta" style="color: #2a2a2a; font-size: 15px; line-height: normal;">
+            </p>
+            <div class="details_info">
+              <div>
+                <strong set-lan="html:t_date"></strong><span set-lan="html:img_date_latestBeta"></span>
+              </div>
+              <div>
+                <strong set-lan="html:t_version"></strong><span set-lan="html:img_version_latestBeta"></span>
+              </div>
+              <div style="margin-bottom: 10px;">
+                <strong set-lan="html:t_size"></strong><span set-lan="html:img_size_latestBeta"></span>
+              </div>
+              <div>
+                <a set-lan="html:io_release_Beta" href="./release_notes_Beta2.txt" target="_blank"
+                  style="color: red; text-decoration: underline;">发行说明</a>
+              </div>
+            </div>
+            <div class="download_info">
+              <!-- <a href="https://1drv.ms/u/s!AqKAi6T8L7jzjAMDXepHCbaHph-_?e=ZFcU8U">     -->
+              <!-- <a
+                                href="https://sunfounder.s3.amazonaws.com/Raspberry/images/2019-07-10-raspbian-buster-lite-ezblock-v0.5.img.zip"> -->
+              <!-- <a
+                                href="https://ezblock.com.cn/Raspberry/images/2020-05-27-raspios-buster-lite-armhf-ezblock-v2.0.8.zip"> -->
+              <img src="images/banner_btn.png"
+                style="width: 145px;height:40px;top: 5px; position: relative; cursor:pointer;" alt=""
+                class="downlaod_btn" onclick="downloadImageBeta()">
+            </div>
+
+            <div>
+              <a set-lan="html:io_old_version" target="_blank"
+                href="https://1drv.ms/u/s!AqKAi6T8L7jzjAEejpus9dbB1_ii?e=tvJm6n"
+                style="display: block;margin-left: 8px; margin-top: 20px; color: gray; text-decoration: underline;">历史版本</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-title">Ezblock Studio</div>
+  <div class="download_item">
+    <div class="container">
+      <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-6 no-padding download_item_left">
+            <img class="img-fluid" src="./images/ezblock.jpg" alt="" style="width:75%">
+          </div>
+          <div class="col-lg-6 no-padding download_item_right" style="padding: 65px 0">
+            <p set-lan="html:io_discript_ezblock" style="color: #2a2a2a;word-break: normal;font-size: 15px;"></p>
+            <div>
+              <strong set-lan="html:t_version" class="fonversion"></strong><span set-lan="html:app_version_31"
+                class="versionmove"></span>
+            </div>
+            <!-- <button class="toEzblockBtn" onclick="downloadRas.getdown()" set-lan="html:io_totry"></button> -->
+            <a class="text-uppercase primary-btn" href="../download/download_app_v31.html"
+              set-lan="html:download_getDetails"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jun -->
+
+
+
+  <footer id="footer"></footer>
+  <!--/#footer-->
+</body>
+
+</html>
+
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/api.js"></script>
+<script type="text/javascript" src="../js/personal.js"></script>
+<script type="text/javascript" src="../js/ezblock.js"></script>
+<script type="text/javascript" src="../js/nav.js"></script>
+<script type="text/javascript" src="../js/utils.js"></script>
+<script type="text/javascript" src="../js/sign.js"></script>
+<script type="text/javascript" src="../js/downloadRaspberry.js"></script>
+<script type="text/javascript" src="../msg/lan_cn.js?r=123456"></script>
+<script type="text/javascript" src="../msg/lan_en.js?r=123456"></script>
+<script>
+  downloadImage = function () {
+    var lan = getCookie('lan');
+    //选取语言文字
+    switch (lan) {
+      case 'cn':
+        var url = cn["img_url_latest"]; //这里cn[m]中的cn是上面定义的json字符串的变量名，m是json中的键，用此方式读取到json中的值
+        break;
+      default:
+        var url = en["img_url_latest"];
+    }
+    var a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.click();
+  }
+  downloadImageBeta = function () {
+    var lan = getCookie('lan');
+    //选取语言文字
+    switch (lan) {
+      case 'cn':
+        var url = cn["img_url_latestBeta"]; //这里cn[m]中的cn是上面定义的json字符串的变量名，m是json中的键，用此方式读取到json中的值
+        break;
+      default:
+        var url = en["img_url_latestBeta"];
+    }
+    var a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.click();
+  }
+</script>

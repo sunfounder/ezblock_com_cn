@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/header&footer.css">
+    <script type="text/javascript" src="../js/tohttps.js"></script>
+    <script src="../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+   <section id="header" class="no-header"></section>
+    <!--/#header-->
+
+    <!-- 内容主体 start -->
+    <div class="wrap user-box">
+        <div class="fll user-left">
+            <div class="user-title">
+                <div class="user-ava">
+                    <img src="./images/avatar.png" alt="" class="myavatar" style="border-radius: 50%">
+                </div>
+                <div class="user-info">
+                    <p></p>
+                    <p><span class="ico-address"></span><span class="address"></span></p>
+                </div>
+                <div class="user-btn" style="text-align: center">
+                    <a href="" type="button" class="btn btn-blue" set-lan="html:starEzblock"></a>
+                </div>
+            </div>
+            <div class="user-nav">
+                <ul>
+                    <li><a href="./myproject.html" set-lan="html:personal_nav_myProject"></a></li>
+                    <li><a href="./focus.html" set-lan="html:personal_nav_myFocus"></a></li>
+                    <li><a href="./collection.html" set-lan="html:personal_nav_myCollect"></a></li>
+                    <li><a href="./message.html" set-lan="html:personal_nav_myMessage"></a></li>
+                    <li><a href="./index.html" set-lan="html:personal_nav_myData"></a></li>
+                    <li><a class="cur" href="./setting.html" set-lan="html:personal_nav_mySetting"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="fr user-right minh">
+            <div class="user-tit">
+                <h2 set-lan="html:mySetting_changePassword"></h2>
+            </div>
+
+            <div class="user-data user-password">
+                <dl class="item">
+                    <dt set-lan="html:mySetting_oldPassword"></dt>
+                    <dd>
+                        <input type="password" class="txt txt-oldpassword" value="" placeholder="旧密码">
+                    </dd>
+                </dl>
+                <dl class="item">
+                    <dt set-lan="html:mySetting_newPassword"></dt>
+                    <dd>
+                        <input type="password" class="txt txt-newpassword" value="" placeholder="3-16位，区分大小写">
+                    </dd>
+                </dl>
+                <button class="btn btn-save" set-lan="html:btn_save"></button>
+            </div>
+
+            <div class="user-tit">
+                <span class="fr" set-lan="html:mySetting_changeEmailTip"></span>
+                <h2 set-lan="html:mySetting_changeEmail"></h2>
+            </div>
+            <div class="user-data user-bind">
+                <dl class="item">
+                    <dt set-lan="html:mySetting_email"></dt>
+                    <dd>
+                        <input type="text" class="txt changeEmail" value="" placeholder="请输入要绑定的新邮箱">
+                        <button type="button" class="btn-bind btn-bind-email" set-lan="html:btn_changeEmail"></button>
+                    </dd>
+                </dl>
+            </div>
+
+            <div class="user-tit">
+                <span class="fr" set-lan="html:mySetting_deleteUserTip"></span>
+                <h2 set-lan="html:mySetting_deleteUser"></h2>
+            </div>
+            <div class="user-data user-delete">
+                <dl class="item">
+                    <dt set-lan="html:mySetting_email"></dt>
+                    <dd>
+                        <input type="text" class="txt txt-username" value="" readonly>
+                    </dd>
+                </dl>
+                <dl class="item">
+                    <dt set-lan="html:mySetting_password"></dt>
+                    <dd>
+                        <input type="password" class="txt txt-password" value="" placeholder="请输入密码">
+                    </dd>
+                </dl>
+                <button class="btn btn-delete" set-lan="html:btn_deleteUser"></button>
+            </div>
+        </div>
+    </div>
+    <!-- 内容主体 end -->
+    <div id="loading"></div>
+    <div id="masks"></div>
+    <div id="feedback"></div>
+    <footer id="footer"></footer>
+    <!--/#footer-->
+
+    <!-- 修改邮箱号弹窗 start -->
+    <div class="popup-box popup-email popup-editphone">
+        <div class="popup">
+            <div class="popup-tit" set-lan="html:popup_changeEmail"></div>
+            <span class="popup-close icon-close"></span>
+            <div class="popup-ct">
+                <div class="item">
+                    <input type="text" class="txt txt-email" readonly placeholder="新邮箱账号">
+                </div>
+                <div class="item">
+                    <div class="yzm"><a href="javascript:;" class="sendcode" set-lan="html:btn_sendCode"></a></div><input type="text"
+                        class="txt txt-yzm" placeholder="6位验证码">
+                </div>
+            </div>
+            <div class="popup-btn-box">
+                <a href="javascript:;" class="btn btn-blue btn-comfirm" set-lan="html:btn_comfirm"></a>
+            </div>
+        </div>
+    </div>
+    <!-- 修改邮箱号弹窗 end -->
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-i18next.min.js"></script>
+    <script type="text/javascript" src="../js/api.js"></script>
+    <script type="text/javascript" src="../js/ezblock.js"></script>
+    <script type="text/javascript" src="../js/personal.js"></script>
+    <script type="text/javascript" src="../js/sign.js"></script>
+
+    <script type="text/javascript" src="../msg/lan_cn.js"></script>
+    <script type="text/javascript" src="../msg/lan_en.js"></script>
+
+    <script>
+        window.onload = function () {
+            Personal.getUserInfo();
+        }
+    </script>
+</body>
+
+</html>

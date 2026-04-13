@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/header&footer.css">
+    <script type="text/javascript" src="../js/tohttps.js"></script>
+    <script src="../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+   <section id="header" class="no-header"></section>
+    <!--/#header-->
+
+    <!-- 内容主体 start -->
+    <div class="wrap user-box myProject-content">
+        <div class="fll user-left">
+            <div class="user-title">
+                <div class="user-ava">
+                    <img src="./images/avatar.png" alt="" class="myavatar" style="border-radius: 50%">
+                </div>
+                <div class="user-info">
+                    <p></p>
+                    <p><span class="ico-address"></span><span class="address"></span></p>
+                </div>
+                <div class="user-btn" style="text-align: center">
+                    <a href="" type="button" class="btn btn-blue" set-lan="html:starEzblock"></a>
+                </div>
+            </div>
+            <div class="user-nav">
+                <ul>
+                    <li><a class="cur" href="./myproject.html" set-lan="html:personal_nav_myProject"></a></li>
+                    <li><a href="./focus.html" set-lan="html:personal_nav_myFocus"></a></li>
+                    <li><a href="./collection.html" set-lan="html:personal_nav_myCollect"></a></li>
+                    <li><a href="./message.html" set-lan="html:personal_nav_myMessage"></a></li>
+                    <li><a href="./index.html" set-lan="html:personal_nav_myData"></a></li>
+                    <li><a href="./setting.html" set-lan="html:personal_nav_mySetting"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="fr user-right minh">
+            <div class="user-tit focus-nav" style="margin-bottom: 20px; line-height: 55px;">
+                <ul>
+                    <li class="cur" onclick="Userinfo.renderTab('user-communityProject',event)">
+                        <span set-lan="html:myProject_projects"></span>
+                    </li>
+                    <li onclick="Userinfo.renderTab('user-saveProject',event)">
+                        <span set-lan="html:myProject_drafts"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="user-data" style="padding: 10px 30px">
+                <div class="user-communityProject user-project-box">
+                    <div class="user-focus">
+                        <div class="focus-box">
+                            <ul>
+                                <li class="ezblock-item">
+                                    <a title="" target="_blank" href="./project_details.html?comm_id=1">
+                                        <img class="previews img-box" mysrc="" src="./images/E_banner.jpg" alt=""
+                                            height="150px" width="100%">
+                                    </a>
+                                    <div class="ezblock-item-info">
+                                        <h3><a target="_blank"><span class="icon-recommend yellow"
+                                                    href="./project_details.html?comm_id=1"></span>&nbsp;&nbsp;SO
+                                                cool!</a>
+                                        </h3>
+                                        <div class="info">
+                                            <em><span class="icon-view"></span>1372</em>
+                                            <em><span class="icon-praise"></span>20</em>
+                                            <em><span class="icon-comment"></span>4</em>
+                                        </div>
+                                        <div class="user">
+
+                                            <div class="sjs-name">
+                                                <a href="./ziliao.html?id=1" title="Circusmans" target="_blank">
+                                                    <img class="previews" src="./images/avatar.png" mysrc="" alt="">
+                                                    <span>lucas</span>
+                                                    <span class="fr" style="margin-top: 9px">07/12</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="user-saveProject user-project-box" style="display: none">
+                    <div class="user-focus">
+                        <div class="focus-box">
+                            <ul>
+                                <li class="ezblock-item">
+                                    <a title="" target="_blank" href="./project_details.html?comm_id=1">
+                                        <img class="previews img-box" mysrc="" src="./images/E_banner.jpg" alt=""
+                                            height="150px" width="100%">
+                                    </a>
+                                    <div class="ezblock-item-info">
+                                        <h3><a target="_blank"><span class="icon-recommend yellow"
+                                                    href="./project_details.html?comm_id=1"></span>&nbsp;&nbsp;SO
+                                                cool!</a>
+                                        </h3>
+                                        <div class="info">
+                                            <em><span class="icon-view"></span>1372</em>
+                                            <em><span class="icon-praise"></span>20</em>
+                                            <em><span class="icon-comment"></span>4</em>
+                                        </div>
+                                        <div class="user">
+
+                                            <div class="sjs-name">
+                                                <a href="./ziliao.html?id=1" title="Circusmans" target="_blank">
+                                                    <img class="previews" src="./images/avatar.png" mysrc="" alt="">
+                                                    <span>lucas</span>
+                                                    <span class="fr" style="margin-top: 9px">07/12</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!-- 内容主体 end -->
+        <div id="loading"></div>
+        <div id="masks"></div>
+        <div id="feedback"></div>
+        <footer id="footer"></footer>
+        <!--/#footer-->
+
+
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-i18next.min.js"></script>
+        <script type="text/javascript" src="../js/api.js"></script>
+        <script type="text/javascript" src="../js/ezblock.js"></script>
+        <script type="text/javascript" src="../js/personal.js"></script>
+        <script type="text/javascript" src="../js/sign.js"></script>
+        <script type="text/javascript" src="./js/userInfo.js"></script>
+
+        <script type="text/javascript" src="../msg/lan_cn.js"></script>
+        <script type="text/javascript" src="../msg/lan_en.js"></script>
+        <script>
+            window.onload = function () {
+                Personal.getUserInfo();
+            }
+        </script>
+</body>
+
+</html>

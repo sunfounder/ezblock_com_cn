@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="shortcut icon" href="./images/icon.png">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/header&footer.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/cropper.css">
+  <link rel="stylesheet" href="../css/user.css">
+  <script type="text/javascript" src="../js/tohttps.js"></script>
+  <script src="../js/jquery.min.js" type="text/javascript"></script>
+  <!-- 国家下拉选项 -->
+  <link rel="stylesheet" href="./css/select_gj.css">
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+  <!--header-->
+  <section id="header" class="no-header"></section>
+  <!--/#header-->
+
+  <!-- 内容主体 start -->
+  <div class="wrap user-box">
+    <div class="fll user-left">
+      <div class="user-title">
+        <div class="user-ava">
+          <img src="./images/avatar.png" alt="" class="myavatar" style="border-radius: 50%">
+        </div>
+        <div class="user-info">
+          <p></p>
+          <p><span class="ico-address"></span><span class="address"></span></p>
+        </div>
+        <div class="user-btn" style="text-align: center">
+          <a href="" type="button" class="btn btn-blue" set-lan="html:starEzblock"></a>
+        </div>
+      </div>
+      <div class="user-nav">
+        <ul>
+          <li><a href="./myproject.html" set-lan="html:personal_nav_myProject"></a></li>
+          <li><a href="./focus.html" set-lan="html:personal_nav_myFocus"></a></li>
+          <li><a href="./collection.html" set-lan="html:personal_nav_myCollect"></a></li>
+          <li><a href="./message.html" set-lan="html:personal_nav_myMessage"></a></li>
+          <li><a class="cur" href="./index.html" set-lan="html:personal_nav_myData"></a></li>
+          <li><a href="./setting.html" set-lan="html:personal_nav_mySetting"></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <form action="" onsubmit="return false;" id="infoform" method="post">
+
+      <div class="user-right minh">
+        <div class="user-tit">
+          <h2 set-lan="html:myData_title"></h2>
+        </div>
+        <div class="user-data user-basedata">
+          <div class="data-img">
+            <a href="javascript:;" class="fll img">
+              <img src="./images/avatar.png" height="96" width="96" class="avatarImg">
+              <span class="edit" set-lan="html:myData_changeAva"></span>
+            </a>
+            <div class="name"></div>
+            <div class="address"> </div>
+          </div>
+
+
+          <dl class="item">
+            <dt><span class="dot"></span><em set-lan="html:myData_username"></em></dt>
+            <dd>
+              <input type="text" class="txt txt-username" value="" name="username" placeholder="4-16个字符">
+              <!-- <span class="num-box"><span class="num">4</span>/16</span> -->
+            </dd>
+          </dl>
+          <dl class="item">
+            <dt><span class="dot"></span><em set-lan="html:myData_email"></em></dt>
+            <dd>
+              <input type="text" class="txt txt-email" value="" name="email" placeholder="请输入正确的邮箱格式" readonly
+                style="border:none">
+
+            </dd>
+          </dl>
+          <dl class="item item2">
+            <dt><span class="dot"></span><em set-lan="html:myData_sex"></em></dt>
+            <dd id="sex">
+              <label><input type="radio" name="sex" value="male" set-lan="html:myData_sex_male"></label>
+              <label><input type="radio" name="sex" value="female" set-lan="html:myData_sex_female"></label>
+            </dd>
+          </dl>
+          <dl class="item">
+            <dt><span class="dot"></span><em set-lan="html:myData_age"></em></dt>
+            <dd>
+              <input type="text" class="txt txt-age" value="" name="age" placeholder="">
+
+            </dd>
+          </dl>
+          <dl class="item">
+            <dt><em set-lan="html:myData_job"></em></dt>
+            <dd>
+              <input type="text" class="txt txt-job" value="" name="job" placeholder="4-16个字符">
+              <!-- <span class="num-box"><span class="num">0</span>/16</span> -->
+            </dd>
+          </dl>
+          <dl class="item">
+            <dt><span class="dot"></span><em set-lan="html:myData_country"></em></dt>
+            <dd class="z9">
+              <select name="country" class="fastbannerform__country select_country txt">
+                <option value="America" title="America">America</option>
+                <option value="Andorra" title="Andorra">Andorra</option>
+                <option value="United Arab Emirates" title="AE">United Arab Emirates</option>
+                <option value="Afghanistan" title="AF">Afghanistan</option>
+                <option value="Antigua and Barbuda" title="AG">Antigua and Barbuda</option>
+                <option value="Albania" title="AL">Albania</option>
+                <option value="Armenia" title="AM">Armenia</option>
+                <option value="Angola" title="AO">Angola</option>
+                <option value="Argentina" title="AR">Argentina</option>
+                <option value="Austria" title="AT">Austria</option>
+                <option value="Australia" title="AU">Australia</option>
+                <option value="Aruba" title="AW">Aruba</option>
+                <option value="Azerbaijan" title="AZ">Azerbaijan</option>
+                <option value="Bosnia and Herzegovina" title="BA">Bosnia and Herzegovina</option>
+                <option value="Barbados" title="BB">Barbados</option>
+                <option value="Bangladesh" title="BD">Bangladesh</option>
+                <option value="Belgium" title="BE">Belgium</option>
+                <option value="Burkina Faso" title="BF">Burkina Faso</option>
+                <option value="Bulgaria" title="BG">Bulgaria</option>
+                <option value="Bahrain" title="BH">Bahrain</option>
+                <option value="Burundi" title="BI">Burundi</option>
+                <option value="Benin" title="BJ">Benin</option>
+                <option value="Bermuda" title="BM">Bermuda</option>
+                <option value="Brunei" title="BN">Brunei</option>
+                <option value="Bolivia" title="BO">Bolivia</option>
+                <option value="Brazil" title="BR">Brazil</option>
+                <option value="Bahamas" title="BS">Bahamas</option>
+                <option value="Bhutan" title="BT">Bhutan</option>
+                <option value="Botswana" title="BW">Botswana</option>
+                <option value="Belarus" title="BY">Belarus</option>
+                <option value="Belize" title="BZ">Belize</option>
+                <option value="Canada" title="CA">Canada</option>
+                <option value="Democratic Republic of the Congo" title="CD">Democratic Republic of the Congo</option>
+                <option value="Central African Republic" title="CF">Central African Republic</option>
+                <option value="Democratic Republic of the Congo" title="CG">Democratic Republic of the Congo</option>
+                <option value="Switzerland" title="CH">Switzerland</option>
+                <option value="Chile" title="CL">Chile</option>
+                <option value="Cameroon" title="CM">Cameroon</option>
+                <option value="China" title="China">China</option>
+                <option value="Colombia" title="CO">Colombia</option>
+                <option value="Costa Rica" title="CR">Costa Rica</option>
+                <option value="Cuba" title="CU">Cuba</option>
+                <option value="Cape Verde" title="CV">Cape Verde</option>
+                <option value="Cyprus" title="CY">Cyprus</option>
+                <option value="Czech Republic" title="CZ">Czech Republic</option>
+                <option value="Germany" title="DE">Germany</option>
+                <option value="Djibouti" title="DJ">Djibouti</option>
+                <option value="Denmark" title="DK">Denmark</option>
+                <option value="Dominica" title="DM">Dominica</option>
+                <option value="Dominican Republic" title="DO">Dominican Republic</option>
+                <option value="Algeria" title="DZ">Algeria</option>
+                <option value="Ecuador" title="EC">Ecuador</option>
+                <option value="Estonia" title="EE">Estonia</option>
+                <option value="Egypt" title="EG">Egypt</option>
+                <option value="Eritrea" title="ER">Eritrea</option>
+                <option value="Spain" title="ES">Spain</option>
+                <option value="Ethiopia" title="ET">Ethiopia</option>
+                <option value="Finland" title="FI">Finland</option>
+                <option value="Fiji" title="FJ">Fiji</option>
+                <option value="Falkland Islands" title="FK">Falkland Islands</option>
+                <option value="Micronesia" title="FM">Micronesia</option>
+                <option value="Faroe Islands" title="FO">Faroe Islands</option>
+                <option value="France" title="FR">France</option>
+                <option Gabon="Gabon" title="GA">Gabon</option>
+                <option value="United Kingdom" title="GB">United Kingdom</option>
+                <option value="Grenada" title="GD">Grenada</option>
+                <option value="Georgia" title="GE">Georgia</option>
+                <option value="Ghana" title="GH">Ghana</option>
+                <option value="Gibraltar" title="GI">Gibraltar</option>
+                <option value="Gambia" title="GM">Gambia</option>
+                <option value="Guinea" title="GN">Guinea</option>
+                <option value="Equatorial Guinea" title="GQ">Equatorial Guinea</option>
+                <option value="Greece" title="GR">Greece</option>
+                <option value="Guatemala" title="GT">Guatemala</option>
+                <option value="Guinea-Bissau" title="GW">Guinea-Bissau</option>
+                <option value="Guyana" title="GY">Guyana</option>
+                <option value="Hong Kong,China" title="HK">Hong Kong,China</option>
+                <option value="Honduras" title="HN">Honduras</option>
+                <option value="Croatia" title="HR">Croatia</option>
+                <option value="Haiti" title="HT">Haiti</option>
+                <option value="Hungary" title="HU">Hungary</option>
+                <option value="Indonesia" title="ID">Indonesia</option>
+                <option value="Ireland" title="IE">Ireland</option>
+                <option value="Israel" title="IL">Israel</option>
+                <option value="India" title="IN">India</option>
+                <option value="Iraq" title="IQ">Iraq</option>
+                <option value="Iran" title="IR">Iran</option>
+                <option value="Iceland" title="IS">Iceland</option>
+                <option value="Italy" title="IT">Italy</option>
+                <option value="Jamaica" title="JM">Jamaica</option>
+                <option value="Jordan" title="JO">Jordan</option>
+                <option value="Japan" title="JP">Japan</option>
+                <option value="Kenya" title="KE">Kenya</option>
+                <option value="Kyrgyzstan" title="KG">Kyrgyzstan</option>
+                <option value="Cambodia" title="KH">Cambodia</option>
+                <option value="Kiribati" title="KI">Kiribati</option>
+                <option value="Comoros" title="KM">Comoros</option>
+                <option value="Saint Kitts and Nevis" title="KN">Saint Kitts and Nevis</option>
+                <option value="North Korea" title="KP">North Korea</option>
+                <option value="South Korea" title="KR">South Korea</option>
+                <option value="Kuwait" title="KW">Kuwait</option>
+                <option value="Cayman Islands" title="KY">Cayman Islands</option>
+                <option value="Kazakhstan" title="KZ">Kazakhstan</option>
+                <option value="Laos" title="LA">Laos</option>
+                <option value="Lebanon" title="LB">Lebanon</option>
+                <option value="Saint Lucia" title="LC">Saint Lucia</option>
+                <option value="Liechtenstein" title="LI">Liechtenstein</option>
+                <option value="Sri Lanka" title="LK">Sri Lanka</option>
+                <option value="Liberia" title="LR">Liberia</option>
+                <option value="Lesotho" title="LS">Lesotho</option>
+                <option value="Lithuania" title="LT">Lithuania</option>
+                <option value="Luxembourg" title="LU">Luxembourg</option>
+                <option value="Latvia" title="LV">Latvia</option>
+                <option value="Libya" title="LY">Libya</option>
+                <option value="Morocco" title="MA">Morocco</option>
+                <option value="Monaco" title="MC">Monaco</option>
+                <option value="Moldova" title="MD">Moldova</option>
+                <option value="Montenegro" title="ME">Montenegro</option>
+                <option value="Madagascar" title="MG">Madagascar</option>
+                <option value="Macedonia" title="MK">Macedonia</option>
+                <option value="Mali" title="ML">Mali</option>
+                <option value="Myanmar" title="MM">Myanmar</option>
+                <option value="Mongolia" title="MN">Mongolia</option>
+                <option value="Macao,China" title="MO">Macao,China</option>
+                <option value="Mauritania" title="MR">Mauritania</option>
+                <option value="Malta" title="MT">Malta</option>
+                <option value="Mauritius" title="MU">Mauritius</option>
+                <option value="Maldives" title="MV">Maldives</option>
+                <option value="Malawi" title="MW">Malawi</option>
+                <option value="Mexico" title="MX">Mexico</option>
+                <option value="Malaysia" title="MY">Malaysia</option>
+                <option value="Mozambique" title="MZ">Mozambique</option>
+                <option value="Namibia" title="NA">Namibia</option>
+                <option value="Niger" title="NE">Niger</option>
+                <option value="Nigeria" title="NG">Nigeria</option>
+                <option value="Nicaragua" title="NI">Nicaragua</option>
+                <option value="Netherlands" title="NL">Netherlands</option>
+                <option value="Norway" title="NO">Norway</option>
+                <option value="Nepal" title="NP">Nepal</option>
+                <option value="Nauru" title="NR">Nauru</option>
+                <option value="New Zealan" title="NZ">New Zealand</option>
+                <option value="Oman" title="OM">Oman</option>
+                <option value="Panama" title="PA">Panama</option>
+                <option value="Peru" title="PE">Peru</option>
+                <option value="Papua New Guinea" title="PG">Papua New Guinea</option>
+                <option value="Philippines" title="PH">Philippines</option>
+                <option value="Pakistan" title="PK">Pakistan</option>
+                <option value="Poland" title="PL">Poland</option>
+                <option value="Puerto Rico" title="PR">Puerto Rico</option>
+                <option value="Palestine" title="PS">Palestine</option>
+                <option value="Portugal" title="PT">Portugal</option>
+                <option value="Palau" title="PW">Palau</option>
+                <option value="Paraguay" title="PY">Paraguay</option>
+                <option value="Qatar" title="QA">Qatar</option>
+                <option value="Romania" title="RO">Romania</option>
+                <option value="Serbia" title="RS">Serbia</option>
+                <option value="Russia" title="RU">Russia</option>
+                <option value="Rwanda" title="RW">Rwanda</option>
+                <option value="Saudi Arabia" title="SA">Saudi Arabia</option>
+                <option value="Solomon Islands" title="SB">Solomon Islands</option>
+                <option value="Seychelles" title="SC">Seychelles</option>
+                <option value="Sudan" title="SD">Sudan</option>
+                <option value="Sweden" title="SE">Sweden</option>
+                <option value="Singapore" title="SG">Singapore</option>
+                <option value="Slovenia" title="SI">Slovenia</option>
+                <option value="Slovak Republic" title="SK">Slovak Republic</option>
+                <option value="Sierra Leone" title="SL">Sierra Leone</option>
+                <option value="San Marino" title="SM">San Marino</option>
+                <option value="Senegal" title="SN">Senegal</option>
+                <option value="Somalia" title="SO">Somalia</option>
+                <option value="Suriname" title="SR">Suriname</option>
+                <option value="Sao Tome and Principe" title="ST">Sao Tome and Principe</option>
+                <option value="El Salvador" title="SV">El Salvador</option>
+                <option value="Syria" title="SY">Syria</option>
+                <option value="Swaziland" title="SZ">Swaziland</option>
+                <option value="Chad" title="TD">Chad</option>
+                <option value="Togo" title="TG">Togo</option>
+                <option value="Thailand" title="TH">Thailand</option>
+                <option value="Tajikistan" title="TJ">Tajikistan</option>
+                <option value="Turkmenistan" title="TM">Turkmenistan</option>
+                <option value="Tunisia" title="TN">Tunisia</option>
+                <option value="Tonga" title="TO">Tonga</option>
+                <option value="Turkey" title="TR">Turkey</option>
+                <option value="Trinidad and Tobago" title="TT">Trinidad and Tobago</option>
+                <option value="Tuvalu" title="TV">Tuvalu</option>
+                <option value="Taiwan,China" title="TW">Taiwan,China</option>
+                <option value="Tanzania" title="TZ">Tanzania</option>
+                <option value="Ukraine" title="UA">Ukraine</option>
+                <option value="Uganda" title="UG">Uganda</option>
+                <option value="Uruguay" title="UY">Uruguay</option>
+                <option value="Uzbekistan" title="UZ">Uzbekistan</option>
+                <option value="Saint Vincent And The Grenadine" title="VC">Saint Vincent And The Grenadine</option>
+                <option value="Venezuela" title="VE">Venezuela</option>
+                <option value="British Virgin Islands" title="VG">British Virgin Islands</option>
+                <option value="Vietnam" title="VN">Vietnam</option>
+                <option value="Vanuatu" title="VU">Vanuatu</option>
+                <option value="Wallis and Futuna" title="WF">Wallis and Futuna</option>
+                <option value="Western Samoa" title="WS">Western Samoa</option>
+                <option value="Yemen" title="YE">Yemen</option>
+                <option value="South Africa" title="ZA">South Africa</option>
+                <option value="Zambia" title="ZM">Zambia</option>
+                <option value="Zimbabwe" title="ZW">Zimbabwe</option>
+              </select>
+            </dd>
+          </dl>
+
+          <dl class="item">
+            <dt></span><em set-lan="html:myData_intro"></em></dt>
+            <dd>
+              <textarea type="text" name="qianm" class="txt text txt-intro" placeholder="不超过20个汉字或40个字符"></textarea>
+              <span class="num-box"><span class="num">0</span>/40</span>
+            </dd>
+          </dl>
+          <!-- <dl class="item">
+            <dt>个人简介</dt>
+            <dd>
+              <textarea type="text" name="jianjie" class="txt text2" placeholder="个人简介"></textarea>
+              <span class="num-box"><span class="num">0</span>/500</span>
+            </dd>
+          </dl> -->
+          <button class="btn btn-save" set-lan="html:btn_save"></button>
+
+        </div>
+
+        <input type="hidden" value="" name="resideprovince">
+        <input type="hidden" value="" name="residecity">
+      </div>
+
+    </form>
+  </div>
+  <!-- 内容主体 end -->
+
+  <!-- 编辑头像弹窗 start -->
+  <iframe id="frame_profile" name="frame_profile" style="display: none"></iframe>
+  <form id="avatarform" name="avatarform" method="post" enctype="multipart/form-data" autocomplete="off"
+    target="frame_profile">
+    <input type="hidden" value="0" name="x" id="x" />
+    <input type="hidden" value="0" name="y" id="y" />
+    <input type="hidden" value="0" name="w" id="w" />
+    <input type="hidden" value="0" name="h" id="h" />
+    <input type="hidden" name="_token" value="qMrcktPHGWldD76oNw6B0SI0EK27jZ65RtDf0EKe">
+
+    <div class="user-editbox">
+      <a href="javascript:;" class="user-ico user-editbox-close"><span class="icon-close"></span></a>
+      <div class="tit" set-lan="html:popup_editAva"></div>
+      <div class="ct">
+        <div class="img"><img id="image" src="" width="335" height="335" /></div>
+        <div class="preview-box">
+          <div class="img-preview preview-lg"></div>
+          <p>85PX</p>
+          <div class="img-preview preview-md"></div>
+          <p>50PX</p>
+        </div>
+        <a href="javascript:;" class="btn-up"><em set-lan="html:popup_reUpdate"></em><input type="file" id="avatarInput"
+            name="myfile_head"></a>
+        <button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true" class="btn"
+          set-lan="html:btn_save"></button>
+      </div>
+    </div>
+  </form>
+  <!-- 编辑头像弹窗 end -->
+
+
+  <!-- 登录、注册、忘记密码弹窗 -->
+  <div class="mask hide" style="z-index: 6666;">
+    <div class="popupLoginIframe">
+      <div class="closeIframe">
+        <img src="./images/close.png" style="width: 100%">
+      </div>
+      <!-- 登录 -->
+      <div class="sign signin-page">
+        <div id="login-box" class="card sign-in">
+          <div class="logo">
+            <span class="icon logo">
+              <i class="icon-logo icon_sign"></i>
+            </span>
+          </div>
+
+          <div class="card-section">
+            <div id="login-form" class="form form-horizontal">
+              <div class="row username">
+                <span class="icon email">
+                  <i class="icon-email-gray icon_sign" icon="email"></i>
+                </span>
+                <input class="required" id="username" type="email" name="email" value="" placeholder="邮箱" autofocus>
+                <span class="input-bar"></span>
+                <div class="error email-warn">
+                  <p class="warn may-long" id="username_warn_false">
+                    <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+                    <span class="error_txt"></span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="row password">
+                <span class="icon lock">
+                  <i class="icon-lock-gray icon_sign" icon="lock"></i>
+                </span>
+                <input class="required" id="password" type="password" name="password" placeholder="密码">
+                <span class="input-bar"></span>
+                <div class="error">
+                  <p class="warn" id="password_warn_false">
+                    <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+                    <span class="error_txt" set-lan="html:error_txt_passwordNotEmpty"></span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="row submit btns">
+                <button id="submit-btn" class="btn-initial button btn-med analy" data-analy="signin"
+                  set-lan="html:btn_login"></button>
+                <button class="btn-loading button btn-med disabled=" set-lan="html:btn_loginZhong"></button>
+              </div>
+
+              <div class="row forgot-password">
+                <span class="link">
+                  <a class="reset-link" id="forget-password" href="#" set-lan="html:btn_forgetPassword"></a>
+                </span>
+              </div>
+            </div>
+
+
+            <div class="signin-sns">
+              <div class="middle-line sns-title" set-lan="html:popup_threeLogin">
+
+              </div>
+              <ul class="sns">
+                <li class="google">
+                  <a href="#" hidefocus="true" title="Google">
+                    <i class="icon_sign icon-google"></i>
+                  </a>
+                </li>
+                <li class="facebook second">
+                  <a href="#" hidefocus="true" title="Facebook">
+                    <i class="icon_sign icon-facebook"></i>
+                  </a>
+                </li>
+                <li class="twitter">
+                  <a href="#" hidefocus="true" title="Twitter">
+                    <i class="icon_sign icon-twitter"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="link signup sign-link">
+              <span class="link">
+                <a class="signup-link" href="#" set-lan="html:popup_signup"></a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 重置密码 -->
+      <div class="sign reset-page dis_none ">
+        <div id="reset-box" class="card sign-in">
+          <div class="logo">
+            <span class="icon logo">
+              <i class="icon-logo icon_sign"></i>
+            </span>
+          </div>
+          <div class="card-section">
+            <!-- 重置密码的邮箱 -->
+            <div class="row email">
+              <span class="icon email">
+                <i class="icon-email-gray icon_sign" icon="email"></i>
+              </span>
+              <input class="required" id="username" type="email" name="username" value=""
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$" placeholder="邮箱" autocomplete="on" required
+                autofocus>
+              <span class="input-bar"></span>
+              <div class="error email-warn">
+                <p class="warn" id="username_warn_false">
+                  <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+                  <span class="error_txt" set-lan="html:error_txt_emailNotEmpty"></span>
+                </p>
+              </div>
+            </div>
+            <!-- 验证码 -->
+            <div class="row identiCode">
+              <input id="verifyCode" class="required" type="text" name="verifyCode" placeholder="验证码">
+              <button id="getverifyCode" set-lan="html:btn_getCode"></button>
+              <span class="input-bar"></span>
+              <div class="error code-warn">
+                <p class="warn" id="code_warn_false">
+                  <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+                  <span class="error_txt"></span>
+                </p>
+              </div>
+            </div>
+            <!-- 密码 -->
+            <div class="row set-password">
+              <span class="icon lock">
+                <i class="icon-lock-gray icon_sign" icon="lock"></i>
+              </span>
+              <input class="required" id="set-password" type="password" name="password" placeholder="密码">
+              <span class="input-bar"></span>
+              <div class="error password_error">
+                <p class="warn" id="password_warn_false">
+                  <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+                  <span class="error_txt"></span>
+                </p>
+              </div>
+            </div>
+            <!-- 确认密码 -->
+            <div class="row reset_password">
+              <span class="icon lock">
+                <i class="icon-lock-gray icon_sign" icon="lock"></i>
+              </span>
+              <input class="required" id="reset-password" type="password" name="password" placeholder="确认密码">
+              <span class="input-bar"></span>
+              <div class="error">
+                <p class="warn" id="repassword_warn_false">
+                  <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+                  <span class="error_txt"></span>
+                </p>
+              </div>
+            </div>
+            <div class="row submit">
+              <input type="submit" class="button btn-med" id="confirmReset" value="确认重置" readonly>
+            </div>
+            <div class="link sign-link">
+              <a class="link signin-link" href="javascript:;" set-lan="html:popup_backLogin"></a> |
+              <a class="link signup-link" href="javascript:;" set-lan="html:popup_signup"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 注册 -->
+      <div class="sign signup-page dis_none">
+        <div id="signup-box" class="card">
+          <div class="logo">
+            <span class="icon logo">
+              <i class="icon-logo icon_sign"></i>
+            </span>
+          </div>
+          <div class="card-section">
+            <div id="signup-form" class="form form-horizontal">
+              <div class="row name">
+                <span class="icon name">
+                  <i class="icon-name-gray icon_sign" icon="name"></i>
+                </span>
+                <input id="username" class="required" type="text" name="name" value="" placeholder="昵称"
+                  autocomplete="on" autofocus>
+                <span class="input-bar"></span>
+                <div class="error email-warn">
+                  <p class="warn may-long" id="username_warn_false">
+                    <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+                    <span class="error_txt"></span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="row password">
+                <span class="icon lock">
+                  <i class="icon-lock-gray icon_sign" icon="lock"></i>
+                </span>
+                <input id="password" class="required" type="password" name="password" placeholder="密码">
+                <span class="input-bar"></span>
+                <div class="error password-error">
+                  <p class="warn" id="password_warn_false">
+                    <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+                    <span class="error_txt"></span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="row email">
+                <span class="icon email">
+                  <i class="icon-email-gray icon_sign" icon="email"></i>
+                </span>
+                <input id="email" class="required" type="email" name="email" value=""
+                  pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$" placeholder="邮箱" autocomplete="on"
+                  required>
+                <span class="input-bar"></span>
+                <div class="error email-warn">
+                  <p class="warn" id="email_warn_false">
+                    <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+                    <span class="error_txt"></span>
+                  </p>
+                </div>
+              </div>
+
+
+              <div class="row verifyCode">
+                <input id="verifyCode" class="required" type="text" name="verifyCode" placeholder="验证码">
+                <button href="javascript:;" class="btn btn-warning" id="getverifyCode"
+                  set-lan="html:btn_getCode"></button>
+                <span class="input-bar"></span>
+                <div class="error verifyCode-error">
+                  <p class="warn" id="verifyCode_warn_false">
+                    <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+                    <span class="error_txt"></span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="row submit signup-btn btns">
+                <button id="submit-btn" class="btn-initial button btn-med analy" data-analy="signup"
+                  set-lan="html:popup_signup"></button>
+                <button class="btn-loading button btn-med disabled=" set-lan="html:popup_signupZhong"></button>
+              </div>
+            </div>
+
+            <input class="checkBox private" type="checkbox">
+            <p class="policy-tip" set-lan="html:popup_privacy"></p>
+            <p class="warn error" id="private_warn_false" style="display:none">
+              <span class="warn-icon"><i class="icon-warn icon_sign"></i></span>
+              <span class="error_txt" set-lan="html:popup_agreePrivacy"></span>
+            </p>
+            <div class="link sign-link">
+              <a class="link signin-link" href="javascript:;" set-lan="html:popup_backLogin"></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="loading"></div>
+  <div id="masks"></div>
+  <div id="feedback"></div>
+</div>
+
+
+
+  <footer id="footer"></footer>
+  <!--/#footer-->
+
+  <script src="./js/cropper.js" type="text/javascript"></script>
+  <!-- 裁剪插件js start-->
+
+  <!-- 国家下拉菜单 -->
+  <!-- 图片存在的时候，取不到国家的值 -->
+  <script src="./js/select2_1.js"></script>
+  <script type="text/javascript" src="./js/select_gj.min.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-i18next.min.js"></script>
+  <script type="text/javascript" src="../js/api.js"></script>
+  <script type="text/javascript" src="../js/ezblock.js"></script>
+  <script type="text/javascript" src="../js/nav.js"></script>
+  <script type="text/javascript" src="../js/utils.js"></script>
+  <script type="text/javascript" src="../js/sign.js"></script>
+  <script type="text/javascript" src="js/userInfo.js"></script>
+  <script type="text/javascript" src="../js/personal.js"></script>
+  
+  <script type="text/javascript" src="../msg/lan_cn.js"></script>
+  <script type="text/javascript" src="../msg/lan_en.js"></script>
+ 
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>FAQ &ndash; Ezblock Help</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="shortcut icon" href="./images/icon.png">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/FAQ.css" />
+    <link rel="stylesheet" href="../css/header&footer.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <script type="text/javascript" src="../js/tohttps.js"></script>
+</head>
+
+<body class="">
+   <!-- 头部 start -->
+  <section id="header" class="no-header"></section>
+    <!--/#header-->
+
+
+    <main role="main">
+        <div class="container-divider"></div>
+        <div class="container">
+            <nav class="sub-nav">
+                <div class="faq_search search">
+                    <div onclick="Faq.getMessage(Faq.getAllMsgUrl, $('.faqIpt').val())">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </div>
+                    <input type="search" class="faqIpt" id="query" placeholder="Search">
+                </div>
+
+            </nav>
+
+            <div class="section-container">
+                <section class="section-content">
+                    <header class="page-header">
+                        <h1>FAQ</h1>
+                    </header>
+                    <ul class="article-list"></ul>
+
+                    <div class="pager">
+                        <button class="prevMsg" onclick="Faq.changePageNo(--Faq.pageno)">上一页</button>
+                        <span class="pageNum"></span>
+                        <button class="nextMsg" onclick="Faq.changePageNo(++Faq.pageno)">下一页</button>
+                    </div>
+
+                </section>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer id="footer"></footer>
+    <!--/#footer-->
+</body>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-i18next.min.js"></script>
+<script type="text/javascript" src="../js/ezblock.js"></script>
+<script type="text/javascript" src="../js/api.js"></script>
+<script type="text/javascript" src="./js/FAQ.js"></script>
+</html>

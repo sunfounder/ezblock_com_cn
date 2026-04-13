@@ -1,0 +1,56 @@
+{
+	"nav": {
+		"home": "Home",
+		"download": "Download",
+		"shop": "Shopping",
+		"help": "Help",
+		"reference": "reference",
+		"contact": "Contact",
+		"aboutus": "Aboutus",
+		"faq": "FAQ",
+		"blog": "Blog",
+		"community": "Community",
+		"language": "Language ",
+		"chinese": "Chinese",
+		"english": "English",
+		"login": "Login/Register"
+	},
+	
+	"DownloadPage": {
+		"title": "DownloadPage",
+		"discription": "Ezblock Studio applies to iPad, Android OS or iOS. You can store codes in cloud account for code calling across platform. "
+	},
+	"download": {
+		"title": "EzBlock Studio Download Center"
+	},
+	"es": {
+		"discription_p1": "Ezblock Studio applies to iPad, Android OS or iOS.",
+		"discription_p2": "You can store codes in cloud account for code calling across platform."
+	},
+	"io": {
+		"version": "Version: v0.2",
+		"date": "Release date: 2019-05-29",
+		"size": "Size: 2G",
+		"discription_p1": "Based on the Raspbian-stretch-lite released on 2019-04-10.",
+		"discription_p2": "Raspberry Pi 4 is not supported for the time being."
+	},
+	
+	"footer": {
+		"company": "Company",
+		"about_us": "About Us",
+		"sitemap": "Sitemap",
+
+		"term_of_use": "Terms of Use",
+		"property": "Copyright Notice",
+		"privacy": "Privacy",
+		"serviceterms": "Terms of Service Overview",
+
+		"contact": "Contact",
+		"email": "Email",
+		"phone": "Phone",
+
+		"address": "Address",
+		"address_road": "ShenZhen Maker Stars Tech.Co. Ltd. D507 Huachuangda Science & Culture Industial Park Bao'An District,HaiHui Road Shenzhen, GuangDong 518000 CHINA",
+		"send_email": "Send a Message"
+	}
+}

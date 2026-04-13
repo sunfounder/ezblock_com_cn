@@ -1,0 +1,29 @@
+2023-7-6:
+* Compatible with different username, userhome
+* Fix bug of Ezb_Service send "debug"
+
+2022-11-30:
+ * Add congfigure parameter of auto-start user block program in /opt/ezblock/ezb-info.ini，default：disable auto start block program
+ * Change tts engine to pico2wave
+ * Fix bug of spider calibration
+
+2022-7-14:
+ * System apt full-update, fix the problem that the new batch of Raspberry Pi can't use Bluetooth properly
+
+2022-7-7:
+ * Optimize the calibration of picar-x, picrawler, and pisloth
+ * Fix the function of saving high-resolution pictures in the camera
+
+2022-6-13:
+ * Fix the IO conflict between ADC battery reading and ADC joystick
+ * Change the address of update package detection and download 
+
+2022-5-31:
+ * Use Raspberry Pi's onboard Bluetooth to communicate 
+  with the app 
+ * Some changes related to app interaction
+ * Add connection status sound effect and LED indicator
+ * Add Bluetooth name and hosstname modification function
+
+2021-01-11:
+ * Download code speed than ezblock2.0.

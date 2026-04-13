@@ -1,0 +1,147 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-09 11:40:05
+ * @LastEditTime: 2020-07-27 14:53:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ezblock\link.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+    
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>  
+	<script type="text/javascript" src="js/tohttps.js"></script>  
+</head>
+<style>
+    #loading_content {
+		position: relative;
+		height: 100%;
+	}
+
+	/* .loading_img_block{
+		height: 90%;
+	} */
+	.loading_img_block {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		margin: auto;
+		width: 60%;
+		height: 28%;
+	}
+
+	#progressbar {
+		width: 70%;
+		height: 10px;
+		background-color: #ffffff;
+		border: 1px solid #fbca4b;
+		text-align: center;
+		border-radius: 8px;
+		margin: 5% auto;
+	}
+
+	#progress-label {
+		display: block;
+		font-size: 12px;
+		background-color: #f6b91b;
+		text-align: center;
+		border-radius: 5px;
+		height: 100%;
+	}
+    .progress-label-animation {
+		-webkit-animation: progress 0.5s linear forwards;
+		animation: progress 0.5s linear forwards;
+	}
+</style>
+<body>
+    <div id="loading_content">
+        <div class="loading_img_block">
+            <img src="./ezblock-logo-color.svg" alt="">
+            <div id="progressbar">
+                <span id="progress-label" style="width: 25%"></span>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // 页面资源是否加载完成
+	function loading_delay(ms) {
+		return new Promise(function (resolve, reject) {
+			setTimeout(function () {
+				// console.log(1)
+				resolve(true);
+			}, ms);
+		});
+	}
+	async function showMainContent() {
+		document.getElementById('progress-label').className = "progress-label-animation";
+		await loading_delay(1000);
+		// document.getElementById('main-content').style.display = 'block';
+		document.getElementById("loading_content").style.display = "none";
+		// EzBlock.init()
+		return true
+	}
+	document.onreadystatechange = function () {
+		if (document.readyState == "loading") {
+			document.getElementById('progress-label').style.width = 45 + "%";
+		}
+		// document.getElementById('progress-label').style.width = 25 + "%";
+		if (document.readyState == "complete" || document.readyState == "loaded") {
+			showMainContent();
+			var my_timer = setTimeout(function () {
+				if (window.disableReload) {
+					window.disableReload();
+				}
+			}, 200)
+
+		}
+	};
+    var link_location = {};
+
+    link_location.getLocation = async function () {
+        var result = '';
+        var xmlhttp = new XMLHttpRequest();
+        try {
+            xmlhttp.open("POST", "https://www.ezblock.com.cc:11000/api/web/v2/ezblock/member/country", false);
+            xmlhttp.send();
+            if (xmlhttp.status === 200) {
+                result = JSON.parse(xmlhttp.responseText).data;
+            } else {
+                result = "";
+            }
+        }
+        catch{
+            result = ""
+        }
+       
+        return result;
+    }
+
+    link_location.changeSever = async function () {
+        var country = await link_location.getLocation()
+        console.log(country)
+        if (country == 'China') {
+            console.log('111')
+            window.location.href = 'https://ezblock.com.cn/ezblock_r9K5dc8KgfS4/index.html?lang=zh-hans&distributor=mammoth'
+        } else {
+            window.location.href = 'https://www.ezblock.cc/APP/index.html'
+        }
+    }
+    window.onload = function () {
+        link_location.changeSever();
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

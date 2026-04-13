@@ -1,0 +1,3 @@
+2024-11-18:
+* Compatible with Raspberry Pi 5
+* Compatible with Raspbain bookworm

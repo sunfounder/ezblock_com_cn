@@ -1,0 +1,54 @@
+{
+	"nav": {
+		"home": "主页",
+		"download": "下载",
+		"shop": "购买",
+		"help": "帮助中心",
+		"reference": "参考",
+		"contact": "联系",
+		"aboutus": "关于",
+		"faq": "常见问题",
+		"blog": "博客",
+		"community": "社区",
+		"language": "语言 ",
+		"chinese": "中文",
+		"english": "英语",
+		"login": "登录/注册"
+	},
+	
+	"download": {
+		"title": "EzBlock Studio软件下载中心"
+	},
+	"es": {
+		"discription_p1": "Ezblock Studio支持平板，手机上的Android OS或 iOS 下载",
+		"discription_p2": "云账户存储代码，跨平台无障碍。"
+	},
+	"io": {
+		"version": "版本: v0.2",
+		"date": "发布日期: 2019-05-29",
+		"size": "内存大小: 2G",
+		"discription_p1": "基于Raspbian-stretch-lite（发布于2019-04-10）",
+		"discription_p2": "暂时不支持树莓派4"
+	},
+	
+	"footer": {
+		"company": "公司",
+		"about_us": "关于我们",
+		"sitemap": "网站地图",
+
+		"term_of_use": "使用条款",
+		"property": "版权声明",
+		"privacy": "隐私条款",
+		"serviceterms": "服务条款",
+
+		"contact": "联系我们",
+		"email": "邮箱",
+		"phone": "电话",
+
+		"address": "地址",
+		"address_road": "中国 广东省 深圳市 宝安街道 华创达科技园 深圳思天极创教育科技有限公司",
+		"send_email": "发送邮件"
+
+	}
+	
+}

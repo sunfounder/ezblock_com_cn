@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/header&footer.css">
+    <script type="text/javascript" src="../js/tohttps.js"></script>
+    <script src="../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+   <section id="header" class="no-header"></section>
+    <!--/#header-->
+
+    <!-- 内容主体 start -->
+    <div class="wrap user-box message-content">
+        <div class="fll user-left">
+            <div class="user-title">
+                <div class="user-ava">
+                    <img src="./images/avatar.png" alt="" class="myavatar" style="border-radius: 50%">
+                </div>
+                <div class="user-info">
+                    <p></p>
+                    <p><span class="ico-address"></span><span class="address"></span></p>
+                </div>
+                <div class="user-btn" style="text-align: center">
+                    <a href="" type="button" class="btn btn-blue" set-lan="html:starEzblock"></a>
+                </div>
+            </div>
+            <div class="user-nav">
+                <ul>
+                    <li><a href="./myproject.html" set-lan="html:personal_nav_myProject"></a></li>
+                    <li><a href="./focus.html" set-lan="html:personal_nav_myFocus"></a></li>
+                    <li><a href="./collection.html" set-lan="html:personal_nav_myCollect"></a></li>
+                    <li><a class="cur" href="./message.html" set-lan="html:personal_nav_myMessage"></a></li>
+                    <li><a href="./index.html" set-lan="html:personal_nav_myData"></a></li>
+                    <li><a href="./setting.html" set-lan="html:personal_nav_mySetting"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="fr user-right minh">
+            <div class="user-tit focus-nav" style="margin-bottom: 20px; line-height: 55px;">
+                <ul>
+                    <li class="cur" onclick="Userinfo.renderTab('user-message',event)">
+                        <span set-lan="html:myMessage_inform"></span>
+                    </li>
+                    <li onclick="Userinfo.renderTab('user-comment',event)">
+                        <span set-lan="html:myMessage_comment"></span>
+                    </li>
+                    <li onclick="Userinfo.renderTab('user-letter',event)">
+                        <span set-lan="html:myMessage_letter"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="message-data" style="padding: 10px 30px">
+                <div class="user-message">
+                    <div class="message-list">
+                        <ul>
+                            <li>
+                                <div class="avatar-container">
+                                    <a class="author-avatar">
+                                        <img src="./images/avatar.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="message-content">
+                                    <p class="author-name">
+                                        <a class="message-sender disabled"><strong
+                                                set-lan="html:myMessage_notice"></strong></a>
+                                        <span class="message-time">时间</span>
+                                    </p>
+                                    <p class="message-content-show">
+                                        欢迎欢迎<br>
+                                        欢迎欢迎<br>
+                                        欢迎欢迎<br>
+                                        欢迎欢迎<br>
+
+                                        欢迎欢迎<br>
+                                        欢迎欢迎<br>
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="avatar-container">
+                                    <a class="author-avatar">
+                                        <img src="./images/avatar.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="message-content">
+                                    <p class="author-name">
+                                        <a class="message-sender disabled"><strong
+                                                set-lan="html:myMessage_notice"></strong></a>
+                                        <span class="message-time">时间</span>
+                                    </p>
+                                    <p class="message-content-show">
+                                        欢迎欢迎
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="user-comment" style="display: none">
+                    <div class="message-list">
+                        <ul>
+                            <li type="focus">
+                                <div class="avatar-container">
+                                    <a class="author-avatar">
+                                        <img src="./images/avatar.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="message-content">
+                                    <p class="author-name">
+                                        <a class="message-sender disabled"><strong>用户大傻</strong></a>
+                                        <span class="message-time">时间</span>
+                                    </p>
+                                    <p class="message-content-show" set-lan="html:myMessage_followedYou"></p>
+                                </div>
+                            </li>
+                            <li type="like">
+                                <div class="avatar-container">
+                                    <a class="author-avatar">
+                                        <img src="./images/avatar.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="message-content">
+                                    <p class="author-name">
+                                        <a class="message-sender disabled"><strong>用户大傻</strong></a>
+                                        <span class="message-time">时间</span>
+                                    </p>
+                                    <p class="message-content-show">
+                                        <em set-lan="html:myMessage_likeProject"></em>&nbsp;<strong>项目1111</strong>
+                                    </p>
+                                </div>
+                            </li>
+                            <li type="collect">
+                                <div class="avatar-container">
+                                    <a class="author-avatar">
+                                        <img src="./images/avatar.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="message-content">
+                                    <p class="author-name">
+                                        <a class="message-sender disabled"><strong>用户大傻</strong></a>
+                                        <span class="message-time">时间</span>
+                                    </p>
+                                    <p class="message-content-show">
+                                        <em set-lan="html:myMessage_collectProject"></em>&nbsp;<strong>项目1111</strong>
+                                    </p>
+                                </div>
+                            </li>
+                            <li type="comment">
+                                <div class="avatar-container">
+                                    <a class="author-avatar">
+                                        <img src="./images/avatar.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="message-content">
+                                    <p class="author-name">
+                                        <a class="message-sender disabled"><strong>用户大傻</strong></a>
+                                        <span class="message-time">时间</span>
+                                    </p>
+                                    <p class="message-content-show">
+                                        <strong>@用户大傻</strong>&nbsp;<em set-lan="html:myMessage_commentProject"></em>&nbsp;<strong>111</strong>:
+                                        <p>hsdkhfkasdjfkaljfsadkj</p>
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="javascript:;" class="btn btn-reply btn-pm">
+                                            <span class="icon-comment"></span>
+                                            <span class="btn-reply-txt" set-lan="html:btn_reply"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="user-letter" style="display: none">
+                    <div class="message-list">
+                        <ul>
+                            <li class="letter">
+                                <div class="avatar-container">
+                                    <a class="author-avatar">
+                                        <img src="./images/avatar.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="message-content">
+                                    <p class="author-name">
+                                        <a class="message-sender disabled"><strong>用户大傻</strong>&nbsp;&nbsp;<em set-lan="html:myMessage_letterYou"></em></a>
+                                        <span class="message-time">时间</span>
+                                    </p>
+                                    <p class="message-content-show">
+                                        私信私信私信私信
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="javascript:;" class="btn btn-reply btn-pm">
+                                            <span class="icon-comment"></span>
+                                            <span class="btn-reply-txt" set-lan="html:btn_reply"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="letter">
+                                <div class="avatar-container">
+                                    <a class="author-avatar">
+                                        <img src="./images/avatar.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="message-content">
+                                    <p class="author-name">
+                                        <a class="message-sender disabled"><strong>用户大傻</strong>&nbsp;&nbsp;给您的私信</a>
+                                        <span class="message-time">时间</span>
+                                    </p>
+                                    <p class="message-content-show">
+                                        私信私信私信私信
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="javascript:;" class="btn btn-reply btn-pm">
+                                            <span class="icon-comment"></span>
+                                            <span class="btn-reply-txt" set-lan="html:btn_reply"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!-- 内容主体 end -->
+        <div id="loading"></div>
+        <div id="masks"></div>
+        <div id="feedback"></div>
+        <footer id="footer"></footer>
+        <!--/#footer-->
+
+
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-i18next.min.js"></script>
+        <script type="text/javascript" src="../js/api.js"></script>
+        <script type="text/javascript" src="../js/ezblock.js"></script>
+        <script type="text/javascript" src="../js/personal.js"></script>
+        <script type="text/javascript" src="../js/sign.js"></script>
+        <script type="text/javascript" src="./js/userInfo.js"></script>
+
+        <script type="text/javascript" src="../msg/lan_cn.js"></script>
+        <script type="text/javascript" src="../msg/lan_en.js"></script>
+
+        <script>
+            window.onload = function () {
+                Sign.isLogin();
+            }
+        </script>
+</body>
+
+</html>

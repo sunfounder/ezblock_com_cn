@@ -1,0 +1,2897 @@
+<!DOCTYPE html>
+<html manifest="ezblock.manifest">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="apple-moblie-web-app-capable" content="yes" />
+	<meta name="google" value="notranslate">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>EzBlock</title>
+	<link rel="icon" href="./img/icon.png">
+	<script type="text/javascript" src="../js/tohttps.js"></script>
+</head>
+
+
+<style>
+	#loading_content {
+		position: relative;
+		height: 100%;
+	}
+
+	/* .loading_img_block{
+		height: 90%;
+	} */
+	.loading_img_block {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		margin: auto;
+		width: 60%;
+		height: 28%;
+	}
+
+	#progressbar {
+		width: 70%;
+		height: 10px;
+		background-color: #ffffff;
+		border: 1px solid #fbca4b;
+		text-align: center;
+		border-radius: 8px;
+		margin: 5% auto;
+	}
+
+	#progress-label {
+		display: block;
+		font-size: 12px;
+		background-color: #f6b91b;
+		text-align: center;
+		border-radius: 5px;
+		height: 100%;
+	}
+
+	@-webkit-keyframes progress {
+		100% {
+			width: 100%;
+		}
+	}
+
+	@keyframes progress {
+		100% {
+			width: 100%;
+		}
+	}
+
+	.progress-label-animation {
+		-webkit-animation: progress 0.5s linear forwards;
+		animation: progress 0.5s linear forwards;
+	}
+</style>
+
+<body oncontextmenu="return false;" onselectstart="return false;">
+	<div id="loading_content">
+		<div class="loading_img_block">
+			<img src="./img/ezblock-logo-color.svg" alt="">
+			<div id="progressbar">
+				<span id="progress-label" style="width: 25%"></span>
+			</div>
+		</div>
+	</div>
+	<div id="main-content" style="display: none;">
+		<div class="dragheader1 container-fluid clearfix">
+			<img src="./img/����2.png" alt="" class="headImg">
+			<div class="col-xs-6 col-md-6 parnet_brand">
+				<img class="logo" src="./img/logo_ezblock_title_wrap.png" alt="">
+			</div>
+			<div class="col-xs-6 col-md-6  parent_login">
+				<div class="menu-list">
+					<a class="login login1 fontColor" data-toggle="modal" data-target="#login">%{signIn}</a>
+					<span class="line line2">|</span>
+					<div class="share">
+						<div class="dropdown menu-box">
+							<button class="btn dropdown-toggle" data-toggle="dropdown" id="set" aria-haspopup="true"
+								aria-expanded="false">
+								<span class="fontColor">%{menu}</span>
+							</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="dragheader2 container-fluid">
+			<div class="col-xs-6 col-md-6 parent_brand ">
+				<img src="./img/logo_ezblock_title_inline.png" class="brand dis_none" alt="logo"
+					onclick="Coding.returnIndex();">
+				<!-- �ֲ�ͼ������ҳ���� -->
+				<div class="goBack dis_none" onclick="EzBlock.back()">
+					<img class="goBackImg" src="./img/goBack.png" alt="goBack">
+				</div>
+				<!-- Routing,Remote,IOT���ع��� -->
+				<button class="pageBack dis_none" onclick="EzBlock.back()">
+					<div class="remote_novice pageBack_novice">
+						<p style="margin-top: 35px;">Back</p>
+					</div>
+					<img src="./img/back.png">
+				</button>
+			</div>
+			<div class="col-xs-6 col-md-6 project_title_block dis_none">
+				<div class="coding_novice project_title_block_novice">
+					<p>Project Name</p>
+				</div>
+				<input type="text" class="project_title" value="project_name">
+			</div>
+			<!-- Sign in -->
+			<div class="col-xs-6 col-md-6  parent_login">
+				<div class="share dis_none">
+					<div class="coding_novice share_novice">
+						<p style="margin-top: 35px;">Menu</p>
+					</div>
+					<div class="dropdown menu" onclick="EzBlock.dragheaderBtn('menu')">
+						<button class="btn dropdown-toggle" data-toggle="dropdown" id="set" aria-haspopup="true"
+							aria-expanded="false">
+							<!-- <span class="glyphicon glyphicon-list shareIco"></span> -->
+							<img src="./img/header_nav_meau.png" alt="">
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right dropdown-language" id="ShareConf">
+						</ul>
+					</div>
+					<div class="product dis_none">
+						<button class="btn dropdown-toggle" data-toggle="dropdown" id="product" aria-haspopup="true"
+							aria-expanded="false">
+							<img class="productImg" src="./img/��Ʒ�б�.png" alt="product">
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right ">
+							<li>
+								<img src="./img/raspberrypi.png" onclick="EzBlock.changeProduct('raspberrypi')">
+								<h3 onclick="EzBlock.changeProduct('raspberrypi')">Raspad</h3>
+							</li>
+							<li>
+								<img src="./img/leaf.png" onclick="EzBlock.changeProduct('leaf')">
+								<h3 onclick="EzBlock.changeProduct('leaf')">Leaf</h3>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="login dis_none login_md" onclick="EzBlock.dragheaderBtn('login')">
+					<div class="coding_novice login_novice">
+						<p style="margin-top: 60px;margin-left: -25px;">Account</p>
+					</div>
+					<img src="./img/header_nav_login.png" />
+				</div>
+				<div class="connect_us dis_none contenct_us_md" onclick="EzBlock.dragheaderBtn('connect_us')">
+					<div class="coding_novice connect_us_novice">
+						<p style="margin-top:35px;">FAQ</p>
+					</div>
+					<div class="dropdown">
+						<button class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+							<img src="img/header_nav_help.png" alt="">
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right dropdown-language" id="ContactConf">
+						</ul>
+					</div>
+				</div>
+				<div class="bug_print dis_none" onclick="EzBlock.debugImg()">
+					<img src="./img/debug.png" />
+				</div>
+				<div class="kitRun dis_none">
+					<div class="remote_novice kitRun_novice">
+						<p style="margin-top:35px;">Run</p>
+					</div>
+					<img src="./img/stop.png" class="kitstop dis_none">
+					<img src="./img/play.png" class="kitplay dis_none">
+				</div>
+				<div class="kitRun_xs dis_none">
+					<img src="./img/stop_xs.png" class="kitstop dis_none">
+					<img src="./img/play_xs.png" class="kitplay dis_none">
+				</div>
+			</div>
+		</div>
+		<!-- �ײ������� -->
+		<div class="main_nav_bottom" style="display: none;">
+			<nav class="navbar navbar-default navbar-fixed-bottom">
+				<ul class="nav nav-tabs nav-tabs-justified flex-container">
+					<li class="myhome flex-item bottomNav-home"
+						ontouchstart="EzBlock.openBottomBar('home');EzBlock.renderPage('home')">
+						<img class="homeIcon" src="./img/bottomNav_home_orange.png" alt="">
+					</li>
+					<li class="course flex-item bottomNav-tutorialsProject"
+						ontouchstart="EzBlock.openBottomBar('tutorialsProject');EzBlock.renderPage('tutorialsProject');MyProject.toggleBar('tutorialsTitle');">
+						<img class="courseIcon" src="./img/bottomNav_tutorialsProject_gray.png" alt="">
+					</li>
+					<li class="new flex-item bottomNav-coding" ontouchstart="MyProject.openProjectName();">
+						<img class="newIcon" src="./img/bottomNav_coding_gray.png" alt="">
+					</li>
+					<li class="myItem flex-item bottomNav-myProject"
+						ontouchstart="EzBlock.openBottomBar('myProject');EzBlock.renderPage('myProject')">
+						<img class="myItemIcon" src="./img/bottomNav_myProject_gray.png" alt="">
+					</li>
+					<li class="myInfor flex-item bottomNav-pInformation" ontouchstart="Register.isLoginAtHome();">
+						<img class="myInforIcon" src="./img/bottomNav_pInformation_gray.png" alt=""
+							style="height:27px;">
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+
+		<!--��̬ѡ������-->
+		<div id="changeLangulage" class="modal ">
+			<div class="modal-dialog change-langulage-width">
+				<div class="modal-content">
+					<div class="modal-body modal-text">
+						<button class="close" data-dismiss="modal">
+							<span>X</span>
+						</button>
+						<span>%{language_language}</span>
+					</div>
+					<div class="modal-body lan_modal"></div>
+				</div>
+			</div>
+		</div>
+		<!-- ace findbox -->
+		<div id="ace-search-ipt" class="modal ">
+			<div class="modal-dialog ace-search-width">
+				<div class="modal-content">
+					<div class="modal-body modal-text">
+						<button class="close" data-dismiss="modal">
+							<span>X</span>
+						</button>
+						<div class="ace-btn-replace clearfix">
+							<button class="ace-regExp" onclick="Coding.platform.regExp()">.*</button>
+							<button class="ace-caseSensitive" onclick="Coding.platform.caseSensitive()">Aa</button>
+							<button class="ace-wholeWord" onclick="Coding.platform.wholeWord()">Ab</button>
+						</div>
+					</div>
+					<div class="modal-body ace_modal">
+						<div class="clearfix">
+							<input type="text" class="searchForIpt" placeholder="Search for" autofocus="autofocus">
+							<button onclick="Coding.platform.findNext()">%{aceNext}</button>
+							<button onclick="Coding.platform.findPrevious()">%{acePrev}</button>
+							<button onclick="Coding.platform.findAll()">All</button>
+						</div>
+						<div class="clearfix">
+							<input type="text" class="replaceWithIpt" placeholder="Replace with" autofocus="autofocus">
+							<button onclick="Coding.platform.replace()">Replace</button>
+							<button onclick="Coding.platform.replaceAll()">All</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ����GitHub������ -->
+		<div id="created-packages" class="modal fade">
+			<div class="modal-dialog created-packages-dialog">
+				<div class="modal-content">
+					<div class="modal-header created-packages-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+						<h4 class="model-title created-packages-title" id="addPackage-title">%{selectPageages}</h4>
+					</div>
+					<div class="modal-body created-packages-body">
+						<ul class="created-packages-name-list">
+
+						</ul>
+						<div class="created-packages-btn-block" style="overflow:hidden">
+							<button class="created-packages-btn" onclick="AddPackage.selectPackages()">%{ok}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- project���Ƶ��� -->
+		<div id="projectName" class="modal fade">
+			<div class="modal-dialog project-name-dialog">
+				<div class="modal-content">
+					<div class="modal-body modal-text">
+						<button class="close" data-dismiss="modal">
+							<span>X</span>
+						</button>
+						<span>%{new_project_new_project}</span>
+					</div>
+					<div class="modal-body projectName-body">
+						<input type="text" class="nameInput" placeholder="%{new_project_project_name}" autofocus="autofocus" />
+						<div class="ensure">
+							<button class="ensureBtn" onclick="MyProject.projectNameCheck();">%{new_project_next}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- update project���Ƶ��� -->
+		<div id="projectName_update" class="modal fade">
+			<div class="modal-dialog project-name-dialog">
+				<div class="modal-content">
+					<div class="modal-body modal-text">
+						<button class="close" data-dismiss="modal">
+							<span>X</span>
+						</button>
+						<span>%{new_project_update_project}</span>
+					</div>
+					<div class="modal-body projectName-body">
+						<input type="text" class="change_project_nameInput"
+							onkeyup="this.value=this.value.replace(/^\s+|/g,'')"
+							placeholder="%{new_project_project_name}" autofocus="autofocus">
+						<div class="ensure">
+							<button class="change_project_name_btn" onclick="MyProject.projectNameCheck()">%{new_project_next}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ������Ŀ���� -->
+		<div id="saveAsProjectName" class="modal fade">
+			<div class="modal-dialog save-project-dialog">
+				<div class="modal-content">
+					<div class="modal-header package-header projectName-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body projectName-body">
+						<input type="text" class="saveAsNameInput" placeholder="Project Name"autofocus="autofocus">
+						<div class="ensure">
+							<button class="saveAsBtn">%{save_as}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- timeout to remind -->
+		<div id="timeout" class="modal fade">
+			<div class="modal-dialog timeout-dialog">
+				<div class="modal-content">
+					<div class="modal-header timeout-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body timeout-body">
+						%{timeout}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- �½���Ŀ���� -->
+		<div id="newProjectWindow" class="modal fade">
+			<div class="modal-dialog new-project-dialog">
+				<div class="modal-content">
+					<div class="modal-header package-header projectName-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body projectName-body">
+						<p class="textRemind">%{isSaveProject}</p>
+						<button class="remindCancelBtn remindBtn" data-id="false">%{cancel}</button>
+						<button class="remindSaveBtn remindBtn" data-id="true">%{save}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ͨ�öԻ��� -->
+		<div id="dialogModel" class="modal fade">
+			<div class="modal-dialog new-project-dialog">
+				<div class="modal-content">
+					<div class="modal-header package-header projectName-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body projectName-body">
+						<p class="textRemind dialogModel_text"></p>
+						<button class="remindBtn dialogModel_cancel">%{cancel}</button>
+						<button class="remindBtn dialogModel_sure">%{ok}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- prompt -->
+		<div id="promptModal" class="modal fade">
+			<div class="modal-dialog prompt-modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header package-header projectName-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+						<h4 class="model-title" id="prompt-title"></h4>
+					</div>
+					<div class="modal-body projectName-body">
+						<input type="text" class="promptInput" placeholder="" autofocus="autofocus">
+						<div class="ensure">
+							<button class="promptBtn">%{ok}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ѡ��block����python -->
+		<div id="choose-mode" class="modal fade">
+			<div class="modal-dialog chose-mode-dialog">
+				<div class="modal-content choose-mode-content">
+					<div class="modal-header package-header projectName-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+						<h4 class="model-title choose-mode-title" id="addPackage-title">%{selectProgramEnv}</h4>
+					</div>
+					<div class="modal-body choose-mode-body">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ѡ�����ӵ�kitѡ�� -->
+		<div id="add-kit-mode" class="modal fade">
+			<div class="modal-dialog add-kit-dialog">
+				<div class="modal-content add-kit-mode-content">
+					<div class="modal-header kit-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+						<h4 class="model-title choose-mode-title" id="addKit-title">%{selectKit}</h4>
+					</div>
+					<div class="modal-body add-kit-mode-body">
+						<div class="choose-type">
+							<div class="choose-name">
+								<div class="choose-name-box choose-name-position">
+									<span class="choose-name-text">%{kit}:</span>
+
+									<input class="choose-name-input dropdown-toggle choose-name-btn add-kit-mode-ipt"
+										data-toggle="dropdown" type="button" style="width: 71%">
+									<span class="glyphicon glyphicon-play iotRotate"></span>
+									<ul class="dropdown-menu type-menu add-kit-ul" role="menu"></ul>
+								</div>
+							</div>
+							<div class="add-kit-image"></div>
+						</div>
+						<div class="isAddKit"></div>
+						<button class="add-kit-btn-ok" onclick="SelectBoard.addKitSuccess()">%{confirm}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ѡ�����ӵ�moduleѡ�� -->
+		<div id="add-module-mode" class="modal fade">
+			<div class="modal-dialog add-module-dialog" style="width: 800px;">
+				<div class="modal-content add-module-mode-content">
+					<div class="modal-header module-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+						<h4 class="model-title choose-mode-title" id="addModule-title">%{selectModule}</h4>
+					</div>
+					<div class="modal-body add-module-mode-body">
+						<div class="choose-type">
+							<div class="choose-name">
+								<div class="choose-name-box choose-name-position">
+									<span class="choose-name-text">%{module}: </span>
+									<input class="choose-name-input dropdown-toggle choose-name-btn add-module-mode-ipt"
+										data-toggle="dropdown" type="button" style="width: 71%">
+									<span class="glyphicon glyphicon-play iotRotate"></span>
+									<ul class="dropdown-menu type-menu add-module-ul" role="menu"></ul>
+								</div>
+							</div>
+							<div class="add-module-image">
+								<img src="" alt="">
+							</div>
+						</div>
+						<div class="isAddModule"></div>
+						<div class="add-module-btn-ok" onclick="SelectBoard.addModuleSuccess()">
+							<img src="./img/OK.png" alt="OK">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- �׼�����ģ�����ӳɹ������ʾ��-->
+		<div id="add-tip-mode" class="modal fade">
+			<div class="modal-dialog add-tip-mode-dialog">
+				<div class="modal-content add-tip-mode-content">
+					<div class="modal-header add-tip-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body add-tip-mode-body"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- share modal -->
+		<div id="share-modal" class="modal fade">
+			<div class="modal-dialog share-modal-dialog">
+				<div class="modal-content share-modal-content">
+					<div class="modal-header share-modal-header">
+						<span class="share-modal-heading">%{share}</span>
+						<button type="button" class="close share-modal-close" data-dismiss="modal"
+							aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body share-modal-body">
+						<div class="share-modal-title"><input type="text" placeholder="title" autofocus="autofocus"/></div>
+						<div class="share-modal-description"><input type="text"
+								placeholder="a copy of the description" autofocus="autofocus" /></div>
+						<div class="share-image-preview">
+							<ul class="share-image-preview-list">
+								<li class="share-image-previwe-item share-upload-image">
+									<input width="70px" height="70px" type="file" accept="image/*"
+										onchange="Community.previewFile(this)" autofocus="autofocus">
+								</li>
+							</ul>
+						</div>
+						<div class="share-modal-btn-block">
+							<button class="share-modal-btn-ok" onclick="Community.ShareProject()">%{ok}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- share success modal -->
+		<div id="share-success-modal" class="modal fade">
+			<div class="modal-dialog share-modal-dialog">
+				<div class="modal-content share-modal-content">
+					<div class="modal-header share-modal-header">
+						<span class="share-modal-heading">%{share_success}</span>
+						<button type="button" class="close share-modal-close" data-dismiss="modal"
+							aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body share-modal-body">
+						<div class="share-success-modal-link"><input type="text" placeholder="title" /><button
+								class="share-success-modal-copy">Copy</button></div>
+						<div class="share-success-to-inter">
+							<span>%{share_to}</span>
+							<img class="share_twitter" src="./img/twitter_share.png">
+							<img class="share_facebook" src="./img/facebook_share.png">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ע�ᵯ�� -->
+		<div id="register" class="modal fade">
+			<div class="modal-dialog register-width">
+				<div class="modal-content register-modal-content">
+					<div class="modal-body register-height register-body">
+						<h4 class="register-title">%{createAnAccount}</h4>
+						<div class="center">
+							<img class="imgSite" src="./img/login_userName_icon.png" alt="">
+							<input id="register_username" class="inputSize userName" type="text"
+								placeholder="%{signUpUsername}" autofocus="autofocus">
+						</div>
+						<div class="center">
+							<img class="imgSite" src="./img/login_password_icon.png" alt="����">
+							<input id="register_password" class="inputSize password" type="password"
+								placeholder="%{signUpPassword}" autofocus="autofocus" maxlength="22">
+							<a class="passwordeye" alt="" onclick="Register.showPwd(event)"></a>
+						</div>
+						<div class="center">
+							<img class="imgSite" src="./img/login_password_icon.png" alt="����">
+							<input id="register_repassword" class="inputSize rePassword" type="password"
+								placeholder="%{signUpPwdConfirm}" autofocus="autofocus" maxlength="22">
+								<a class="passwordeye" alt="" onclick="Register.showPwd(event)"></a>
+						</div>
+						<p class="register_errorMsg"></p>
+						<div class="center" style="margin-left: 0px;">
+							<button class="register-btn close-this" data-toggle="modal">%{signUp}</button>
+						</div>
+						<div class="have-account">%{haveAnAccount}
+							<!-- <a href="#" class="login-label" data-toggle="modal" data-target="#login">%{signIn}</a> -->
+							<a class="login-label" data-toggle="modal">%{signIn}</a>
+						</div>
+						<div class="other-register" style="display: none">
+							<div class="register-line"></div>
+							<span class="register-text">%{or}</span>
+							<div class="other-register-icon">
+								<img class="faceBook" src="./img/Facebook.png" alt="">
+								<img class="twitter" src="./img/Twitter.png" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ��½���� -->
+		<div id="login" class="modal fade">
+			<div class="modal-dialog login-width">
+				<div class="modal-content login-modal-content">
+					<div class="modal-body login-height login-body">
+						<h4 class="login-title">%{signIn}</h4>
+						<div class="center">
+							<img class="imgSite" src="./img/login_userName_icon.png" alt="">
+							<input class="inputSize userName" type="text" placeholder="%{userNameEmailAddress}" autofocus = 'autofocus'>
+						</div>
+						<div class="center">
+							<img class="imgSite" src="./img/login_password_icon.png" alt="">
+							<input class="inputSize password" id="login_password" type="password"
+								placeholder="%{enterPassWord}" autofocus = 'autofocus'  maxlength="22">
+							<a class="passwordeye" alt="" onclick="Register.showPwd(event)"></a>
+						</div>
+						<p class="login_errMsg"></p>
+						<div class="center sign-in" style="margin-left: 0px;">
+							<button class="login-in">%{signIn}</button>
+						</div>
+						<div class="login-in-account">%{notAccount}
+							<a class="register-label" data-toggle="modal">%{signUp}</a>
+							<div class="login-line"></div>
+							<span class="login-text">
+								%{forgotPwd}
+								<a class="findPwd-label" data-toggle="modal">%{findPwd}</a>
+							</span>
+						</div>
+						<div class="other-login" style="display: none">
+							<div class="other-login-icon">
+								<img class="faceBook" src="./img/Facebook.png" alt="">
+								<img class="twitter" src="./img/����.png" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- �һ����뵯�� -->
+		<div id="findPwd" class="modal fade">
+			<div class="modal-dialog findPwd-width">
+				<div class="modal-content findPwd-modal-content">
+					<div class="modal-body findPwd-height findPwd-body">
+						<h4 class="findPwd-title">%{findPwd}</h4>
+						<div class="center">
+							<img class="imgSite" src="./img/email_input_icon.png" alt="">
+							<input id="find_password" class="inputSize email" type="email"
+								placeholder="%{enterEmail}" autofocus="autofocus">
+							<!-- <button class="find_verCode" onclick="Register.getIdentiCode();">%{verification}</button> -->
+							<button class="find_verCode" onclick="Register.getEmailVerificationCode();">%{verification}</button>
+						</div>
+						<div class="center">
+							<input id="findPwdCode" class="inputSize emailInput" type="text"
+								placeholder="%{enterVerificationCode}" autofocus="autofocus">
+						</div>
+						<div class="center">
+							<img class="imgSite passwordImg" src="./img/login_password_icon.png" alt="����">
+							<input id="set_password" class="inputSize password" type="password"
+								placeholder="%{enterNewPwd}" autofocus="autofocus" maxlength="22">
+							<a class="passwordeye" alt="" onclick="Register.showPwd(event)"></a>
+						</div>
+						<div class="center">
+							<img class="imgSite repasswordImg" src="./img/login_password_icon.png" alt="����">
+							<input id="set_repassword" class="inputSize rePassword" type="password"
+								placeholder="%{enterNewPwdAgain}" autofocus="autofocus" maxlength="22">
+							<a class="passwordeye" alt="" onclick="Register.showPwd(event)"></a>
+						</div>
+						<p class="findPwd_errorMsg"></p>
+						<div class="center marTopTen">
+							<button class="findPwdBack" data-toggle="modal">%{back}</button>
+							<button class="findPwdConfirm" data-toggle="modal"
+								onclick="Register.findPwd();">%{confirm}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ��֤���䵯�� -->
+		<div id="email" class="modal fade">
+			<div class="modal-dialog email-width">
+				<div class="modal-content email-modal-content">
+					<div class="modal-body email-height email-body">
+						<h4 class="register-title">%{newUserRegistration}</h4>
+						<div class="center">
+							<img class="imgSite" src="./img/email_input_icon.png" alt="">
+							<input id="email_address" class="inputSize emailInput" type="text"
+								placeholder="%{addEmail}" autofocus="autofocus">
+						</div>
+						<p class="email_errorMsg"></p>
+						<div class="termAnony">
+							<div class="clearfix termAccept">
+								<input class="checkBox private" type="checkbox">
+								<div class="accept">%{accept}
+									<span data-toggle="modal" data-target="#privateTerms">%{termsConditions}</span>
+								</div>
+							</div>
+							<div style="text-align: left;" class="clearfix serviceAccept">
+								<input class="checkBox allowUpload" type="checkbox">
+								<div class="anonymousData">
+									%{anonymousData}
+								</div>
+							</div>
+						</div>
+						<div class="center marLeftZero">
+							<button class="register-btn close-abvoe email-v"
+								data-toggle="modal">%{sendVerification}</button>
+						</div>
+						<div id="emailShadow">
+							<div class="loading"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--��˽�����-->
+		<div id="privateTerms" class="modal fade">
+			<div class="modal-dialog private-width">
+				<div class="modal-content private-modal-content">
+					<div class="modal-body private-height private-body">
+						%{private}
+						<div class="clearfix privateCheckbox">
+							<input class="checkBox" type="checkbox">
+							<div>%{readAcceptPolicy}</div>
+						</div>
+						<p class="private_error"></p>
+						<div class="privateConfirm">
+							<button onclick="Register.privateConfirm();">%{confirm}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- �������ǵ���-->
+		<div id="about" class="modal fade">
+			<div class="modal-dialog about-width">
+				<div class="modal-content about-modal-content">
+					<div class="modal-body modal-text">
+						<button class="close" data-dismiss="modal">
+							<span>X</span>
+						</button>
+						<span>%{aboutHeader}</span>
+					</div>
+					<div class="modal-body about-height about-body">
+						<div class="about-main">
+							<div class="about-img">
+								<!-- <img src="./img/series_raspberrypi_medium.png" alt=""> -->
+							</div>
+							<div class="about-info">
+								<h1>Ezblock Studio</h1>
+								<p class="version_block"><span>version</span>&nbsp;&nbsp;&nbsp;<span
+										class="version">10.14.1</span></p>
+								<p id="updateing_resource">updating resource:</p>
+								<div id="application_progressbar">
+									<span id="application_progress_label" style="width: 25%"></span>
+								</div>
+								<p id="application_notice"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="aboutUs" class="modal fade">
+			<div class="modal-dialog about-us-width">
+				<div class="modal-content about-us-modal-content">
+					<div class="modal-body modal-text">
+						<button class="close" data-dismiss="modal">
+							<span>X</span>
+						</button>
+						<span>%{aboutUsHeader}</span>
+					</div>
+					<div class="modal-body about-us-height about-us-body">
+						<img src="./img/sunfounder-steam-education-large.png" alt="sunfounder"> %{aboutUs}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ������֤�����뵯�� -->
+		<div id="Verification" class="modal fade">
+			<div class="modal-dialog verification-width">
+				<div class="modal-content email-modal-content">
+					<div class="modal-body Verification-height email-body">
+						<h4 class="register-title">%{verificationEmail}</h4>
+						<div class="center marLeftZero">
+							<input id="verifyCode" class="inputSize emailInput" type="text"
+								placeholder="%{verificatioCode}" autofocus="autofocus">
+						</div>
+						<div class="Verification-center">
+							<span>%{canNotReceive}</span>%{checkTrashEmail}
+							<span class="send_again" onclick="Register.sendAgain(this)"
+								role="button">%{sendAgain}</span>
+						</div>
+						<p class="v_error"></p>
+						<div class="buttonBox">
+							<button class="Verification-back">%{back}</button>
+							<button id="ensure_register" class="register-btn">%{ok}</button>
+						</div>
+						<div id="verShadow">
+							<div class="loading"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- �༭ͷ�񵯴� start -->
+		<iframe id="frame_profile" name="frame_profile" style="display: none"></iframe>
+		<form id="avatarform" name="avatarform" method="post" enctype="multipart/form-data" autocomplete="off"
+			target="frame_profile">
+			<input type="hidden" value="0" name="x" id="x" />
+			<input type="hidden" value="0" name="y" id="y" />
+			<input type="hidden" value="0" name="w" id="w" />
+			<input type="hidden" value="0" name="h" id="h" />
+			<input type="hidden" name="_token" value="qMrcktPHGWldD76oNw6B0SI0EK27jZ65RtDf0EKe">
+
+			<div class="user-editbox">
+				<a href="javascript:;" class="user-ico user-editbox-close"><span class="icon-close"></span></a>
+				<div class="tit">%{editavatar}</div>
+				<div class="ct">
+					<div class="img"></div>
+					<div class="preview-box">
+						<div class="img-preview preview-lg"></div>
+						<p>85PX</p>
+						<div class="img-preview preview-md"></div>
+						<p>50PX</p>
+					</div>
+					<a href="javascript:;" class="btn-up">%{newedit}<input type="file" id="avatarInput"
+							name="myfile_head" accept="image/*" capture="camera" multiple /></a>
+					<button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true"
+						class="btn">%{atasave}</button>
+				</div>
+			</div>
+		</form>
+		<!-- �༭ͷ�񵯴� end -->
+
+
+
+		<!-- ����IOT���� -->
+		<div id="appendIot" class="modal fade">
+			<div class="modal-dialog appendIot-dialog">
+				<div class="modal-content appendIot-content">
+					<div class="modal-header appendIot-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body appendIot-body">
+						<div class="choose-type">
+							<div class="choose-name">
+								<div class="choose-name-box">
+									<span class="choose-name-text">%{iot_name}: </span>
+									<input class="choose-name-input iotName" type="text" autofocus="autofocus">
+								</div>
+
+								<div class="choose-name-box choose-name-position">
+									<span class="choose-name-text">%{iot_type}: </span>
+									<div class="choose-select">
+										<input class="choose-name-input dropdown-toggle choose-name-btn"
+											data-toggle="dropdown" type="button" value="" style="width: 71%">
+										<span class="glyphicon glyphicon-play iotRotate"></span>
+										<ul class="dropdown-menu type-menu" role="menu">
+											<li class="actuators">
+												<a>%{iot_type_actuators}</a>
+											</li>
+											<li class="sensors">
+												<a>%{iot_type_sensors}</a>
+											</li>
+										</ul>
+									</div>
+
+
+								</div>
+								<div class="choose-type-select">
+									<span class="choose-type-text"></span>
+									<input class="choose-name-input choose-type-select-input dropdown-toggle"
+										data-toggle="dropdown" type="button" placeholder="Name">
+									<span class="glyphicon glyphicon-play iotRotate"></span>
+									<ul class="dropdown-menu input-menu" role="menu">
+
+									</ul>
+								</div>
+
+							</div>
+							<div class="show-image">
+
+							</div>
+						</div>
+
+						<div class="sendBtn">
+							<button class="sendBtn_ok">%{ok}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ����ͼ���� -->
+		<div id="borken" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header borken-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body borken-body">
+						<div id="borkenMain"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--����������-->
+		<div id="progressModal" class="modal fade" data-backdrop="static">
+			<div class="modal-dialog progress-modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header package-header projectName-header">
+					</div>
+					<div class="modal-body progress_modal">
+						<h1></h1>
+						<div class="progress">
+							<div class="progress-bar" role="progressbar">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- �ƶ���coding�������ܵ��� -->
+		<div class="shadow dis_none">
+			<div id="detail-info-box">
+				<div class="detail-body">
+					<div class="board-message-xs">
+						<div class="productName">
+							<img class="icon">
+							<span class="name"></span>
+						</div>
+						<div class="selectImgBox">
+							<!-- <img class="selectImg front" /> -->
+							<div class="boardInformation">
+								<button class="getBoardInfo">getBoardInfoMation</button>
+								<div class="boardInformation_container">
+									<div class="boardName"><span></span>
+										<button id="getBoardInfo_btn">
+											<img class="update_all" style="display: none;"
+												src="./img/boardInformation_update_all.png" alt=""
+												onclick="Coding.downloadLibAll();">
+											<img class="getInfo_all" src="./img/boardInformation_refresh.png" alt=""
+												onclick="Coding.getBoardInfo(event)" style="width:20px">
+										</button>
+									</div>
+									<div class="boardInformation_modules_block">
+										<h4 class="boardInformation_modules_title boardInformation_ip">IP:</h4>
+										<h4 class="boardInformation_modules_title">Libs:</h4>
+										<ul class="boardInformation_modules_libs_list">
+											<!-- <li class="boardInformation_modules_libs_item"><span>modules ==>
+													0.02</span><img src="./img/boardInformation_refresh.png" onclick="Coding.downloadLibforOne(event)" alt="">
+											</li>
+											<li class="boardInformation_modules_libs_item"><span>modules ==>
+													0.02</span><img src="./img/boardInformation_refresh.png" alt="">
+											</li> -->
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="WebBLE_debugIpt">
+						<div class="clearfix topTitle" onclick="WebBLE.debugClear()">Clear</div>
+						<div class="getMessage_xs">
+						</div>
+					</div>
+					<div class="detail-btn">
+						<div class="detail-btn-row">
+							<div class="footer-reset">
+								<img src="./img/coding_zoom_reset_xs.png" alt="" onclick="BlockCode.zoomReset()">
+							</div>
+							<div class="footer-flash" onclick="Coding.download()">
+								<img src="./img/coding_download_xs.png" alt="">
+							</div>
+							<div class="footer-remotebtn" onclick="EzBlock.renderPage('remote')">
+								<img src="./img/coding_remote_xs.png" alt="">
+							</div>
+							<div class="footer-bluetoothbtn footer-applyButton" onclick="Coding.connect()">
+								<img class="disconnected" src="./img/coding_bluetooth_disconnected_xs.png">
+								<img class="connected dis_none" src="./img/coding_bluetooth_connected_xs.png">
+							</div>
+						</div>
+						<div class="detail-btn-row detail-btn-rowB">
+							<div class="footer-playbtn footer-applyButton" onclick="Simulator.runEvent()" type="button">
+								<img src="./img/coding_simulator_run_xs.png" alt="">
+							</div>
+							<div class="footer-routingbtn" onclick="EzBlock.renderPage('routing')">
+								<img src="./img/coding_routing_xs.png" alt="">
+							</div>
+							<div class="footer-iotbtn footer-applyButton"
+								onclick="EzBlock.renderPage('internetOfThings')" type="button">
+								<img src="./img/coding_iot_xs.png" alt="">
+							</div>
+							<div class="img-last"></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer detail-footer close-detail">
+					<img src="./img/coding-zoom-close.png" alt="">
+				</div>
+			</div>
+		</div>
+
+		<!-- messsage -->
+		<div id="message" class="modal" data-backdrop="static">
+			<div class="modal-dialog message-dialog">
+				<div class="modal-content">
+					<div class="modal-header package-header projectName-header">
+						<span class="message-dialog-title"></span>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body">
+						<div class="msg_modal">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="warning" class="modal" data-backdrop="static">
+			<div class="modal-dialog warning-dialog message-dialog">
+				<div class="modal-content">
+					<div class="modal-header package-header projectName-header">
+						<span class="warning-dialog-title"></span>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body" style="text-align:center;">
+						<div class="warning_modal msg_modal">
+						</div>
+						<button class="warning_btn"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- IOT flash modal -->
+		<div id="iotFlash" class="modal">
+			<div class="modal-dialog iot-flash-width">
+				<div class="modal-content">
+					<div class="modal-header IotFlash_header package-header projectName-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body">
+						<div class="text_msg"></div>
+						<div class="flash_btn_block">
+							<button class="iot_flash_btn">IOT flash</button>
+							<button class="connect_device_btn" onclick="Coding.connectDevice()">connect device</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ��Ƶ���� -->
+		<div class="video-block dis_none">
+			<img class="arrow" src="" alt="">
+			<div class="video-menu">
+				<ul class="video-list">
+
+				</ul>
+			</div>
+			<button class="ytp">
+			</button>
+			<div id="miniVideo" class="mini-video">
+				<div id="player"></div>
+			</div>
+		</div>
+
+		<div class="reference-block dis_none">
+			<img class="arrow" src="./img/reference_arrow_income.png" alt="">
+			<div class="reference-header">
+				<img class="reference_back" src="./img/personMobile_arrow.png" alt="">
+				<img class="reference_close" src="./img/coding-zoom-close.png" alt="">
+			</div>
+			<div class="reference-content" id="referenceContent">
+
+			</div>
+		</div>
+
+		<div class="ezblockContent">
+			<!--Choice-->
+			<div class="home homeContent dis_none">
+				<div id="home_mask" class="mask" style="display: none;">
+
+				</div>
+				<div class="homeContent_sliderMenu">
+					<div class="home_novice homeContent_sliderMenu_novice">
+						<p>Navigation Bar</p>
+					</div>
+					<ul class="homeContent_sliderMenu_list">
+						<!-- ezblock -->
+						<li class="homeContent_sliderMenu_item_first background_logo">
+							<div class="homeContent_sliderMenu_item_icon">
+								<img src="./img/EzBlocklogo.png" alt="">
+								<img src="./img/Ezblocklogo_text.png" />
+							</div>
+						</li>
+						<!-- �˵� -->
+						<li class="homeContent_sliderMenu_item">
+							<div class="homeContent_sliderMenu_item_icon dropdown-toggle" data-toggle="dropdown"
+								id="set" aria-haspopup="true" aria-expanded="false">
+								<img src="./img/home_menu_white.png" alt="">
+								<p class="homeContent_sliderMenu_item_text">%{home_menu}</p>
+							</div>
+							<ul class="dropdown-menu dropdown-menu-right dropdown-language" id="ListConf">
+
+							</ul>
+						</li>
+						<!-- ��¼ -->
+						<li class="homeContent_sliderMenu_item homeContent_sliderMenu_login" data-toggle="modal">
+							<div class="homeContent_sliderMenu_item_icon">
+								<img src="./img/home_login_white.png" alt="">
+								<p class="homeContent_sliderMenu_item_text">%{home_login}</p>
+							</div>
+						</li>
+						<!-- myproject -->
+						<li class="homeContent_sliderMenu_item homeContent_sliderMenu_myproject" onclick="EzBlock.renderPage('myProject')">
+							<div class="homeContent_sliderMenu_item_icon" >
+								<img src="./img/home_myproject_white.png" alt="">
+								<p class="homeContent_sliderMenu_item_text">%{home_my_project}</p>
+							</div>
+						</li>
+						<!-- �½���Ŀ -->
+						<li class="homeContent_sliderMenu_item homeContent_sliderMenu_newproject" onclick="MyProject.openProjectName()">
+							<div class="homeContent_sliderMenu_item_icon" >
+								<img src="./img/home_newproject_white.png" alt="">
+								<p class="homeContent_sliderMenu_item_text">%{home_new_project}</p>
+							</div>
+						</li>
+						<!-- �̳� -->
+						<li class="homeContent_sliderMenu_item homeContent_sliderMenu_tutorial" onclick="Tutorials.openProject()">
+							<div class="homeContent_sliderMenu_item_icon" >
+								<img src="./img/home_tutorials_white.png" alt="">
+								<p class="homeContent_sliderMenu_item_text">%{home_tutorial}</p>
+							</div>
+						</li>
+						<!-- ���� -->
+						<li class="homeContent_sliderMenu_item homeContent_sliderMenu_example" onclick="ExamplesProject.openProject();">
+							<div class="homeContent_sliderMenu_item_icon">
+								<img src="./img/home_example_white.png" alt="">
+								<p class="homeContent_sliderMenu_item_text">%{home_example}</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="homeContent_device">
+					<div class="homeContent_device_header">
+						<h1 class="homeContent_device_header_title">%{products_recent}</h1>
+						<div class="homeContent_device_header_btn_block">
+							<div class="home_novice homeContent_device_header_btn_block_novice">
+								<p style="margin-left:35px;">products</p>
+							</div>
+							<button class="homeContent_device_header_btn"
+								onclick="EzBlock.renderPage('selectBoard')">%{home_products}
+								<img src="./img/home_switch_arrow.png" alt="">
+							</button>
+						</div>
+					</div>
+					<div class="homeContent_device_choice clearfix">
+						<div class="homeContent_device_choice_device">
+
+						</div>
+						<div class="homeContent_device_choice_float clearfix">
+							<div class="home_novice homeContent_device_choice_float_novice">
+								<p style="margin:10px">Currently Selected</p>
+							</div>
+							<div class="homeContent_device_choice_series">
+
+								<h3 class="homeContent_device_choice_series_name">
+									<!-- RaspberryPi -->
+								</h3>
+								<div class="homeContent_device_choice_series_img">
+									<img src="" alt="">
+								</div>
+							</div>
+							<div class="homeContent_device_choice_plaform">
+								<h3 class="homeContent_device_choice_plaform_name">
+									<!-- Python -->
+								</h3>
+								<div class="homeContent_device_choice_plaform_img">
+									<img src="" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="homeContent_device_choice_block dis_none">
+							<button class="homeContent_device_header_btn"
+								onclick="EzBlock.renderPage('selectBoard')">%{home_products}
+								<img src="./img/�л���ͷ.png" alt="">
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="selectBoardContent dis_none">
+				<div class="selectBoard clearfix">
+					<div style="text-align: center" class="clearfix selectBoardTitle">
+						<p style="width: 50%;float: left;color:rgb(255,202,75);margin-top: 10px;font-size: 18px;"
+							onclick="$('.selectBoardLeft').show();$('.selectBoardRight').hide();$(this).css('color','rgb(255,202,75)');$(this).siblings('p').css('color','#727272');">
+							%{products}</p>
+						<p style="width: 50%;float: left;margin-top: 10px;font-size: 18px;"
+							class="selectBoardRightTitle" onclick="SelectBoard.toggleRight()">%{recentlyUsed}</p>
+					</div>
+					<div class="selectBoardLeft  clearfix">
+						<div>
+							<button class="select_return" onclick="SelectBoard.return();">%{returnHome}</button>
+						</div>
+					</div>
+					<!-- <div class="selectLine"></div> -->
+					<!-- <div class="selectBoardRight">
+						<p class="recentUsed">%{recentlyUsed}</p>
+						<ul class="recentUsedUl clearfix">
+						</ul>
+						<div class="visible-xs">
+							<button onclick="SelectBoard.return();" class="select_right_return">%{returnHome}</button>
+						</div>
+					</div> -->
+				</div>
+			</div>
+
+
+			<!--������Ϣҳ��  -->
+			<div class="personContent clearfix dis_none scroll">
+				<!-- ����ͼ -->
+				<div class="personContentTop">
+					<div class="headermaster uploadPhoto">
+						<div class="btn fileinput-button">
+							<img src="img/default-headshot.png" alt="" class="photoUpload avatarImg">
+							<!-- �ϴ�ͷ�� -->
+							<!-- <span>%{uploadPhoto}</span>
+							<input type="file" accept="image/*" onchange="PInformation.previewFile(this)"> -->
+						</div>
+
+						<div class="p_introduce">
+							<p class="p_introduce_name"></p>
+							<p class="p_introduce_else"></p>
+						</div>
+					</div>
+				</div>
+				<!-- ���岿�� -->
+				<div class="personContentMain clearfix">
+					<!-- ���ѡ���� -->
+					<div class="personContentLeft">
+						<ul class="personContentUl">
+							<li onclick="PInformation.renderPage('p_message',event)" class="per_mgs_li">
+								<!-- ������Ϣ -->
+								%{personalInformation}
+							</li>
+							<li class="clearfix acc_safe" onclick="PInformation.renderPage('',event)">
+								<!-- �˻���ȫ  -->
+								%{accountSecurity}
+								<img src="./img/triangle-down.png" alt="" class="p_expand">
+								<img src="./img/triangle-up.png" alt="" class="p_shrink dis_none">
+							</li>
+							<ul class="personContentUl_ul dis_none">
+								<li class="e_authentication_li"
+									onclick="PInformation.renderPage('e_authentication',event)">
+									<!-- �޸������-->
+									%{changeEmailAddress}
+								</li>
+								<li class="changePwd_li" onclick="PInformation.renderPage('changePwd',event)">
+									<!-- �޸����� -->
+									%{changePwd}
+								</li>
+								<li class="deleteUser_li" onclick="PInformation.renderPage('deleteUser',event);"
+									class="cancelUser dis_none">
+									%{cancelUser}
+								</li>
+							</ul>
+							<li onclick="PInformation.renderPage('system_msg',event);" class="dis_none">
+								<!-- ϵͳ��Ϣ -->
+								%{systemMessages}
+								<span class="p_msg_num"></span>
+							</li>
+						</ul>
+						<!-- �˳���¼ -->
+						<button class="leave_out dis_none" onclick="PInformation.deleteUsertoken()">%{exit}</button>
+					</div>
+
+					<!-- �Ҳ����岿�� -->
+					<div class="personContentRight">
+						<!-- ������Ϣ -->
+						<div class="p_message clearfix">
+							<div class="p_message_content clearfix">
+								<ul class="essentialInformationSpan">
+									<li class="p_username dis_none">
+										<span>%{username}:</span>
+									</li>
+									<li class="p_sex clearfix dis_none">
+										<span>%{sex}:</span>
+									</li>
+									<li class="p_age dis_none">
+										<span>%{age}:</span>
+									</li>
+									<li class="p_country dis_none">
+										<span>%{country}:</span>
+									</li>
+									<li class="p_work dis_none">
+										<span>%{work}:</span>
+									</li>
+									<li class="p_email dis_none">
+										<span>%{email}:</span>
+									</li>
+									<li class="p_password dis_none">
+										<span>%{password}:</span>
+									</li>
+								</ul>
+								<ul class="essentialInformationIpt">
+									<li class="p_username dis_none">
+										<!-- �û��� -->
+										<input type="text" placeholder="%{enterUsername}" maxlength="12" autofocus="autofocus">
+									</li>
+									<li class="p_sex clearfix dis_none">
+										<!-- �Ա� -->
+										<input type="radio" value="male" name="sex" sexvalue="male" class="manIpt">
+										<span class="manSpan">%{male}</span>
+										<input type="radio" value="female" name="sex" sexvalue="female"
+											class="femanIpt">
+										<span class="femanSpan">%{female}</span>
+										<span class="selectSex"></span>
+									</li>
+									<li class="p_age dis_none">
+										<!-- ���� -->
+										<input type="text" placeholder="%{enterAge}"  onkeyup="value=value.replace(/[^\d]/g, '')" autofocus="autofocus"/>
+									</li>
+									<li class="p_country dis_none">
+										<!-- ���� -->
+										<!-- <input type="text" placeholder="%{enterCountry}"> -->
+										<select name="country" class="fastbannerform__country select_country">
+											<option value="ASA" title="AA">America</option>
+											<option value="AND" title="AD">Andorra</option>
+											<option value="ARE" title="AE">United Arab Emirates</option>
+											<option value="AFG" title="AF">Afghanistan</option>
+											<option value="ATG" title="AG">Antigua and Barbuda</option>
+											<option value="ALB" title="AL">Albania</option>
+											<option value="ARM" title="AM">Armenia</option>
+											<option value="AGO" title="AO">Angola</option>
+											<option value="ARG" title="AR">Argentina</option>
+											<option value="AUT" title="AT">Austria</option>
+											<option value="AUS" title="AU">Australia</option>
+											<option value="ABW" title="AW">Aruba</option>
+											<option value="AZE" title="AZ">Azerbaijan</option>
+											<option value="BIH" title="BA">Bosnia and Herzegovina</option>
+											<option value="BRB" title="BB">Barbados</option>
+											<option value="BGD" title="BD">Bangladesh</option>
+											<option value="BEL" title="BE">Belgium</option>
+											<option value="BFA" title="BF">Burkina Faso</option>
+											<option value="BGR" title="BG">Bulgaria</option>
+											<option value="BHR" title="BH">Bahrain</option>
+											<option value="BDI" title="BI">Burundi</option>
+											<option value="BEN" title="BJ">Benin</option>
+											<option value="BMU" title="BM">Bermuda</option>
+											<option value="BRN" title="BN">Brunei</option>
+											<option value="BOL" title="BO">Bolivia</option>
+											<option value="BRA" title="BR">Brazil</option>
+											<option value="BHS" title="BS">Bahamas</option>
+											<option value="BTN" title="BT">Bhutan</option>
+											<option value="BWA" title="BW">Botswana</option>
+											<option value="BLR" title="BY">Belarus</option>
+											<option value="BLZ" title="BZ">Belize</option>
+											<option value="CAN" title="CA">Canada</option>
+											<option value="COD" title="CD">Democratic Republic of the Congo</option>
+											<option value="CAF" title="CF">Central African Republic</option>
+											<option value="COG" title="CG">Democratic Republic of the Congo</option>
+											<option value="CHE" title="CH">Switzerland</option>
+											<option value="CHL" title="CL">Chile</option>
+											<option value="CMR" title="CM">Cameroon</option>
+											<option value="CHN" title="CN">China</option>
+											<option value="COL" title="CO">Colombia</option>
+											<option value="CRI" title="CR">Costa Rica</option>
+											<option value="CUB" title="CU">Cuba</option>
+											<option value="CPV" title="CV">Cape Verde</option>
+											<option value="CYP" title="CY">Cyprus</option>
+											<option value="CZE" title="CZ">Czech Republic</option>
+											<option value="DEU" title="DE">Germany</option>
+											<option value="DJI" title="DJ">Djibouti</option>
+											<option value="DNK" title="DK">Denmark</option>
+											<option value="DMA" title="DM">Dominica</option>
+											<option value="DOM" title="DO">Dominican Republic</option>
+											<option value="DZA" title="DZ">Algeria</option>
+											<option value="ECU" title="EC">Ecuador</option>
+											<option value="EST" title="EE">Estonia</option>
+											<option value="EGY" title="EG">Egypt</option>
+											<option value="ERI" title="ER">Eritrea</option>
+											<option value="ESP" title="ES">Spain</option>
+											<option value="ETH" title="ET">Ethiopia</option>
+											<option value="FIN" title="FI">Finland</option>
+											<option value="FJI" title="FJ">Fiji</option>
+											<option value="FLK" title="FK">Falkland Islands</option>
+											<option value="FSM" title="FM">Micronesia</option>
+											<option value="FRO" title="FO">Faroe Islands</option>
+											<option value="FRA" title="FR">France</option>
+											<option value="GAB" title="GA">Gabon</option>
+											<option value="GBR" title="GB">United Kingdom</option>
+											<option value="GRD" title="GD">Grenada</option>
+											<option value="GEO" title="GE">Georgia</option>
+											<option value="GHA" title="GH">Ghana</option>
+											<option value="GIB" title="GI">Gibraltar</option>
+											<option value="GMB" title="GM">Gambia</option>
+											<option value="GIN" title="GN">Guinea</option>
+											<option value="GNQ" title="GQ">Equatorial Guinea</option>
+											<option value="GRC" title="GR">Greece</option>
+											<option value="GTM" title="GT">Guatemala</option>
+											<option value="GNB" title="GW">Guinea-Bissau</option>
+											<option value="GUY" title="GY">Guyana</option>
+											<option value="HKG" title="HK">Hong Kong,China</option>
+											<option value="HND" title="HN">Honduras</option>
+											<option value="HRV" title="HR">Croatia</option>
+											<option value="HTI" title="HT">Haiti</option>
+											<option value="HUN" title="HU">Hungary</option>
+											<option value="IDN" title="ID">Indonesia</option>
+											<option value="IRL" title="IE">Ireland</option>
+											<option value="ISR" title="IL">Israel</option>
+											<option value="IND" title="IN">India</option>
+											<option value="IRQ" title="IQ">Iraq</option>
+											<option value="IRN" title="IR">Iran</option>
+											<option value="ISL" title="IS">Iceland</option>
+											<option value="ITA" title="IT">Italy</option>
+											<option value="JAM" title="JM">Jamaica</option>
+											<option value="JOR" title="JO">Jordan</option>
+											<option value="JPN" title="JP">Japan</option>
+											<option value="KEN" title="KE">Kenya</option>
+											<option value="KGZ" title="KG">Kyrgyzstan</option>
+											<option value="KHM" title="KH">Cambodia</option>
+											<option value="KIR" title="KI">Kiribati</option>
+											<option value="COM" title="KM">Comoros</option>
+											<option value="KNA" title="KN">Saint Kitts and Nevis</option>
+											<option value="PRK" title="KP">North Korea</option>
+											<option value="KOR" title="KR">South Korea</option>
+											<option value="KWT" title="KW">Kuwait</option>
+											<option value="CYM" title="KY">Cayman Islands</option>
+											<option value="KAZ" title="KZ">Kazakhstan</option>
+											<option value="LAO" title="LA">Laos</option>
+											<option value="LBN" title="LB">Lebanon</option>
+											<option value="LCA" title="LC">Saint Lucia</option>
+											<option value="LIE" title="LI">Liechtenstein</option>
+											<option value="LKA" title="LK">Sri Lanka</option>
+											<option value="LBR" title="LR">Liberia</option>
+											<option value="LSO" title="LS">Lesotho</option>
+											<option value="LTU" title="LT">Lithuania</option>
+											<option value="LUX" title="LU">Luxembourg</option>
+											<option value="LVA" title="LV">Latvia</option>
+											<option value="LBY" title="LY">Libya</option>
+											<option value="MAR" title="MA">Morocco</option>
+											<option value="MCO" title="MC">Monaco</option>
+											<option value="MDA" title="MD">Moldova</option>
+											<option value="MNE" title="ME">Montenegro</option>
+											<option value="MDG" title="MG">Madagascar</option>
+											<option value="MKD" title="MK">Macedonia</option>
+											<option value="MLI" title="ML">Mali</option>
+											<option value="MMR" title="MM">Myanmar</option>
+											<option value="MNG" title="MN">Mongolia</option>
+											<option value="MAC" title="MO">Macao,China</option>
+											<option value="MRT" title="MR">Mauritania</option>
+											<option value="MLT" title="MT">Malta</option>
+											<option value="MUS" title="MU">Mauritius</option>
+											<option value="MDV" title="MV">Maldives</option>
+											<option value="MWI" title="MW">Malawi</option>
+											<option value="MEX" title="MX">Mexico</option>
+											<option value="MYS" title="MY">Malaysia</option>
+											<option value="MOZ" title="MZ">Mozambique</option>
+											<option value="NAM" title="NA">Namibia</option>
+											<option value="NER" title="NE">Niger</option>
+											<option value="NGA" title="NG">Nigeria</option>
+											<option value="NIC" title="NI">Nicaragua</option>
+											<option value="NLD" title="NL">Netherlands</option>
+											<option value="NOR" title="NO">Norway</option>
+											<option value="NPL" title="NP">Nepal</option>
+											<option value="NRU" title="NR">Nauru</option>
+											<option value="NZL" title="NZ">New Zealand</option>
+											<option value="OMN" title="OM">Oman</option>
+											<option value="PAN" title="PA">Panama</option>
+											<option value="PER" title="PE">Peru</option>
+											<option value="PNG" title="PG">Papua New Guinea</option>
+											<option value="PHL" title="PH">Philippines</option>
+											<option value="PAK" title="PK">Pakistan</option>
+											<option value="POL" title="PL">Poland</option>
+											<option value="PRI" title="PR">Puerto Rico</option>
+											<option value="PSE" title="PS">Palestine</option>
+											<option value="PRT" title="PT">Portugal</option>
+											<option value="PLW" title="PW">Palau</option>
+											<option value="PRY" title="PY">Paraguay</option>
+											<option value="QAT" title="QA">Qatar</option>
+											<option value="ROU" title="RO">Romania</option>
+											<option value="SRB" title="RS">Serbia</option>
+											<option value="RUS" title="RU">Russia</option>
+											<option value="RWA" title="RW">Rwanda</option>
+											<option value="SAU" title="SA">Saudi Arabia</option>
+											<option value="SLB" title="SB">Solomon Islands</option>
+											<option value="SYC" title="SC">Seychelles</option>
+											<option value="SDN" title="SD">Sudan</option>
+											<option value="SWE" title="SE">Sweden</option>
+											<option value="SGP" title="SG">Singapore</option>
+											<option value="SVN" title="SI">Slovenia</option>
+											<option value="SVK" title="SK">Slovak Republic</option>
+											<option value="SLE" title="SL">Sierra Leone</option>
+											<option value="SMR" title="SM">San Marino</option>
+											<option value="SEN" title="SN">Senegal</option>
+											<option value="SOM" title="SO">Somalia</option>
+											<option value="SUR" title="SR">Suriname</option>
+											<option value="STP" title="ST">Sao Tome and Principe</option>
+											<option value="SLV" title="SV">El Salvador</option>
+											<option value="SYR" title="SY">Syria</option>
+											<option value="SWZ" title="SZ">Swaziland</option>
+											<option value="TCD" title="TD">Chad</option>
+											<option value="TGO" title="TG">Togo</option>
+											<option value="THA" title="TH">Thailand</option>
+											<option value="TJK" title="TJ">Tajikistan</option>
+											<option value="TKM" title="TM">Turkmenistan</option>
+											<option value="TUN" title="TN">Tunisia</option>
+											<option value="TON" title="TO">Tonga</option>
+											<option value="TUR" title="TR">Turkey</option>
+											<option value="TTO" title="TT">Trinidad and Tobago</option>
+											<option value="TUV" title="TV">Tuvalu</option>
+											<option value="TWN" title="TW">Taiwan,China</option>
+											<option value="TZA" title="TZ">Tanzania</option>
+											<option value="UKR" title="UA">Ukraine</option>
+											<option value="UGA" title="UG">Uganda</option>
+											<option value="URY" title="UY">Uruguay</option>
+											<option value="UZB" title="UZ">Uzbekistan</option>
+											<option value="VCT" title="VC">Saint Vincent And The Grenadine</option>
+											<option value="VEN" title="VE">Venezuela</option>
+											<option value="VGB" title="VG">British Virgin Islands</option>
+											<option value="VNM" title="VN">Vietnam</option>
+											<option value="VUT" title="VU">Vanuatu</option>
+											<option value="WLF" title="WF">Wallis and Futuna</option>
+											<option value="WSM" title="WS">Western Samoa</option>
+											<option value="YEM" title="YE">Yemen</option>
+											<option value="ZAF" title="ZA">South Africa</option>
+											<option value="ZMB" title="ZM">Zambia</option>
+											<option value="ZWE" title="ZW">Zimbabwe</option>
+										</select>
+									</li>
+									<li class="p_work dis_none">
+										<!-- ���� -->
+										<input type="text" placeholder="%{enterWork}" maxlength="20" autofocus="autofocus">
+									</li>
+									<li class="p_email dis_none">
+										<input type="text" placeholder='' style="border: none;" autofocus="autofocus">
+										<!-- <button class="identiBtn"
+											onclick="PInformation.enterEmailAuthentPage();">%{changeEmail}</button> -->
+									</li>
+									<li class="p_password dis_none">
+										<input type="password" placeholder="%{enterPassword}" autofocus="autofocus">
+									</li>
+								</ul>
+							</div>
+							<p class="p_errorMsg"></p>
+							<p class="p_saveMsg"></p>
+							<div class="save_msg">
+								<!-- ������Ϣ -->
+								<button onclick="PInformation.setUserInfo()"
+									class="_save dis_none">%{saveInformation}</button>
+								<!-- �༭��Ϣ -->
+								<button onclick="PInformation.edit()" class="edit">%{editInformation}</button>
+							</div>
+						</div>
+
+						<!-- �޸����� -->
+						<div class="e_authentication %{width} dis_none">
+							<!-- �����  -->
+							<div class="clearfix row emailMessage">
+								<div class="col-md-4 col-sm-3 col-xs-3  e_authentication_span">
+									<span>%{email}:</span>
+								</div>
+								<div class="col-md-5 col-sm-6 col-xs-6 e_authentication_ipt">
+									<input type="text" placeholder="%{enterEmail}" autofocus="autofocus">
+								</div>
+								<div class="col-md-3 col-sm-3 col-xs-3 e_authentication_btn">
+									<!-- ������֤�� -->
+									<button onclick="PInformation.getIdentiCode('changeEmail')">%{send}</button>
+								</div>
+							</div>
+							<!-- ��֤�� -->
+							<div class="clearfix row verificationCode">
+								<div class="col-md-4 col-sm-3 col-xs-3 e_authentication_span">
+									<span>%{verificationCode}:</span>
+								</div>
+								<div class="col-md-5 col-sm-6 col-xs-6 e_authentication_ipt">
+									<input type="text" placeholder="%{enterVerificationCode}" autofocus="autofocus">
+								</div>
+								<div class="col-md-3 col-sm-3 col-xs-3 hidden-xs"></div>
+							</div>
+							<p class="e_errorMsg errorMsg"></p>
+							<div class="row v_btn">
+								<button class="e_back" onclick="PInformation.verificationCodeBack();">%{back}</button>
+								<button class="e_confirm"
+									onclick="PInformation.changeEmailAddress();">%{confirm}</button>
+							</div>
+						</div>
+						<!-- �޸����� -->
+						<div class="changePwd %{width} dis_none">
+							<div class="clearfix row e_test">
+								<!-- ������֤ -->
+								<div class="col-md-4 col-sm-3 col-xs-3 changePwdSpan">
+									<span>%{email}:</span>
+								</div>
+								<div class="col-md-5 col-sm-6 col-xs-6 changePwdIpt">
+									<input type="text" readonly style="border: none">
+								</div>
+								<div class="col-md-3 col-sm-3 co..l-xs-3 e_authentication_btn">
+									<!-- ������֤�� -->
+									<button onclick="PInformation.getIdentiCode('changePwd')">%{send}</button>
+								</div>
+							</div>
+							<div class="clearfix row e_verifyCode">
+								<!-- ��֤�� -->
+								<div class="col-md-4 col-sm-3 col-xs-3 changePwdSpan">
+									<span>%{verificationCode}:</span>
+								</div>
+								<div class="col-md-5 col-sm-6 col-xs-6 changePwdIpt changePwd_code">
+									<input type="text" placeholder="%{enterVerificationCode}" autofocus="autofocus">
+								</div>
+								<div class="col-md-3 col-sm-3 col-xs-3 hidden-xs"></div>
+							</div>
+							<div class="clearfix row e_newpwd">
+								<!-- ������ -->
+								<div class="col-md-4 col-sm-3 col-xs-3 changePwdSpan">
+									<span>%{newPwd}:</span>
+								</div>
+								<div class="col-md-5 col-sm-6 col-xs-6 changePwdIpt">
+									<input type="password" placeholder="%{enterNewPwd}" autofocus="autofocus" maxlength="22">
+								</div>
+								<div class="col-md-3 col-sm-3 col-xs-3 hidden-xs"></div>
+							</div>
+							<p class="pwd_error errorMsg"></p>
+							<!-- ȷ�� -->
+							<div class="row v_btn">
+								<button class="e_back" onclick="PInformation.verificationCodeBack();">%{back}</button>
+								<button class="e_confirm" onclick="PInformation.changePwd();">%{confirm}</button>
+							</div>
+						</div>
+
+						<!-- ע���˺� -->
+						<div class="deleteUser dis_none">
+							<div class="clearfix row d_username">
+								<!-- �û��� -->
+								<div class="col-sm-5 col-xs-5 deleteUserSpan">
+									<span>%{username}:</span>
+								</div>
+								<div class="col-sm-7 col-xs-7 deleteUserIpt">
+									<input type="text" placeholder="%{enterUsername}" maxlength="12" autofocus="autofocus">
+								</div>
+							</div>
+							<div class="clearfix row d_password">
+								<!-- ���� -->
+								<div class="col-sm-5 col-xs-5 deleteUserSpan">
+									<span>%{password}:</span>
+								</div>
+								<div class="col-sm-7 col-xs-7 deleteUserIpt">
+									<input type="password" placeholder="%{enterPassword}"  autofocus="autofocus">
+								</div>
+							</div>
+
+							<p class="delete_error"></p>
+							<!-- ȷ�� -->
+							<div class="row v_btn">
+								<button class="e_back" onclick="PInformation.verificationCodeBack();">%{back}</button>
+								<button class="e_confirm" onclick="PInformation.cancelUser();">%{confirm}</button>
+
+							</div>
+						</div>
+
+						<div class="system_msg dis_none">
+							<div class="sMessage">
+								<h1>%{systemMessages}</h1>
+								<hr />
+							</div>
+							<ul></ul>
+							<div class="pager">
+								<button class="prevMsg"
+									onclick="PInformation.changePageNo(--PInformation.pageno)">%{prev}</button>
+								<span class="pageNum">1</span>
+								<button class="nextMsg"
+									onclick="PInformation.changePageNo(++PInformation.pageno)">%{next}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- �ƶ������岿�� -->
+				<div class="personContentMobileMain">
+					<!-- ��ҳ -->
+					<div class="personContentNav">
+						<ul>
+							<li class="p_message_pli" ontouchstart="PInformation.changeList(this)"
+								ontouchend="PInformation.renderMobliePage('p_message',event)">
+								<img class="icon icon1" src="./img/personMobile_icon1.png" alt="">
+								<span>%{personalInformation}</span>
+								<img class="rightArrow" src="./img/personMobile_arrow.png" alt="">
+							</li>
+							<li class="e_authentication_pli" ontouchstart="PInformation.changeList(this)"
+								ontouchend="PInformation.renderMobliePage('e_authentication',event)">
+								<img class="icon icon2" src="./img/personMobile_icon2.png" alt="">
+								<span>%{changeEmailAddress}</span>
+								<img class="rightArrow" src="./img/personMobile_arrow.png" alt="">
+							</li>
+							<li class="changePwd_pli" ontouchstart="PInformation.changeList(this)"
+								ontouchend="PInformation.renderMobliePage('changePwd',event)">
+								<img class="icon icon3" src="./img/personMobile_icon3.png" alt="">
+								<span>%{changePwd}</span>
+								<img class="rightArrow" src="./img/personMobile_arrow.png" alt="">
+							</li>
+							<li class="deleteUser_pli" ontouchstart="PInformation.changeList(this)"
+								ontouchend="PInformation.renderMobliePage('deleteUser',event);">
+								<img class="icon icon4" src="./img/personMobile_icon4.png" alt="">
+								<span>%{cancelUser}</span>
+								<img class="rightArrow" src="./img/personMobile_arrow.png" alt="">
+							</li>
+						</ul>
+						<!-- �˳���¼ -->
+						<p class="leave" ontouchstart="this.style.background ='rgb(255,202,75)'"
+							ontouchend="this.style.background ='#ffffff';PInformation.deleteUsertoken()">%{exit}</p>
+					</div>
+
+					<!-- ��ҳ�� -->
+					<div class="personContentPage tab-content">
+
+						<!-- ������Ϣ -->
+						<div class="p_message">
+							<!-- ͷ�� -->
+							<div class="btn fileinput-button uploadPhoto">
+								<img src="img/default-headshot.png" alt="" class="photoUpload avatarImg">
+								<!-- �ϴ�ͷ�� -->
+								<!-- <span>%{uploadPhoto}</span>
+								<input type="file" accept="image/*" onchange="PInformation.previewFile(this)"> -->
+							</div>
+							<!-- �û��� -->
+							<div class="p_username flex-container">
+								<div class="p_username_Span"><span>%{username}</span>
+								</div>
+								<div class="p_username_Inp">
+									<input type="text" placeholder="%{empty}" maxlength="12">
+								</div>
+							</div>
+							<hr />
+							<!-- �Ա� -->
+							<div class="p_sex flex-container">
+								<div class="p_sex_Span"><span>%{sex}</span></div>
+								<div class="p_sex_Inp">
+									<input type="radio" value="male" sexvalue="male" name="sex" class="manIpt-s">
+									<span class="manSpan-s">%{male}</span>
+									<input type="radio" value="female" sexvalue="female" name="sex" class="femanIpt-s">
+									<span class="femanSpan-s">%{female}</span>
+									<span class="selectSex-s"></span>
+								</div>
+							</div>
+							<hr />
+							<!-- ���� -->
+							<div class="p_age flex-container">
+								<div class="p_age_Span"><span>%{age}</span></div>
+								<div class="p_age_Inp">
+									<input type="text" placeholder="%{empty}"  autofocus="autofocus">
+								</div>
+							</div>
+							<hr />
+							<!-- ���� -->
+							<div class="p_country flex-container">
+								<div class="p_country_Span"><span>%{country}</span></div>
+								<div class="p_country_Inp">
+									<!-- <input type="text" placeholder="%{empty}"> -->
+									<select name="country" class="fastbannerform__country select_country">
+										<option value="ASA" title="AA">America</option>
+										<option value="AND" title="AD">Andorra</option>
+										<option value="ARE" title="AE">United Arab Emirates</option>
+										<option value="AFG" title="AF">Afghanistan</option>
+										<option value="ATG" title="AG">Antigua and Barbuda</option>
+										<option value="ALB" title="AL">Albania</option>
+										<option value="ARM" title="AM">Armenia</option>
+										<option value="AGO" title="AO">Angola</option>
+										<option value="ARG" title="AR">Argentina</option>
+										<option value="AUT" title="AT">Austria</option>
+										<option value="AUS" title="AU">Australia</option>
+										<option value="ABW" title="AW">Aruba</option>
+										<option value="AZE" title="AZ">Azerbaijan</option>
+										<option value="BIH" title="BA">Bosnia and Herzegovina</option>
+										<option value="BRB" title="BB">Barbados</option>
+										<option value="BGD" title="BD">Bangladesh</option>
+										<option value="BEL" title="BE">Belgium</option>
+										<option value="BFA" title="BF">Burkina Faso</option>
+										<option value="BGR" title="BG">Bulgaria</option>
+										<option value="BHR" title="BH">Bahrain</option>
+										<option value="BDI" title="BI">Burundi</option>
+										<option value="BEN" title="BJ">Benin</option>
+										<option value="BMU" title="BM">Bermuda</option>
+										<option value="BRN" title="BN">Brunei</option>
+										<option value="BOL" title="BO">Bolivia</option>
+										<option value="BRA" title="BR">Brazil</option>
+										<option value="BHS" title="BS">Bahamas</option>
+										<option value="BTN" title="BT">Bhutan</option>
+										<option value="BWA" title="BW">Botswana</option>
+										<option value="BLR" title="BY">Belarus</option>
+										<option value="BLZ" title="BZ">Belize</option>
+										<option value="CAN" title="CA">Canada</option>
+										<option value="COD" title="CD">Democratic Republic of the Congo</option>
+										<option value="CAF" title="CF">Central African Republic</option>
+										<option value="COG" title="CG">Democratic Republic of the Congo</option>
+										<option value="CHE" title="CH">Switzerland</option>
+										<option value="CHL" title="CL">Chile</option>
+										<option value="CMR" title="CM">Cameroon</option>
+										<option value="CHN" title="CN">China</option>
+										<option value="COL" title="CO">Colombia</option>
+										<option value="CRI" title="CR">Costa Rica</option>
+										<option value="CUB" title="CU">Cuba</option>
+										<option value="CPV" title="CV">Cape Verde</option>
+										<option value="CYP" title="CY">Cyprus</option>
+										<option value="CZE" title="CZ">Czech Republic</option>
+										<option value="DEU" title="DE">Germany</option>
+										<option value="DJI" title="DJ">Djibouti</option>
+										<option value="DNK" title="DK">Denmark</option>
+										<option value="DMA" title="DM">Dominica</option>
+										<option value="DOM" title="DO">Dominican Republic</option>
+										<option value="DZA" title="DZ">Algeria</option>
+										<option value="ECU" title="EC">Ecuador</option>
+										<option value="EST" title="EE">Estonia</option>
+										<option value="EGY" title="EG">Egypt</option>
+										<option value="ERI" title="ER">Eritrea</option>
+										<option value="ESP" title="ES">Spain</option>
+										<option value="ETH" title="ET">Ethiopia</option>
+										<option value="FIN" title="FI">Finland</option>
+										<option value="FJI" title="FJ">Fiji</option>
+										<option value="FLK" title="FK">Falkland Islands</option>
+										<option value="FSM" title="FM">Micronesia</option>
+										<option value="FRO" title="FO">Faroe Islands</option>
+										<option value="FRA" title="FR">France</option>
+										<option value="GAB" title="GA">Gabon</option>
+										<option value="GBR" title="GB">United Kingdom</option>
+										<option value="GRD" title="GD">Grenada</option>
+										<option value="GEO" title="GE">Georgia</option>
+										<option value="GHA" title="GH">Ghana</option>
+										<option value="GIB" title="GI">Gibraltar</option>
+										<option value="GMB" title="GM">Gambia</option>
+										<option value="GIN" title="GN">Guinea</option>
+										<option value="GNQ" title="GQ">Equatorial Guinea</option>
+										<option value="GRC" title="GR">Greece</option>
+										<option value="GTM" title="GT">Guatemala</option>
+										<option value="GNB" title="GW">Guinea-Bissau</option>
+										<option value="GUY" title="GY">Guyana</option>
+										<option value="HKG" title="HK">Hong Kong,China</option>
+										<option value="HND" title="HN">Honduras</option>
+										<option value="HRV" title="HR">Croatia</option>
+										<option value="HTI" title="HT">Haiti</option>
+										<option value="HUN" title="HU">Hungary</option>
+										<option value="IDN" title="ID">Indonesia</option>
+										<option value="IRL" title="IE">Ireland</option>
+										<option value="ISR" title="IL">Israel</option>
+										<option value="IND" title="IN">India</option>
+										<option value="IRQ" title="IQ">Iraq</option>
+										<option value="IRN" title="IR">Iran</option>
+										<option value="ISL" title="IS">Iceland</option>
+										<option value="ITA" title="IT">Italy</option>
+										<option value="JAM" title="JM">Jamaica</option>
+										<option value="JOR" title="JO">Jordan</option>
+										<option value="JPN" title="JP">Japan</option>
+										<option value="KEN" title="KE">Kenya</option>
+										<option value="KGZ" title="KG">Kyrgyzstan</option>
+										<option value="KHM" title="KH">Cambodia</option>
+										<option value="KIR" title="KI">Kiribati</option>
+										<option value="COM" title="KM">Comoros</option>
+										<option value="KNA" title="KN">Saint Kitts and Nevis</option>
+										<option value="PRK" title="KP">North Korea</option>
+										<option value="KOR" title="KR">South Korea</option>
+										<option value="KWT" title="KW">Kuwait</option>
+										<option value="CYM" title="KY">Cayman Islands</option>
+										<option value="KAZ" title="KZ">Kazakhstan</option>
+										<option value="LAO" title="LA">Laos</option>
+										<option value="LBN" title="LB">Lebanon</option>
+										<option value="LCA" title="LC">Saint Lucia</option>
+										<option value="LIE" title="LI">Liechtenstein</option>
+										<option value="LKA" title="LK">Sri Lanka</option>
+										<option value="LBR" title="LR">Liberia</option>
+										<option value="LSO" title="LS">Lesotho</option>
+										<option value="LTU" title="LT">Lithuania</option>
+										<option value="LUX" title="LU">Luxembourg</option>
+										<option value="LVA" title="LV">Latvia</option>
+										<option value="LBY" title="LY">Libya</option>
+										<option value="MAR" title="MA">Morocco</option>
+										<option value="MCO" title="MC">Monaco</option>
+										<option value="MDA" title="MD">Moldova</option>
+										<option value="MNE" title="ME">Montenegro</option>
+										<option value="MDG" title="MG">Madagascar</option>
+										<option value="MKD" title="MK">Macedonia</option>
+										<option value="MLI" title="ML">Mali</option>
+										<option value="MMR" title="MM">Myanmar</option>
+										<option value="MNG" title="MN">Mongolia</option>
+										<option value="MAC" title="MO">Macao,China</option>
+										<option value="MRT" title="MR">Mauritania</option>
+										<option value="MLT" title="MT">Malta</option>
+										<option value="MUS" title="MU">Mauritius</option>
+										<option value="MDV" title="MV">Maldives</option>
+										<option value="MWI" title="MW">Malawi</option>
+										<option value="MEX" title="MX">Mexico</option>
+										<option value="MYS" title="MY">Malaysia</option>
+										<option value="MOZ" title="MZ">Mozambique</option>
+										<option value="NAM" title="NA">Namibia</option>
+										<option value="NER" title="NE">Niger</option>
+										<option value="NGA" title="NG">Nigeria</option>
+										<option value="NIC" title="NI">Nicaragua</option>
+										<option value="NLD" title="NL">Netherlands</option>
+										<option value="NOR" title="NO">Norway</option>
+										<option value="NPL" title="NP">Nepal</option>
+										<option value="NRU" title="NR">Nauru</option>
+										<option value="NZL" title="NZ">New Zealand</option>
+										<option value="OMN" title="OM">Oman</option>
+										<option value="PAN" title="PA">Panama</option>
+										<option value="PER" title="PE">Peru</option>
+										<option value="PNG" title="PG">Papua New Guinea</option>
+										<option value="PHL" title="PH">Philippines</option>
+										<option value="PAK" title="PK">Pakistan</option>
+										<option value="POL" title="PL">Poland</option>
+										<option value="PRI" title="PR">Puerto Rico</option>
+										<option value="PSE" title="PS">Palestine</option>
+										<option value="PRT" title="PT">Portugal</option>
+										<option value="PLW" title="PW">Palau</option>
+										<option value="PRY" title="PY">Paraguay</option>
+										<option value="QAT" title="QA">Qatar</option>
+										<option value="ROU" title="RO">Romania</option>
+										<option value="SRB" title="RS">Serbia</option>
+										<option value="RUS" title="RU">Russia</option>
+										<option value="RWA" title="RW">Rwanda</option>
+										<option value="SAU" title="SA">Saudi Arabia</option>
+										<option value="SLB" title="SB">Solomon Islands</option>
+										<option value="SYC" title="SC">Seychelles</option>
+										<option value="SDN" title="SD">Sudan</option>
+										<option value="SWE" title="SE">Sweden</option>
+										<option value="SGP" title="SG">Singapore</option>
+										<option value="SVN" title="SI">Slovenia</option>
+										<option value="SVK" title="SK">Slovak Republic</option>
+										<option value="SLE" title="SL">Sierra Leone</option>
+										<option value="SMR" title="SM">San Marino</option>
+										<option value="SEN" title="SN">Senegal</option>
+										<option value="SOM" title="SO">Somalia</option>
+										<option value="SUR" title="SR">Suriname</option>
+										<option value="STP" title="ST">Sao Tome and Principe</option>
+										<option value="SLV" title="SV">El Salvador</option>
+										<option value="SYR" title="SY">Syria</option>
+										<option value="SWZ" title="SZ">Swaziland</option>
+										<option value="TCD" title="TD">Chad</option>
+										<option value="TGO" title="TG">Togo</option>
+										<option value="THA" title="TH">Thailand</option>
+										<option value="TJK" title="TJ">Tajikistan</option>
+										<option value="TKM" title="TM">Turkmenistan</option>
+										<option value="TUN" title="TN">Tunisia</option>
+										<option value="TON" title="TO">Tonga</option>
+										<option value="TUR" title="TR">Turkey</option>
+										<option value="TTO" title="TT">Trinidad and Tobago</option>
+										<option value="TUV" title="TV">Tuvalu</option>
+										<option value="TWN" title="TW">Taiwan,China</option>
+										<option value="TZA" title="TZ">Tanzania</option>
+										<option value="UKR" title="UA">Ukraine</option>
+										<option value="UGA" title="UG">Uganda</option>
+										<option value="URY" title="UY">Uruguay</option>
+										<option value="UZB" title="UZ">Uzbekistan</option>
+										<option value="VCT" title="VC">Saint Vincent And The Grenadine</option>
+										<option value="VEN" title="VE">Venezuela</option>
+										<option value="VGB" title="VG">British Virgin Islands</option>
+										<option value="VNM" title="VN">Vietnam</option>
+										<option value="VUT" title="VU">Vanuatu</option>
+										<option value="WLF" title="WF">Wallis and Futuna</option>
+										<option value="WSM" title="WS">Western Samoa</option>
+										<option value="YEM" title="YE">Yemen</option>
+										<option value="ZAF" title="ZA">South Africa</option>
+										<option value="ZMB" title="ZM">Zambia</option>
+										<option value="ZWE" title="ZW">Zimbabwe</option>
+									</select>
+								</div>
+							</div>
+							<hr />
+							<!-- ���� -->
+							<div class="p_work flex-container">
+								<div class="p_work_Span"><span>%{work}</span></div>
+								<div class="p_work_Inp">
+									<input type="text" placeholder="%{empty}" maxlength="20"  autofocus="autofocus">
+								</div>
+							</div>
+							<hr />
+							<!-- ���� -->
+							<div class="p_email flex-container">
+								<div class="p_email_Span"><span>%{email}</span></div>
+								<div class="p_email_Inp"><input type="text" placeholder="%{empty}"  autofocus="autofocus"></div>
+							</div>
+							<p class="p_saveMsg"></p>
+							<!-- �༭��ť -->
+							<div class="save_msg">
+								<!-- ������Ϣ -->
+								<button onclick="PInformation.setUserInfo()"
+									class="_save dis_none">%{saveInformation}</button>
+								<!-- �༭��Ϣ -->
+								<button onclick="PInformation.edit()" class="edit">%{editInformation}</button>
+							</div>
+						</div>
+
+						<!-- �޸����� -->
+						<div class="e_authentication dis_none">
+							<p class="e_errorMsg"></p>
+							<ul>
+								<!-- �����  -->
+								<li class="e_authentication_Span"><span>%{email}</span></li>
+								<li class="emailMessage-s e_authentication_Inp">
+									<input type="text" placeholder="%{enterEmail}"  autofocus="autofocus">
+								</li>
+								<li class="e_authentication_CodeBtn">
+									<!-- ������֤�� -->
+									<button onclick="PInformation.getIdentiCode('changeEmail')">%{verification}</button>
+								</li>
+								<li class="e_authentication_Span"><span>%{verificationCode}</span></li>
+								<li class="verificationCode-s e_authentication_Inp"><input type="text"
+										placeholder="%{enterVerificationCode}"  autofocus="autofocus" ></li>
+								<li class="e_authentication_confirm d-flex ">
+									<button class="e_confirm"
+										onclick="PInformation.changeEmailAddress();">%{confirm}</button>
+								</li>
+							</ul>
+						</div>
+
+						<!-- �޸����� -->
+						<div class="changePwd dis_none">
+							<ul>
+								<!-- ������֤ -->
+								<li class="changePwd_Span"><span>%{email}</span></li>
+								<li class="e_test-s changePwd_Inp"><input type="text" readonly style="border: none"></li>
+								<li class="d-flex e_authentication_CodeBtn"><button 
+									onclick="PInformation.getIdentiCode('changePwd');">%{sendVerification}</button>
+								</li>
+								<!-- ��֤�� -->
+								<li class="changePwd_Span"><span>%{verificatioCode}</span></li>
+								<li class="e_verifycode-s changePwd_Inp"><input type="text"
+										placeholder="%{enterVerificationCode}"  autofocus="autofocus">
+								</li>
+								<!-- ������ -->
+								<li class="changePwd_Span"><span>%{newPwd}</span></li>
+								<li class="e_newpwd-s changePwd_Inp"><input type="password"
+										placeholder="%{enterNewPwd}"  autofocus="autofocus">
+								</li>
+								<p class="pwd_error errorMsg"></p>
+								<!-- ȷ�� -->
+								<li class="d-flex"><button class="e_confirm"
+										onclick="PInformation.changePwd();">%{confirm}</button>
+								</li>
+							</ul>
+						</div>
+
+						<!-- ע���˺� -->
+						<div class="deleteUser dis_none">
+							<ul>
+								<!-- �û��� -->
+								<li class="deleteUser_Span"><span>%{username}</span></li>
+								<li class="deleteUser_Inp d_username-s "><input type="text"
+										placeholder="%{signUpUsername}" maxlength="12"  autofocus="autofocus"></li>
+								<!-- ���� -->
+								<li class="deleteUser_Span"><span>%{password}</span></li>
+								<li class="d_password-s deleteUser_Inp"><input type="password"
+										placeholder="%{enterPassword}"  autofocus="autofocus"></li>
+								<br>
+								<p class="delete_error"></p>
+								<!-- ȷ�� -->
+								<li class="d-flex"><button class="e_confirm"
+										onclick="PInformation.cancelUser()">%{confirm}</button>
+								</li>
+							</ul>
+
+						</div>
+
+						<div class="system_msg dis_none">
+							<div class="sMessage">
+								<h1>%{systemMessages}</h1>
+								<hr />
+							</div>
+							<ul></ul>
+							<div class="pager">
+								<button class="prevMsg"
+									onclick="PInformation.changePageNo(--PInformation.pageno)">%{prev}</button>
+								<span class="pageNum">1</span>
+								<button class="nextMsg"
+									onclick="PInformation.changePageNo(++PInformation.pageno)">%{next}</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div style="clear:both"></div>
+			</div>
+
+			<!-- myProjectContent -->
+			<div class="myProjectContent dis_none">
+				<!-- myProjectҳ�汾�����ƶ˵����������� -->
+				<nav class="navbar navbar-default myProjectBar">
+					<ul class="nav-pills">
+						<li class="LocalStorage data-toggle='pill' active"
+							ontouchstart="MyProject.toggleBar('LocalStorage');MyProject.renderProject('','local');">
+							<img class="l_open" src="./img/LocalStorage_orange.png" alt="">
+							<span>Local Storage</span>
+						</li>
+						<li class="CloudStorage data-toggle='pill'"
+							ontouchstart="MyProject.toggleBar('CloudStorage');MyProject.renderProject('','remote')">
+							<img class="c_close" src="./img/CloudStorage_gray.png" alt="">
+							<span>Cloud Storage</span>
+						</li>
+					</ul>
+				</nav>
+				<!-- example��tutorial�����ҳ������������ -->
+				<nav class="navbar navbar-default tutorials_example_bar">
+					<ul class="nav-pills">
+						<li class="tutorialsTitle data-toggle='pill' active"
+							ontouchstart="MyProject.toggleBar('tutorialsTitle');Tutorials.openProject();">
+							<img class="" src="./img/tutorialsTitle_orange.png" alt="">
+							<span>Tutorials</span>
+						</li>
+						<li class="exampleTitle data-toggle='pill'"
+							ontouchstart="MyProject.toggleBar('exampleTitle');ExamplesProject.openProject()">
+							<img class="" src="./img/exampleTitle_gray.png" alt="">
+							<span>Example</span>
+						</li>
+					</ul>
+				</nav>
+
+				<div class="myProjectMain">
+					<div class="myProject-header">
+						<!-- <div class="myProject-header-menu">
+							<div class="draw">
+								<img src="./img/myProejct_picture_icon.png" alt="">
+							</div>
+							<div class="tableList">
+								<img src="./img/mHyProject_list_icon.png" alt="">
+							</div>
+						</div> -->
+						<div class="project_cate_block dis_none">
+							<button class="project_cate_btn project_cate_btn_block" style="background: #ccc"
+								onclick="ExamplesProject.ChangePlatform('block', this)">Block</button>
+							<button class="project_cate_btn"
+								onclick="ExamplesProject.ChangePlatform('python', this)">Python</button>
+							<!-- <button class="project_cate_btn"
+								onclick="ExamplesProject.ChangePlatform('SwiftCode', this)">Swift</button> -->
+						</div>
+						<div class="searchFile">
+							<input class="searchFileInput" type="text" placeholder="%{searchFiles}">
+							<img class="searchBtn" src="./img/searchBtn.png" alt="">
+						</div>
+					</div>
+
+				</div>
+
+				<div class="tab-content myProject-main"></div>
+
+			</div>
+
+			<!-- communityContent -->
+			<div class="communityContent dis_none">
+				<div class="community_header">
+					<div class="community_tab">
+						<span class="community_tab_recommend community_tab">%{community_recommend}</span>
+						<span class="community_tab_popular community_tab">%{community_popular}</span>
+					</div>
+					<div class="community_search">
+						<input class="community_search_input" type="text" placeholder="%{searchFiles}">
+						<button class="community_search_filter"><img src="./img/myProject_list_icon.png"
+								alt=""></button>
+					</div>
+				</div>
+				<div class="community_main clearfix">
+					<!-- <ul class="community_main_list">
+						<li class="community_main_item">
+							<div class="community_main_item_img"></div>
+							<div class="community_main_item_text">
+								<p>A project name</p>
+								<span class="community_create_author">create author</span>
+								<span class="community_create_time">7/22</span>
+							</div>
+						</li>
+						<li class="community_main_item"></li>
+						<li class="community_main_item"></li>
+						<li class="community_main_item"></li>
+						<li class="community_main_item"></li>
+						<li class="community_main_item"></li>
+					</ul> -->
+				</div>
+			</div>
+
+			<div class="communityDetailContent dis_none">
+				<div class="communityDetail_left">
+					<div class="communityDetail_img_block">
+						<div class="communityDetail_big_img">
+
+						</div>
+						<div class="communituDetail_small_img clearfix">
+							<img class="community-detail-img-arrow-left" src="./img/community-detail-img-arrow.png"
+								alt="">
+							<ul class="communityDetail_small_img_list clearfix">
+								<li class="communityDetail_small_img_item"></li>
+								<li class="communityDetail_small_img_item"></li>
+								<li class="communityDetail_small_img_item"></li>
+								<li class="communityDetail_small_img_item"></li>
+								<li class="communityDetail_small_img_item"></li>
+							</ul>
+							<img class="community-detail-img-arrow-right" src="./img/community-detail-img-arrow.png"
+								alt="">
+						</div>
+					</div>
+				</div>
+				<div class="communityDetail_right">
+					<div class="communityDetail_text">
+						<div class="communityDetail_text_title">
+							<span>Title:</span>
+							<span class="communityDetail_text_title_inner"></span>
+						</div>
+						<div class="communityDetail_text_description">
+							<span>Description:</span>
+							<span class="communityDetail_text_description_inner"></span>
+						</div>
+						<div class="communityDetail_text_category">
+							<span>device</span>
+							<span>product</span>
+							<span>language</span>
+						</div>
+					</div>
+					<div class="communityDetail_operat">
+						<span><img src="./img/community-operat-like.png" alt=""></span>
+						<span><img src="./img/community-operat-hate.png" alt=""></span>
+						<span><img src="./img/community-operat-collect.png" alt=""></span>
+						<span><img src="./img/community-operat-comment.png" alt=""></span>
+						<span><img src="./img/community-operat-share.png" alt=""></span>
+						<button class="communityDetail_operat_open">Open</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- �̳���Ŀҳ�� -->
+			<div class="tutorialsContent dis_none">
+			</div>
+
+			<!-- IOTҳ�� -->
+			<div class="internetOfThingsContent dis_none">
+				<div class="flexBox">
+					<div class="appendBox box"
+						style="background: url('img/iot_append.png') no-repeat center;background-color: #cccccc;">
+					</div>
+				</div>
+			</div>
+
+
+			<!--Coding-->
+			<div class="codingContent dis_none">
+				<div id="coding_mask" class="mask">
+
+				</div>
+				<div class="c-sm-4 c-lg-3 board">
+					<div class="boardmove">
+						<div class="productName">
+							<img class="icon">
+							<span class="name"></span>
+						</div>
+						<div class="selectImgBox">
+							<img class="selectImg front" />
+							<div class="boardInformation boardBack">
+								<button class="getBoardInfo">getBoardInfoMation</button>
+								<div class="boardInformation_container">
+									<div class="boardName"><span></span>
+										<button id="getBoardInfo_btn">
+											<img class="update_all" style="display: none;"
+												src="./img/boardInformation_update_all.png" alt=""
+												onclick="Coding.downloadLibAll();">
+											<img class="getInfo_all" src="./img/boardInformation_refresh.png" alt=""
+												onclick="Coding.getBoardInfo(event)" style="width:20px">
+										</button>
+									</div>
+									<div class="boardInformation_modules_block">
+										<h4 class="boardInformation_modules_title boardInformation_ip">IP:</h4>
+										<h4 class="boardInformation_modules_title">Libs:</h4>
+										<ul class="boardInformation_modules_libs_list">
+											<!-- <li class="boardInformation_modules_libs_item"><span>modules ==>
+													0.02</span><img src="./img/boardInformation_refresh.png" onclick="Coding.downloadLibforOne(event)" alt="">
+											</li>
+											<li class="boardInformation_modules_libs_item"><span>modules ==>
+													0.02</span><img src="./img/boardInformation_refresh.png" alt="">
+											</li> -->
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix dconbtn">
+							<div class="coding_novice dconbtn_novice">
+								<p style="margin-left: 20px;">Function Bar</p>
+							</div>
+							<div class="applyButton">
+								<button class="iotbtn" onclick="EzBlock.renderPage('internetOfThings')" type="button">
+									<img src="./img/coding_iot_icon.png" />
+								</button>
+								<button class="remotebtn" onclick="EzBlock.renderPage('remote')">
+									<img src="./img/coding_remote_icon.png" />
+								</button>
+								<button class="routingbtn">
+									<img src="./img/coding_routing_icon.png" onclick="EzBlock.renderPage('routing')" />
+									<img src="./img/coding_routing_gray_icon.png" style="display: none" />
+								</button>
+								<button class="bluetoothbtn" onclick="Coding.connect()">
+									<img class="disconnected" src="./img/coding_bluetooth_disconnected_icon.png">
+									<img class="connected" src="./img/coding_bluetooth_connected_icon.png">
+								</button>
+								<button class="playbtn" onclick="Simulator.runEvent()" type="button">
+									<img src="./img/coding_simulator_run_icon.png">
+								</button>
+							</div>
+						</div>
+						<div class="WebBLE_debugIpt">
+							<div class="clearfix topTitle">
+								<button ontouchstart="WebBLE.debugClear()" onclick="WebBLE.debugClear()">%{clear}</button>
+								<!-- <button onclick="WebBLE.expand()" class="toggleExpand">
+									<img src="./img/coding_debug_shrink.png">
+									<img src="./img/coding_debug_expand.png">
+								</button> -->
+							</div>
+							<div class="getMessage">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="c-sm-8 c-lg-9 blockly">
+					<!-- ��������վ -->
+					<div id="blockContent">
+						<div class="coding_novice blockContent_program_novice">
+							<p>Programming Area</p>
+						</div>
+						<div class="coding_novice blockContent_category_novice">
+							<p style="margin-right: 40px;">Category</p>
+						</div>
+					</div>
+					<div class="scriptcode dis_none">
+						<div id="main" class="vbox">
+							<div class="ace-cmd-btn clearfix">
+								<button onclick="Coding.platform.selectMore()">%{select}</button>
+								<button onclick="Coding.platform.undo()">%{undo}</button>
+								<button onclick="Coding.platform.redo()">%{redo}</button>
+								<button onclick="Coding.platform.findIptShow()">%{find}</button>
+								<button onclick="Coding.platform.setKeyboard()" class="dis_none">%{keyborad}</button>
+								<button onclick="Coding.platform.tab()" class="ace-tab-btn dis_none">%{tab}</button>
+								<select id="ace-selectheme" onchange="Coding.platform.setTheme()"></select>
+							</div>
+							<div class="hbox flex1">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- �ײ����۾� -->
+				<div class="footer-expand-eye dis_none">
+					<button class="footer-expand">
+						<img src="./img/footer_expand_open.png" alt="">
+						<!-- <img src="./img/close-xs.png" alt="close" class="close-xs">
+						<img src="./img/open-xs.png" class="dis_none open-xs" alt="open"> -->
+					</button>
+				</div>
+
+			</div>
+
+
+
+			<div class="routingDebug debug">
+				<div class="clearfix routingTopic">
+					<button onclick="Routing.debugClear()">%{clear}</button>
+					<!-- <button onclick="Routing.expand()" class="toggleExpand">
+						<img src="./img/coding_debug_shrink.png">
+						<img src="./img/coding_debug_expand.png">
+					</button> -->
+				</div>
+				<div class="getMessage routingGetMessage">
+				</div>
+			</div>
+			<!--Routing -->
+			<div class="routingContent dis_none">
+				<div id="products">
+
+					<div id="catalog">
+
+					</div>
+				</div>
+				<div class="routingToggle">x</div>
+				<div id="cart">
+					<div class="ui-widget-content">
+						<div class="contain_routing" id="contain_routing">
+						</div>
+						<div id="list" class="dis_none"></div>
+						<div class="r-garbage">
+							<div class="trashcan-lid">
+								<img src="img/trashcan-lid.png">
+							</div>
+							<div style="margin-top: -5px;" class="trashcan-bucket">
+								<img src="img/trashcan-bucket.png">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Remote -->
+			<div class="remoteContent dis_none">
+				<div id="remote_mask" class="mask">
+
+				</div>
+				<div id="products">
+					<div class="remote_novice products_novice">
+						<p>Control Bar</p>
+					</div>
+					<div id="catalog" style="overflow: auto; height: 100%;">
+						<ul></ul>
+					</div>
+				</div>
+				<div class="remoteToggle">x</div>
+				<div id="cart">
+					<div class="editorModal">
+
+					</div>
+					<div class="ui-widget-content">
+						<div class="contain_remote" id="contain_remote">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- �ۺ����ҳ�� -->
+			<div class="afterSaleProblemContent dis_none">
+				<div class="from clearfix">
+					<div>%{from}:</div>
+				
+					<input type="email" placeholder="%{enterEmail}" class="commonArea"
+						onchange="this.style.color='rgb(102,102,102)'"  autofocus="autofocus">
+					<br />
+				</div>
+				<div class="to clearfix">
+					<div>%{to}:</div>
+					<span style="pointer-events: none;cursor:default;">support@sunfounder.com</span>
+					<!-- <input type="email" placeholder="%{enterEmail}" class="commonArea" onchange="this.style.color='rgb(102,102,102)'"> -->
+					<br />
+				</div>
+				<div class="theme clearfix">
+					<div>%{theme}:</div>
+					<input type="text" class="commonArea subject"  autofocus="autofocus">
+				</div>
+				<div class="mainPart clearfix">
+					<div>%{body}:</div>
+					<textarea name="problemText" id="problemText" class="commonArea"  autofocus="autofocus"></textarea>
+				</div>
+				<p class="errorTip" style=" color:red; text-align: center"></p>
+				<button class="send" onclick="AfterSaleProblem.sendEmail()">%{send}</button>
+			</div>
+
+			<!-- faqҳ�� �������� -->
+			<div class="faqContent dis_none">
+				<div class="faqCont">
+					<div class="clearfix">
+						<div class="search_faq">
+							<div onclick="Faq.getMessage(Faq.getAllMsgUrl, $('.faqIpt').val())">
+								<span class="glyphicon glyphicon-search"></span>
+							</div>
+
+							<input type="text" class="faqIpt" autofocus="autofocus"
+								onchange="javascript:if(this.value==''){Faq.getMessage(Faq.getAllMsgUrl, '')};">
+						</div>
+
+						<button class="contact_faq"
+							onclick="EzBlock.renderPage('afterSaleProblem')">%{contact_us}</button>
+					</div>
+					<div class="faqPage">
+						<ul></ul>
+						<div class="pager">
+							<button class="prevMsg" onclick="Faq.changePageNo(--Faq.pageno)">%{prev}</button>
+							<span class="pageNum"></span>
+							<button class="nextMsg" onclick="Faq.changePageNo(++Faq.pageno)">%{next}</button>
+						</div>
+					</div>
+					<div class="faqAnswer dis_none">
+						<button class="contact_faq"
+							onclick="EzBlock.renderPage('afterSaleProblem')">%{contact_us}</button>
+					</div>
+				</div>
+				<div class="faq_details dis_none">
+
+				</div>
+			</div>
+
+
+
+			<div class="debugPrompt debug">
+				<div class="clearfix debugTopic">
+					<button ontouchstart="WebBLE.debugClear()" onclick="WebBLE.debugClear()">%{clear}</button>
+					<!-- <button onclick="WebBLE.expand()" class="toggleExpand">
+						<img src="./img/coding_debug_shrink.png">
+						<img src="./img/coding_debug_expand.png">
+					</button> -->
+				</div>
+				<div class="getMessage remoteGetmessage">
+				</div>
+			</div>
+
+			<div class="iotDebug debug dis_none">
+				<div class="clearfix iotTopic">
+					<button ontouchstart="WebBLE.debugClear()" onclick="WebBLE.debugClear()">%{clear}</button>
+					<button onclick="WebBLE.expand()" class="toggleExpand">
+						<img src="./img/coding_debug_shrink.png">
+						<img src="./img/coding_debug_expand.png">
+					</button>
+				</div>
+				<div class="getMessage iotGetmessage">
+				</div>
+			</div>
+
+			<div class="dragfooter dis_none">
+				<div class="clear margin">
+					<!-- <div class="flt">
+						<div>
+							<button class="read visible-xs">
+								<img src="./img/��.png">
+							</button>
+						</div>
+					</div> -->
+					<div class="zoom">
+						<button class="zoomin btn btn-default">
+							<img src="./img/coding_zoom_in_icon.png" alt="">
+						</button>
+						<button class="zoomreset btn btn-default">
+							<img src="./img/coding_zoom_reset_icon.png" alt="">
+						</button>
+						<button class="zoomax btn btn-default">
+							<img src="./img/coding_zoom_out_icon.png" alt="">
+						</button>
+					</div>
+
+					<div class="flash" onclick="Coding.download()">
+						<div class="flt">
+							<button class="flashbtn">
+								<img src="./img/coding_download_icon.png">
+							</button>
+							<span>%{codingFlashBtn}</span>
+						</div>
+					</div>
+					<div style="float: right;">
+						<button class="expansion">
+							<img src="./img/coding_function_open_icon.png">
+							<img src="./img/coding_function_close_icon.png" class="dis_none">
+						</button>
+					</div>
+				</div>
+			</div>
+
+
+			<div id="shadow" style="display:none;">
+				<div class="loading"></div>
+			</div>
+
+
+
+			<div id="iot_voice_modal" style="display: none;">
+				<div class="voice">
+					<div class="voice_img"><img src="./img/iot_voice_icon_gary.png" alt=""></div>
+					<div class="music active">
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+					</div>
+				</div>
+			</div>
+			<div class="tutorials_block">
+				<div>
+					<button class="tutorials_back">%{prevStup}</button>
+				</div>
+				<div id="tutorials_tips" class="tutorials_tips_text"></div>
+				<div>
+					<button class="tutorials_next">%{nextStup}</button>
+				</div>
+				<ul class="dot">
+
+			</div>
+
+			<!-- <div id="shadow">
+			<div class="loading"></div>
+		</div> -->
+
+			<div class="tutorials_block">
+				<div>
+					<button class="tutorials_back">%{prevStup}</button>
+				</div>
+				<div id="tutorials_tips" class="tutorials_tips_text"></div>
+				<div>
+					<button class="tutorials_next">%{nextStup}</button>
+				</div>
+				<ul class="dot">
+
+				</ul>
+			</div>
+
+			<div id="tutorials_modal" class="modal fade">
+				<div class="modal-dialog tutorials_modal_dialog">
+					<div class="modal-content">
+						<div class="modal-header package-header projectName-header">
+							<span class="tutorials_header_title"></span>
+							<button type="button" class="close tutorials_header_close" data-dismiss="modal"
+								aria-hidden="true">X</button>
+						</div>
+						<div class="modal-body tutorials_modal_body">
+							<div class="tutorials_modal_msg"></div>
+							<div class="tutorials_modal_img">
+								<!-- <span></span> -->
+								<img src="./img/pythoncode.png" alt="">
+							</div>
+							<div class="tutorials_modal_btn_block">
+								<button class="tutorials_modal_btn" onclick="Tutorials.autoNext()">%{ok}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- tutorials intorduction modal -->
+			<div id="tutorials_introduct_modal" class="modal fade">
+				<div class="modal-dialog tutorials_introduct_modal_dialog">
+					<div class="modal-content">
+						<div class="modal-header package-header projectName-header">
+							<span class="tutorials_introduct_modal_title"></span>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+						</div>
+						<div class="modal-body tutorials_introduct_modal_body">
+							<div class="tutorials_introduct_modal_desc"></div>
+							<div class="tutorials_introduct_modal_btn_block">
+								<button class="tutorials_introduct_modal_btn" onclick="Tutorials.start()">%{go}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- examples intorduction modal -->
+			<div id="examples_intorduction_modal" class="modal fade">
+				<div class="modal-dialog examples_intorduction_modal_dialog">
+					<div class="modal-content">
+						<div class="modal-header package-header projectName-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+						</div>
+						<div class="modal-body examples_intorduction_modal_body">
+							<div class="examples_intorduction_modal_desc"></div>
+							<div class="examples_intorduction_btn_block">
+								<button class="examples_intorduction_modal_btn"
+									onclick="ExamplesProject.loadProject()">%{ok}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Release Note modal -->
+			<div id="release_note_modal" class="modal fade">
+				<div class="modal-dialog release_note_modal_dialog">
+					<div class="modal-content">
+						<div class="modal-header package-header projectName-header">
+							<span class="release_note_modal_title">Release Note</span>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+						</div>
+						<div class="modal-body release_note_modal_body">
+							<div class="release_img_block">
+								<img src="./img/release_note_logo.png">
+							</div>
+							<h1 style="text-align: center;font-size: 40px;">%{app_name}</h1>
+							<p class="release_note_modal_version"></p>
+							<ul class="release_note_modal_update_list">
+								%{release_note}
+							</ul>
+							<div class="release_note_modal_footer">
+								<input type="checkbox" name=""
+									id="release_note_isShow"><span>%{home_release_not_dont_show}</span>
+								<button class="release_note_modal_btn">OK</button>
+								</divc>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="mask"></div>
+		</div>
+</body>
+
+<!-- 
+<script>
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.register('./ezblock_serviceworker.js', { scope: '.' }).then(
+			function (sw) {
+				console.log("SW registered");
+				sw.onupdatefound = function (e) {
+					document.getElementById('shadow').style.display = 'block';
+				}
+
+			},
+			function (x) {
+				// console.log("SW failed to register: " + x.message);
+			});
+	}
+	navigator.serviceWorker.oncontrollerchange = function (e) {
+		controller = e.target.controller;
+		controller.onstatechange = function (e) {
+			// console.log('״̬�仯Ϊ' + e.target.state);
+			if (e.target.state == "activated") {
+				document.getElementById('shadow').style.display = 'none';
+				window.location.reload();
+			}
+		}
+	}
+</script> -->
+
+
+
+<link rel="stylesheet" type="text/css" href="./css/ezblock.min.css" />
+<script src="./js/ezblock.min.js"></script>
+
+
+
+
+
+
+<!-- <script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/board/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/board/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/board/simulator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/board/board.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/modules/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/modules/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/modules/modules.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/modules/simulator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/raspberrypi/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/raspberrypi/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/raspberrypi/simulator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/raspberrypi/raspberrypi.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/raspberrypi/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/raspberrypi/examples/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/raspberrypi/tutorials/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/leaf/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/leaf/leaf.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/leaf/examples/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/leaf/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robothat/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robothat/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robothat/simulator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robothat/robothat.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robothat/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/sensorkit/sensorkit.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robotshield/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robotshield/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robotshield/simulator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robotshield/robotshield.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robotshield/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jelly/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jelly/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jelly/jelly.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jelly/simulator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/switchbot/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/switchbot/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/switchbot/switchbot.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/switchbot/simulator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellypi/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellypi/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellypi/simulator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellypi/jellypi.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/jellypikit/jellypikit.js"></script>
+
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellyleaf/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellyleaf/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellyleaf/simulator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellyleaf/jellyleaf.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/jellyleafkit/jellyleafkit.js"></script>
+
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/lizard/lizard.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/lizard/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/lizard/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/lizard/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pimobile/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pimobile/pimobile.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pimobile/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pimobile/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pimobile/tutorials/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pimobile/examples/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sloth/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sloth/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sloth/sloth.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sloth/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/slothforpi/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/slothforpi/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/slothforpi/slothforpi.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/slothforpi/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/picarmini/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/picarmini/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/picarmini/picarmini.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/picarmini/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/picarmini/examples/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/picarmini/examples/python.js"></script>
+
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pake/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pake/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pake/pake.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pake/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pake/examples/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pake/examples/python.js"></script>
+
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/cameracradle/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/cameracradle/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/cameracradle/cameracradle.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/cameracradle/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/cameracradle/examples/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/spiderforpi/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/spiderforpi/generator.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/spiderforpi/spiderforpi.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/spiderforpi/toolbox.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/spiderforpi/examples/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sensorkit-for-pi/sensorkit-for-pi.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sensorkit-for-pi/examples/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sensorkit-for-leaf/sensorkit-for-leaf.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sensorkit-for-pi/tutorials/block.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/sensorkit/tutorials/raspberrypi/block.js"></script>
+
+
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/board/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/board/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/raspberrypi/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/raspberrypi/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/modules/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/modules/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/leaf/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/leaf/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellypi/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellypi/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellyleaf/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jellyleaf/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/jellypikit/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/jellypikit/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/lizard/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/lizard/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pimobile/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pimobile/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/sensorkit/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/sensorkit/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jelly/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/jelly/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robothat/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robothat/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robotshield/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/robotshield/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/switchbot/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/packages/switchbot/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sensorkit-for-pi/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sensorkit-for-pi/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sensorkit-for-leaf/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sensorkit-for-leaf/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sloth/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/sloth/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/slothforpi/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/slothforpi/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/jellyleafkit/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/jellyleafkit/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/picarmini/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/picarmini/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/spiderforpi/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/spiderforpi/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/cameracradle/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/cameracradle/msg/zh-hans.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pake/msg/en.js"></script>
+<script src="https://ezblock.s3.us-east-2.amazonaws.com/js/products/pake/msg/zh-hans.js"></script> -->
+
+<script>
+	// ҳ����Դ�Ƿ�������
+	function loading_delay(ms) {
+		return new Promise(function (resolve, reject) {
+			setTimeout(function () {
+				// console.log(1)
+				resolve(true);
+			}, ms);
+		});
+	}
+	async function showMainContent() {
+		document.getElementById('progress-label').className = "progress-label-animation";
+		await loading_delay(1000);
+		document.getElementById('main-content').style.display = 'block';
+		document.getElementById("loading_content").style.display = "none";
+		EzBlock.init()
+		return true
+	}
+	document.onreadystatechange = function () {
+		if (document.readyState == "loading") {
+			document.getElementById('progress-label').style.width = 45 + "%";
+		}
+		// document.getElementById('progress-label').style.width = 25 + "%";
+		if (document.readyState == "complete" || document.readyState == "loaded") {
+			showMainContent();
+			if (window.disableReload) {
+				window.disableReload();
+			}
+		}
+	};
+
+	MSG = Local[LANG].MSG;
+	EzBlock.getVersion();
+	Blockly.Msg = Local[LANG];
+	var bodyHtml = document.getElementsByTagName('body')[0].innerHTML;
+	document.getElementsByTagName('body')[0].innerHTML = bodyHtml.replace(/%{(\w+)}/g, function ($1, $2) {
+		return MSG[$2];
+	})
+	EzBlock.getVersion();	
+	window.addEventListener('beforeunload', function (event) {
+		WebBLE.disconnected();
+	})
+</script>
+
+</html>
