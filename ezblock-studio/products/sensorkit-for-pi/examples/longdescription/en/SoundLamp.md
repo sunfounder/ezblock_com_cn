@@ -1,0 +1,2 @@
+### Sound Lamp
+In this example, you will create a voice-activated light using a sound sensor. The light will turn on automatically when there is enough sound. Connecting this light to the Internet allows us to turn off the light remotely at the touch of a button on the IoT interface.

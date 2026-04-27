@@ -1,0 +1,2 @@
+### Remote Control
+The Ezblock APP integrates joysticks, sliders, handles, buttons and switch control blocks that you can use directly in your project without the need for these additional devices. In this project we will use a slider to control the brightness of an LED light.

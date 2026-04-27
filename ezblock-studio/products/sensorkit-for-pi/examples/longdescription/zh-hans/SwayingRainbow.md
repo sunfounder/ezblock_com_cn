@@ -1,0 +1,2 @@
+### Swaying Rainbow
+Control the color of the RGB LEDs with the acceleration in the three axis directions of ADXL345. What happens? When you wave the ADXL345 at will, the RGB LEDs will change color. When you wave the ADXL345 and the RGB LED together, a rainbow of colors appears!

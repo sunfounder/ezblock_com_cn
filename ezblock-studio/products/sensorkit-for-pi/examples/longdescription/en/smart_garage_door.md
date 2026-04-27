@@ -1,0 +1,2 @@
+###  Smart Garage Door
+In this project, an intelligent garage system will be simulated. In front of the garage, open the garage door through the Switch on the IOT control page. When the car goes out to the set distance, the garage door automatically closes.

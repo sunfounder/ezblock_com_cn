@@ -1,0 +1,2 @@
+### Breathing Heart
+In this lesson, let's learn how to use potentiometers to change the brightness of LED lights. By turning the knob of the potentiometer you can change the resistance in the circuit so as to change the brightness of the lamp. At the same time you can see the analog value of the potentiometer at this time in the debug monitor.

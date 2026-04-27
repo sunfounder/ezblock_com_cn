@@ -1,0 +1,2 @@
+### Moisture Sensor
+In this project, a moisture sensor will be used to detect the humidity in the soil. The greater the humidity, the greater the value read on the soil sensor. We can determine if the pot needs watering by reading the value on the moisture sensor.

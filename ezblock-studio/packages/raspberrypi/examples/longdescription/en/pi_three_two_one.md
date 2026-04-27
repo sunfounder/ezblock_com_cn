@@ -1,0 +1,2 @@
+### Three, Two, One GO!
+Have you ever experienced an exciting racing scene? In this lesson, we will use the board to build a racing scene. After the countdown light ends, the buzzer will sound and the race flag will wave to indicate the starting signal.

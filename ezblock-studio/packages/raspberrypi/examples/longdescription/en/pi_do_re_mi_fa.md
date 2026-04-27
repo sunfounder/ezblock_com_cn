@@ -1,0 +1,2 @@
+###  DO RE MI 
+Simply controlling the lights is a little bit boring already, is´t it？So in this lesson, we will use a new device, buzzer. Use different keys to simulate different piano keys and press them to produce different tones. Let's make a simple electronic piano.

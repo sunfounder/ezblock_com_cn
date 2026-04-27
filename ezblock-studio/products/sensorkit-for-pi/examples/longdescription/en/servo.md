@@ -1,0 +1,2 @@
+### Servo
+In many robot projects, the servo is used to act as the joint of the robot to control the attitude of the robot. In this project, a servo will be used to simulate one of the joints, and then the veer of the servo will be remotely controlled by the iPad.

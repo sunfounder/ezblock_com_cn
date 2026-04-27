@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <!-- <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1,user-scalable=no" /> -->
+  <meta name="viewport"
+    content="initial-scale=1, width=device-width, height=device-height,user-scalable=no, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="apple-moblie-web-app-capable" content="yes" />
+  <meta name="google" value="notranslate">
+  <meta http-equiv="Expires" content="0" />
+  <title>EzBlock Studio</title>
+  <link rel="icon" href="./img/icon.webp">
+  
+  <link rel="stylesheet" type="text/css" href="./css/ezblock.min.css" />
+
+</head>
+<style>
+  #loading_content {
+    position: relative;
+    height: 100%;
+  }
+
+  .loading_img_block {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    width: 60%;
+    height: 28%;
+  }
+
+  #progressbar {
+    width: 70%;
+    height: 10px;
+    background-color: #ffffff;
+    border: 1px solid #fbca4b;
+    text-align: center;
+    border-radius: 8px;
+    margin: 5% auto;
+  }
+
+  #progress-label {
+    display: block;
+    font-size: 12px;
+    background-color: #f6b91b;
+    text-align: center;
+    border-radius: 5px;
+    height: 100%;
+  }
+
+  @-webkit-keyframes progress {
+    100% {
+      width: 100%;
+    }
+  }
+
+  @keyframes progress {
+    100% {
+      width: 100%;
+    }
+  }
+
+  .progress-label-animation {
+    -webkit-animation: progress 0.5s linear forwards;
+    animation: progress 0.5s linear forwards;
+  }
+</style>
+
+
+<body oncontextmenu="return false;" onselectstart="return false;">
+  <img class="body_bgShow" src="./img/calibration/yellowBg.webp"></img>
+  <div id="loading_content">
+    <div class="loading_img_block">
+      <img src="./img/ezblock-logo-color.webp" alt=""
+        style="width: 80%;margin: 0 auto;display: block;max-width: 1080px;">
+      <div id="progressbar">
+        <span id="progress-label" style="width: 25%"></span>
+      </div>
+    </div>
+  </div>
+  <div id="main-content" style="display: none;">
+    <div class="dragheader1 container-fluid clearfix">
+      <div class="col-xs-6 col-md-6 parnet_brand">
+        <img class="logo" src="./img/logo_ezblock_title_wrap.webp" alt="">
+      </div>
+      <div class="col-xs-6 col-md-6  parent_login">
+        <div class="menu-list">
+          <a class="login login1 fontColor" data-toggle="modal" data-target="#login">%{signIn}</a>
+          <span class="line line2">|</span>
+          <div class="share">
+            <div class="dropdown menu-box">
+              <button class="btn dropdown-toggle" data-toggle="dropdown" id="set" aria-haspopup="true"
+                aria-expanded="false">
+                <span class="fontColor">%{menu}</span>
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- head -->
+    <div class="dragheader2 container-fluid">
+      <div href="javascript:;" class="col-xs-3 col-md-3 parent_brand ">
+
+        <!-- Go back icon -->
+        <div class="goBack dis_none">
+          <a href="javascript:;" class="goBackImg">
+            <img src="./img/tubiao/goback.webp" alt="goBack">
+          </a>
+        </div>
+        <!-- Home help icon -->
+        <div id="helpNav">
+          <div class="iconBg">
+            <img src="./img/help3.1.webp" class="helpHome" />
+            <ul class="help_nav">
+            </ul>
+          </div>
+        </div>
+        <!-- product icon -->
+        <div class="projectLogo">
+          <div class="projectLogoImg">
+            <div class="iconBg">
+              <img src="./img/disconnect.webp" class="logoImg" alt="" style="width: 18px;height: auto;">
+              <img src="./img/delete_icon.webp" alt="close" class="topClose">
+              <i class="updatePointer"></i>
+            </div>
+          </div>
+          <div class="projectLogoName">
+            <span></span>
+          </div>
+        </div>
+        <!-- Routing,Remote,IOT  go back func -->
+        <button class="pageBack dis_none">
+          <img onclick="EzBlock.back()" src="./img/back.webp">
+        </button>
+      </div>
+      <!-- ezblock3.1_logo -->
+      <div class="col-xs-6 col-md-6 ezblockLogo">
+        <img src="./img/EZBLOCKLOGO3.1.webp" alt="">
+      </div>
+      <!-- library tital -->
+      <div class="col-xs-6 col-md-6 library_title dis_none">
+        <div class="library_title_box">
+          <ul>
+            <li id="lib_my" class="library_allItem myLibraryListTitle" onclick="LibraryList.changeTital('lib_my')">
+              %{lib_my}
+            </li>
+            <li class="library_line"></li>
+            <!-- <li id="lib_all" onclick="LibraryList.changeTital('lib_all')">%{lib_alls}</li>
+            <li class="library_line"></li> -->
+            <li id="lib_sys" onclick="LibraryList.changeTital('lib_sys')">%{lib_syss}</li>
+          </ul>
+        </div>
+      </div>
+      <!-- library_search -->
+      <div class="col-xs-3 col-md-3 library_search dis_none">
+        <div class="library_search_input"></div>
+        <div class="library_search_con">
+          <input class="search_input" autofocus="autofocus" type="text">
+          <img class="search_icon" onclick="LibraryList.searchIcon()" src="./img/tubiao/search_w.webp" alt="">
+        </div>
+      </div>
+      <!-- 页面title -->
+      <div class="col-xs-6 col-md-6 div_title dis_none">
+        <p style="margin: 0;">%{select_product}</p>
+      </div>
+      <div class="col-xs-6 col-md-6 project_title_block dis_none">
+        <div class="coding_novice project_title_block_novice">
+          <p>%{Project_interface_Project_Name}</p>
+        </div>
+        <span class="project_title" value="project_name"></span>
+
+      </div>
+      <div id="editor_btn_area" class="col-xs-2 col-md-2 editor_btn_area dropdown">
+        <button class="btn dropdown-toggle editor_btn_controller" data-toggle="dropdown" id="editor_btn_controller"
+          aria-haspopup="true" aria-expanded="false">
+          editor<span class="caret"></span>
+        </button>
+        <ul id="editor_btn_list" class="editor_btn_list dropdown-menu">
+          <li data-type="blockcode">BlockCode</li>
+          <li data-type="javascriptcode">JavaScriptCode</li>
+          <li data-type="pythoncode">PythonCode</li>
+        </ul>
+      </div>
+      <!-- 项目选择，导出，删除按钮 -->
+      <div class="import_project">
+        <!--     svg -->
+
+        <div class="project_svg">
+          <div class="export_project_svg" onclick="MyProject.exportFileAll()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="0.3rem" height="0.3rem" fill="white">
+              <path
+                d="M32 64C32 28.7 60.7 0 96 0H256V128c0 17.7 14.3 32 32 32H416V288H248c-13.3 0-24 10.7-24 24s10.7 24 24 24H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V64zM416 336V288H526.1l-39-39c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l80 80c9.4 9.4 9.4 24.6 0 33.9l-80 80c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l39-39H416zm0-208H288V0L416 128z" />
+            </svg>
+          </div>
+
+          <div class="project_select" onclick="MyProject.select()">
+            <div class="notSelected">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="0.25rem" height="0.25rem"
+                fill="white">
+                <path
+                  d="M374.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 402.7 86.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z" />
+              </svg>
+            </div>
+            <div class="selected">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="0.25rem" height="0.25rem"
+                fill="#1e90ff">
+                <path
+                  d="M374.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 402.7 86.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z" />
+              </svg>
+            </div>
+          </div>
+          <div class="project_delete" onclick="MyProject.deleteSelect()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="0.25rem" height="0.25rem" fill="white">
+              <path
+                d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- <span class="import_project_1" onclick="MyProject.importProject()">%{importFile}</span> -->
+        <input type="file" class="import_project_2" style="display: none;" onchange="MyProject.getData(event)">
+        <div class="import_project_editor_box">
+          <div class="import_project_svg" onclick="MyProject.importProject()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="0.25rem" height="0.25rem" fill="white">
+              <path
+                d="M128 64c0-35.3 28.7-64 64-64H352V128c0 17.7 14.3 32 32 32H512V448c0 35.3-28.7 64-64 64H192c-35.3 0-64-28.7-64-64V336H302.1l-39 39c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l39 39H128V64zm0 224v48H24c-13.3 0-24-10.7-24-24s10.7-24 24-24H128zM512 128H384V0L512 128z" />
+            </svg>
+            <!-- <img src="./img/calibration/import.png" alt=""> -->
+          </div>
+          <div class="import_project_editor" onclick="MyProject.editorSelect()">
+            %{importClash_select}
+          </div>
+        </div>
+      </div>
+      <!-- Sign in -->
+      <div class="parent_login" id="coding-menu">
+        <img src="./img/calibration/big_help.webp" alt="reference" id="code_reference" onclick="Reference.show()"
+          style="display: block;" />
+        <!-- <img src="./img/calibration/big_help.webp" alt="reference" id="code_reference" 
+          style="display: block;" /> -->
+        <div class="dropdown menu" style="display: inline-block;">
+          <button class="btn dropdown-toggle" data-toggle="dropdown" id="set" aria-haspopup="true"
+            aria-expanded="false">
+            <img src="./img/header_nav_meau.webp" alt="" />
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right dropdown-language" id="ShareConf">
+          </ul>
+        </div>
+      </div>
+      <!-- 登录头像 -->
+      <!-- <div class="header_nav_right">
+        <div class="loginNav">
+          <img class="heard_top_image" src="./img/header_nav_login.webp"/>
+        </div>
+      </div> -->
+      <div class="kitRun_xs dis_none">
+        <img src="" class="kitstop dis_none">
+        <img src="" class="kitplay dis_none">
+      </div>
+
+    </div>
+    <!--  calibrate head  --jun -->
+    <div class="calibration_head">
+
+      <div class="calibration_back">
+        <img src="./img/tubiao/goback.webp" alt="" />
+      </div>
+      <div class="calibration_title">
+        <p>%{cal}</p>
+      </div>
+    </div>
+
+    <!-- setHome -->
+    <div id="set_home" class="set_home">
+      <div class="set_home_content">
+        <div class="set_home_left">
+          <div class="left_close">
+            <div class="deviceIcon">
+              <div class="left_device_icon_box">
+                <img src="./img/disconnect.webp" alt="Device icon" style="width: 16px;height: auto;" />
+              </div>
+              <span class="device_name"></span>
+            </div>
+            <div onclick="Home.leftNavHide()" class="close_img">
+              <img src="./img/coding-zoom-close.webp" style="width: 100%;height: auto;" />
+            </div>
+
+          </div>
+          <div class="left_nav_list">
+            <ul class="nav_list_set">
+              <li class="list_language nav_list_change" onclick="Home.leftNavListEvent('list_language')">
+                <p>%{language_setting}</p>
+              </li>
+              <li class="list_version nav_list_change" onclick="Home.leftNavListEvent('list_version')">
+                <p>%{about_version}</p>
+              </li>
+              <li class="list_contact nav_list_change" onclick="Home.leftNavListEvent('list_contact')">
+                <p>%{contact_us}</p>
+              </li>
+              <li class="list_about nav_list_change" onclick="Home.leftNavListEvent('list_about')">
+                <p>%{about_us}</p>
+              </li>
+              <li class="list_local nav_list_change" onclick="Home.leftNavListEvent('list_local')">
+                <p>%{localization}</p>
+              </li>
+              <li class="list_help nav_list_change selectHelp" onclick="Home.selectHelp()">
+                <p>%{help}</p>
+              </li>
+              <ul class="list_help_nav">
+                <li class="list_faq"
+                  onclick="Home.windowOpen('https://docs.sunfounder.com/projects/ezblock3/en/latest/faq.html');">%{faq}
+                </li>
+                <li class="list_help_get_start"
+                  onclick="Home.windowOpen('https://docs.sunfounder.com/projects/ezblock3/en/latest/quick_guide_3.1/quick_guide_3.1.html');">
+                  %{release_getstarted}</li>
+                <li class="list_help_ref"
+                  onclick="Home.windowOpen('https://docs.ezblock.cc/en/latest/reference-for-python/ezblock.html')">
+                  %{Reference}</li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--language change -->
+    <div id="changeLanguage" class="modal ">
+      <div class="modal-dialog change-langulage-width">
+        <div class="modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal">
+              <img src="./img/debug_close.webp" alt="" style="width: 20px;height: auto;margin-top: 5px;">
+            </button>
+            <span>%{language_language}</span>
+          </div>
+          <div class="modal-body lan_modal"></div>
+        </div>
+      </div>
+    </div>
+    <!--local change -->
+    <div id="changeLocal" class="modal ">
+      <div class="modal-dialog change-local-width">
+        <div class="modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal">
+              <img src="./img/debug_close.webp" alt="" style="width: 20px;height: auto;margin-top: 5px;">
+            </button>
+            <span>%{localization}</span>
+          </div>
+          <div class="modal-body">
+            <ul id="choiceLans">
+              <li class="choiceLans" onclick="EzBlock.changeDistributor('mammoth');">%{chinese_main_land}
+              <li>
+              <li class="choiceLans" onclick="EzBlock.changeDistributor('sunfounder');">%{global}
+              <li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ace findbox -->
+    <div id="ace-search-ipt" class="modal ">
+      <div class="modal-dialog ace-search-width">
+        <div class="modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <div class="ace-btn-replace clearfix">
+              <button class="ace-regExp">.*</button>
+              <button class="ace-caseSensitive">Aa</button>
+              <button class="ace-wholeWord">Ab</button>
+            </div>
+          </div>
+          <div class="modal-body ace_modal">
+            <div class="clearfix" style="position: relative;">
+              <div class="inputCover" onclick="Home.inputCover('searchForIpt')" style="width:50%;"></div>
+              <input type="text" class="searchForIpt" placeholder="Search for" autofocus="autofocus">
+              <button onclick="Coding.platform.findNext()">%{aceNext}</button>
+              <button onclick="Coding.platform.findPrevious()">%{acePrev}</button>
+              <button onclick="Coding.platform.findAll()">All</button>
+            </div>
+            <div class="clearfix" style="position: relative;">
+              <div class="inputCover" onclick="Home.inputCover('replaceWithIpt')" style="width:50%;"></div>
+              <input type="text" class="replaceWithIpt" placeholder="Replace with" autofocus="autofocus">
+              <button onclick="Coding.platform.replace()">Replace</button>
+              <button onclick="Coding.platform.replaceAll()">All</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- add GitHub package -->
+    <div id="created-packages" class="modal fade">
+      <div class="modal-dialog created-packages-dialog">
+        <div class="modal-content">
+          <div class="modal-header created-packages-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <h4 class="model-title created-packages-title" id="addPackage-title">%{selectPageages}</h4>
+          </div>
+          <div class="modal-body created-packages-body">
+            <ul class="created-packages-name-list"></ul>
+            <div class="created-packages-btn-block" style="overflow:hidden">
+              <button class="created-packages-btn" onclick="AddPackage.sharePackages()">%{ok}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- add package -->
+    <div id="shared-packages" class="modal fade">
+      <div class="modal-dialog shared-packages-dialog">
+        <div class="modal-content">
+          <div class="modal-header shared-packages-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <h4 class="model-title shared-packages-title" id="sharedPackage-title">%{sharedPageages}</h4>
+          </div>
+          <div class="modal-body shared-packages-body">
+            <div class="shared-packages-content">
+              <div class="shared-packages-name" style="position: relative;">
+                <div class="inputCover" onclick="Home.inputCover('libPackagesName')"></div>
+
+                <span>%{share_name}:</span>
+                <input id="libPackagesName" type="text" class="libPackagesName" maxlength="25">
+              </div>
+              <div class="shared-packages-description">
+                <span>%{share_desc}:</span>
+                <textarea name="" id="libPackagesDesc" maxlength="200"></textarea>
+              </div>
+            </div>
+
+            <div class="shared-packages-btn-block" style="overflow:hidden">
+              <button class="shared-packages-btn" onclick="AddPackage.selectPackages()">%{ok}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- connect device popup --jun -->
+    <div id="device_link" class="modal">
+      <div class="modal-dialog device_link_dialog">
+        <div class="modal-content radius">
+          <div class="modal-body modal-text" id="container_dialog_h">
+            <button class="close_left" onclick="mydialog.missBtn('device_link')">
+              <img src="./img/tubiao/close_icon.webp" />
+            </button>
+            <button class="close_right">
+              <img src="./img/tubiao/reflase_icon.webp">
+            </button>
+            <span>%{device_link_name}</span>
+          </div>
+          <div class="modal-body" id="mynewdialog">
+            <div class="container_dialog" id="device_link_content">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- connect single device --jun -->
+    <div id="device_link_single" class="modal fade box_background">
+      <div class="device_link_single radius">
+        <div class="device_link_back Rotation">
+        </div>
+        <div class="device_link_pic">
+          <img id="linkPic" src="./img/tubiao/newDevice.webp" />
+        </div>
+      </div>
+    </div>
+
+    <!-- set wifi --jun -->
+    <div id="device_config_wifi" class="modal fade box_background">
+      <div class="modal-dialog device_link_dialog">
+        <div class="modal-content radius">
+          <div class="modal-body modal-text">
+            <button class="close_right" onclick="mydialog.missBtn('device_config_wifi')">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <p>%{device_config_wifi_name}</p>
+          </div>
+          <div class="device_wifi_scroll">
+            <div class="modal-body device_wifi_box">
+              <div class="linkStepOne"></div>
+              <div class="dialog_tip">%{dialog_wifi_tip}</div>
+              <div class="device_wifi_country_container">
+                <span class="device_wifi_country">%{cal_cy}</span>
+                <div class="device_wifi_countryBox" style="position: relative;">
+                  <div class="inputCover" onclick="Home.inputCover('myWIFICountry')"></div>
+                  <input type="text" class="myWIFICountry" id="myinput" placeholder="" oninput="filterP()"
+                    autocomplete="off" ;>
+                  <div class="dataList"></div>
+                </div>
+              </div>
+              <div class="device_wifi_nameDiv" style="position: relative;">
+                <div class="inputCover" onclick="Home.inputCover('device_wifi_nameInp')"></div>
+                <span class="device_wifi_nameSpan">%{device_wifi_name}</span>
+                <input class="device_wifi_nameInp" autocomplete type="text" placeholder="%{bleNamePlaceholder}"
+                  maxlength="31"></input>
+              </div>
+              <div class="device_wifi_passDiv" style="position: relative;">
+                <div class="inputCover" onclick="Home.inputCover('device_wifi_passInp')"></div>
+                <span class="device_wifi_passSpan">%{device_wifi_password}</span>
+                <input class="device_wifi_passInp" autocomplete type="text"></input>
+              </div>
+              <button class="device_wifi_btn" onclick="deviceWork.linkBtn()">%{wifi_btn}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- set device name --jun -->
+    <div id="device_name_dialog" class="modal fade box_background">
+      <div class="modal-dialog device_link_dialog">
+        <div class="modal-content radius">
+          <div class="modal-body modal-text">
+            <button class="close_left" onclick="mydialog.backBtn('device_name_dialog','choose_produce_dialog')">
+              <img src="./img/tubiao/back_icon.webp" />
+            </button>
+            <p>%{device_name_dialog_name}</p>
+            <div class="close_right_box"></div>
+          </div>
+          <div class="device_name_scroll">
+            <div class="modal-body device_name_dialog_box">
+              <div class="linkStepThree"></div>
+              <div class="dialog_tip">%{dialog_name_tip}</div>
+              <div class="device_nameDiv" style="position: relative;">
+                <span class="device_nameSpan">%{device_dev_name}</span>
+                <div class="inputCover" onclick="Home.inputCover('dev_nameInp')"></div>
+                <input class="dev_nameInp" maxlength="12" onfocus="deviceWork.nameFocus()"
+                  placeholder="%{bleNamePlaceholder}" onkeyup="Home.disableChInput(event);"></input>
+              </div>
+              <button class="device_name_btn" onclick="deviceWork.nameBtn()">%{my_confirm}</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- come in calibrate page --jun -->
+    <div id="device_cal_dialog" class="modal fade box_background">
+      <div class="modal-dialog device_link_dialog">
+        <div class="modal-content radius">
+          <div class="modal-body modal-text">
+            <button class="close_left" onclick="mydialog.backBtn('device_cal_dialog','device_name_dialog')">
+              <img src="./img/tubiao/back_icon.webp" />
+            </button>
+            <div class="close_right_box">
+              <button class="close_right" onclick="mydialog.missBtn('device_cal_dialog')">
+                <img src="./img/debug_close.webp" />
+              </button>
+            </div>
+
+            <span class="calTital">%{cal}</span>
+          </div>
+          <div class="modal-body device_name_dialog_box">
+            <div class="linkStepFour"></div>
+            <div class="cal_text">
+              <p>%{cal_dialog_tip}</p>
+            </div>
+            <button class="device_cal_btn" onclick="calibration.goto()">%{cal_to}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- select product --jun -->
+    <div id="choose_produce_dialog" class="modal fade box_background">
+      <div class="modal-dialog device_choose_dialog getdev">
+        <div class="modal-content radius">
+          <div class="modal-body modal-text" id="container_dialog_h">
+            <button class="close_left" onclick="mydialog.backBtn('choose_produce_dialog','device_config_wifi')">
+              <img src="./img/tubiao/back_icon.webp" />
+            </button>
+            %{choose_produce_dialog_name}
+            <div class="close_right_box">
+              <button class="close_right getMessage" onclick="mydialog.missBtn('choose_produce_dialog')">
+                <img src="./img/debug_close.webp" />
+              </button>
+            </div>
+          </div>
+          <div class="modal-body" id="mynewdialogS">
+            <div class="linkStepTwo"></div>
+            <div class="dialog_tip">%{dialog_product_tip}</div>
+            <div class="container_dialog" id='choose_product_content'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- create project --jun -->
+    <div id="newProject_dialog" class="modal fade box_background">
+      <div class="modal-dialog newProject_dialog">
+        <div class="modal-content radius">
+          <div class="modal-body modal-text">
+            <button class="close_right newClose">
+              <img src="./img/tubiao/close_icon.webp" />
+            </button>
+            %{newProject_dialog_name}
+          </div>
+          <div class="newProject_dialog_scroll">
+            <div class="modal-body newProject_dialog_box">
+              <div class="newProject_nameDiv" style="position: relative;">
+                <div class="inputCover" onclick="Home.inputCover('device_nameInp')"></div>
+                <span class="device_nameSpan">%{newProject_name}</span>
+                <input class="device_nameInp" maxlength="18"></input>
+              </div>
+              <div class="newProject_choose">
+                <div class="newProject_left" onclick="deviceWork.ezblockBtn()">
+                  <img src="./img/tubiao/ezblock.webp" />
+                  <span>Block</span>
+                </div>
+                <div class="newProject_left_true " onclick="deviceWork.ezblockBtn()">
+                  <img src="./img/tubiao/ezblock_w.webp" />
+                  <span>Block</span>
+                </div>
+                <div class="newProject_right" onclick="deviceWork.pythonBtn()">
+                  <img src="./img/tubiao/python.webp" />
+                  <span>Python</span>
+                </div>
+                <div class="newProject_right_true" onclick="deviceWork.pythonBtn()">
+                  <img src="./img/tubiao/python_w.webp" />
+                  <span>Python</span>
+                </div>
+              </div>
+              <button class="newProduct_name_btn" onclick="Home.newProject()">%{my_confirm}</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- projectName popup-->
+    <div id="projectName" class="modal fade">
+      <div class="modal-dialog project-name-dialog">
+        <div class="modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <span>%{new_project_new_project}</span>
+          </div>
+          <div class="modal-body projectName-body" style="position: relative;">
+            <div class="inputCover" onclick="Home.inputCover('nameInput')"></div>
+            <input type="text" class="nameInput" placeholder="%{new_project_project_name}" autofocus="autofocus"
+              maxlength="18" />
+            <div class="ensure">
+              <button class="ensureBtn">%{new_project_next}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- update project name popup-->
+    <div id="projectName_update" class="modal fade">
+      <div class="modal-dialog project-name-dialog">
+        <div class="modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <span>%{new_project_update_project}</span>
+          </div>
+          <div class="modal-body projectName-body" style="position: relative;">
+            <div class="inputCover" onclick="Home.inputCover('change_project_nameInput')"></div>
+
+            <input type="text" class="change_project_nameInput" onkeyup="this.value=this.value.replace(/^\s+|/g,'')"
+              placeholder="%{new_project_project_name}" autofocus="autofocus" maxlength="18">
+            <div class="ensure">
+              <button class="change_project_name_btn"
+                onclick="MyProject.projectNameCheck(true);">%{new_project_next}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- save project popup -->
+    <div id="saveAsProjectName" class="modal fade">
+      <div class="modal-dialog save-project-dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body projectName-body" style="position: relative;">
+            <div class="inputCover" onclick="Home.inputCover('saveAsNameInput')"></div>
+            <input type="text" class="saveAsNameInput" placeholder="Project Name" autofocus="autofocus" maxlength="18">
+            <div class="ensure">
+              <button class="saveAsBtn" onclick="MyProject.saveAsProject();">%{save_as}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- timeout to remind -->
+    <div id="timeout" class="modal fade">
+      <div class="modal-dialog timeout-dialog">
+        <div class="modal-content">
+          <div class="modal-header timeout-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body timeout-body">
+            %{timeout}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- edit my device -->
+    <div id="myDeviceUp" class="myDeviceUp">
+      <div class="Transparent_cover"></div>
+      <div class="myDeviceUp_dialog">
+        <div class="myDeviceUp_title">
+          <div class="myDeviceUp_close" onclick="Device.closeDialog();"></div>
+        </div>
+        <div class="myDevice_content">
+          <div class="myDeviceUp_image">
+            <img src="./img/test2.webp" alt="productImage" />
+          </div>
+          <div class="myDeviceUp_voltage">
+            <p class="voltage_title">%{device_voltage_title}100%</p>
+            <div class="voltage_show">
+              <div class="voltage_content"></div>
+            </div>
+          </div>
+        </div>
+        <div class="myDeviceUp_list">
+          <div class="deviceDetail">
+            <span class="detailTitle">%{device_update_products}</span>
+            <span class="setDetail set"></span>
+          </div>
+          <div class="productCenter productsBox">
+            <span class="productName_left">%{device_product_name}</span>
+            <span type="text" class="productName_right"></span>
+          </div>
+          <div class="productType productsBox">
+            <span class="productType_left">%{device_type}</span>
+            <div class="productType_right">
+              <span></span>
+            </div>
+          </div>
+          <div class="IP productsBox">
+            <span class="IP_left ">%{device_IP}</span>
+            <span class="IP_right"></span>
+          </div>
+          <div class="Mac productsBox">
+            <span class="Mac_left ">%{device_Mac}</span>
+            <span class="Mac_right"></span>
+          </div>
+          <div class="productVersion productsBox">
+            <span class="productVersion_left">%{device_version}</span>
+            <div class="productVersion_right">
+              <span>2.3</span>
+            </div>
+          </div>
+          <div class="productVoltage productsBox">
+            <span class="productVoltage_left">%{device_voltage}</span>
+            <span class="productVoltage_right"></span>
+          </div>
+          <div class="productType productsBox disConnectProduct">
+            <span class="productType_left">%{device_type}</span>
+            <div class="productType_right">
+              <span></span>
+            </div>
+          </div>
+          <button class="productType_icon selectType disConnectButton"
+            onclick="Device.selectProductsType()">%{change_device}</button>
+          <button class="productRecalibrate productButton " onclick="Device.setDevice()">%{setting}</button>
+          <button class="productDisconnect productButton">%{device_connect}</button>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- update device -->
+    <div id="updateDevice" class="updateDevice">
+      <div class="Transparent_cover"></div>
+      <div class="update_wrapper">
+        <div class="update_device_title">
+          <p>%{device_select_title}</p>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="Device.setDeviceHide()">
+            <img src="./img/debug_close.webp" />
+          </button>
+        </div>
+        <div class="update_device_content">
+          <!-- name -->
+          <div class="update_list list_name" onclick="Device.setName()">
+            <div class="update_list_name" style="position: relative;">
+              <div class="inputCover" onclick="Home.inputCover('update_list_name_right')"></div>
+              <label for="device_name" class="update_list_name_left">%{device_edit_name}</label>
+              <input class="update_list_name_right" maxlength="12" placeholder="%{bleNamePlaceholder}"
+                onkeyup="Home.disableChInput(event);"></input>
+            </div>
+          </div>
+          <!-- products -->
+          <div class="update_list list_projects " onclick="Device.selectProductsType()">
+            <span class="update_list_project_left">%{change_device}</span>
+            <div class="update_list_project_right">
+              <span class="project_name">111</span>
+            </div>
+          </div>
+          <!-- version -->
+          <div class="update_list list_version" onclick="Device.updateVersion()">
+            <span class="update_list_version_left">%{device_update_version}</span>
+            <div class="update_list_version_right">
+              <span class="version_name">11</span>
+              <span class="version_icon active ">%{device_update_icon}</span>
+            </div>
+          </div>
+          <!-- voltage -->
+          <!-- <div class="update_list list_voltage">
+            <span class="update_list_voltage_left">%{device_voltage}</span>
+            <span class="update_list_voltage_right">2.5v</span>
+          </div> -->
+          <!-- capacity
+          <div class="update_list list_capacity">
+            <span class="update_list_capacity_left">%{device_voltage_title}</span>
+            <span class="update_list_capacity_right">70%</span>
+          </div> -->
+          <div class="update_list list_calibration">
+            <button class="productRecalibrate productButton"
+              onclick="Device.setCalibrate()">%{device_recalibrate}</button>
+            <!-- save -->
+            <!-- <button class="productButton update_list_calibration" onclick="Device.deviceSave()" >%{save}</button> -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- new project popup -->
+    <div id="newProjectWindow" class="modal fade">
+      <div class="modal-dialog new-project-dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body projectName-body">
+            <p class="textRemind">%{isSaveProject}</p>
+            <button class="remindCancelBtn remindBtn" data-id="false">%{cancel}</button>
+            <button class="remindSaveBtn remindBtn" data-id="true">%{save}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Universal dialog box   -->
+    <div id="dialogModel" class="modal fade">
+      <div class="modal-dialog new-project-dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+
+
+          </div>
+          <div class="modal-body projectName-body">
+            <p class="textRemind dialogModel_text"></p>
+            <button class="remindBtn dialogModel_cancel">%{cancel}</button>
+            <button class="remindBtn dialogModel_sure">%{new_project_next}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- prompt -->
+    <div id="promptModal" class="modal fade">
+      <div class="modal-dialog prompt-modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <h4 class="model-title" id="prompt-title"></h4>
+          </div>
+          <div class="modal-body projectName-body" style="position: relative;">
+            <div class="inputCover" onclick="Home.inputCover('promptInput')"></div>
+
+            <input type="text" class="promptInput" placeholder="" autofocus="autofocus">
+            <div class="ensure">
+              <button class="promptBtn">%{ok}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- select block or python -->
+    <div id="choose-mode" class="modal fade">
+      <div class="modal-dialog chose-mode-dialog">
+        <div class="modal-content choose-mode-content">
+          <div class="modal-header package-header projectName-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+
+            </button>
+            <h4 class="model-title choose-mode-title" id="addPackage-title">%{selectProgramEnv}</h4>
+          </div>
+          <div class="modal-body choose-mode-body">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- select add kit  -->
+    <div id="add-kit-mode" class="modal fade">
+      <div class="modal-dialog add-kit-dialog">
+        <div class="modal-content add-kit-mode-content">
+          <div class="modal-header kit-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <h4 class="model-title choose-mode-title" id="addKit-title">%{selectKit}</h4>
+          </div>
+          <div class="modal-body add-kit-mode-body">
+            <div class="add-kitModules-type"></div>
+            <div class="tab-content"></div>
+            <div class="isAddKit"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--select add module  -->
+    <div id="add-module-mode" class="modal fade">
+      <div class="modal-dialog add-module-dialog" style="width: 800px;">
+        <div class="modal-content add-module-mode-content">
+          <div class="modal-header module-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <h4 class="model-title choose-mode-title" id="addModule-title">%{selectModule}</h4>
+          </div>
+          <div class="modal-body add-module-mode-body">
+            <div class="choose-type">
+              <div class="choose-name">
+                <div class="choose-name-box choose-name-position">
+                  <span class="choose-name-text">%{module}: </span>
+                  <input class="choose-name-input dropdown-toggle choose-name-btn add-module-mode-ipt"
+                    data-toggle="dropdown" type="button" style="width: 71%">
+                  <span class="glyphicon glyphicon-play iotRotate"></span>
+                  <ul class="dropdown-menu type-menu add-module-ul" role="menu"></ul>
+                </div>
+              </div>
+              <div class="add-module-image">
+                <img src="" alt="">
+              </div>
+            </div>
+            <div class="isAddModule"></div>
+            <div class="add-module-btn-ok">
+              <button>OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- kit or module add success tip mode  -->
+    <div id="add-tip-mode" class="modal fade">
+      <div class="modal-dialog add-tip-mode-dialog">
+        <div class="modal-content add-tip-mode-content">
+          <div class="modal-header add-tip-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body add-tip-mode-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- share modal -->
+    <div id="share-modal" class="modal fade">
+      <div class="modal-dialog share-modal-dialog">
+        <div class="modal-content share-modal-content">
+          <div class="modal-header share-modal-header">
+            <span class="share-modal-heading">%{share}</span>
+            <button type="button" class="close share-modal-close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body share-modal-body">
+            <div class="share-modal-link"><input type="text" placeholder="title" />
+              <button class="share-modal-btn-copy" onclick="">Copy</button>
+            </div>
+            <div class="share-modal-btn-threeParty"></div>
+
+            <div class="share-modal-btn-block">
+              <button class="share-modal-btn-ok">%{ok}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- share success modal -->
+    <div id="share-success-modal" class="modal fade">
+      <div class="modal-dialog share-modal-dialog">
+        <div class="modal-content share-modal-content">
+          <div class="modal-header share-modal-header">
+            <span class="share-modal-heading">%{share_success}</span>
+            <button type="button" class="close share-modal-close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body share-modal-body">
+            <div class="share-success-modal-link"><input type="text" placeholder="title" /><button
+                class="share-success-modal-copy">Copy</button></div>
+            <div class="share-success-to-inter">
+              <span>%{share_to}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--privacy policy popup -->
+    <div id="privateTerms" class="modal fade" style="z-index: 9000000;">
+      <div class="modal-dialog private-width">
+        <div class="modal-content private-modal-content">
+          <div class="modal-body private-height private-body">
+            %{private}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- about us popup	-->
+    <div id="about" class="modal fade">
+      <div class="modal-dialog about-width">
+        <div class="modal-content about-modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal">
+              <img src="./img/debug_close.webp" alt="" style="width: 20px;height: auto;margin-top: 5px;">
+            </button>
+            <span>%{aboutHeader}</span>
+          </div>
+          <div class="modal-body about-height about-body">
+            <div class="about-main">
+              <div class="about-img">
+                <img src="./img/myEzblockLogo.webp" alt="">
+              </div>
+              <div class="about-info">
+                <p class="version_block" onclick="Home.enterForeign();">
+                  <span>%{app_version}</span> &nbsp;&nbsp;&nbsp;
+                  <span class="version">10.14.1
+                  </span>
+                </p>
+                <p class="version_block">
+                  <span>%{updateDate}</span>&nbsp;&nbsp;&nbsp;<span>%{updateTimes}</span>
+                </p>
+              </div>
+              <!-- <div class="checkoutVersion">
+                <button class="oldVersion checkoutVersionBtn" onclick="Home.changeVersionData()">%{oldVersion}</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  calibrate help popup  -->
+    <div class="cal_help_dialog modal">
+      <div class="cal_help_box">
+        <div class="cal_help_tital">
+          <p>%{cal_help_name}</p>
+        </div>
+        <div class="cal_help_body">
+          <div class="cal_help_conent">
+            <ul>
+              <li class="cal_help_one">
+                <img src="./img/calibration/cal_btn.webp" alt="" />
+                <span>%{tipOne}</span>
+              </li>
+              <li class="cal_help_two">
+                <img src="./img/calibration/kongzhi1xiao.webp" alt="" />
+                <span>%{tipTWO}</span>
+              </li>
+              <li class="cal_help_three">
+                <img src="./img/calibration/kongzhi1xiao.webp" alt="" />
+                <span>%{tipThree}</span>
+              </li>
+              <li></li>
+            </ul>
+
+          </div>
+          <div class="cal_help_bottom">
+            <span>%{long_tip}</span>
+          </div>
+          <div class="cal_help_tipBox">
+            <span class="cal_help_checkbox_tip">%{nocalTip}</span>
+            <input class="cal_help_checkbox" type="checkbox" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- help popup	 -->
+    <div id="help" style="display: none;"></div>
+    <!-- about us  -->
+    <div id="aboutUs" class="modal fade">
+      <div class="modal-dialog about-us-width">
+        <div class="modal-content about-us-modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal">
+              <img src="./img/debug_close.webp" alt="" style="width: 20px;height: auto;margin-top: 5px;">
+            </button>
+            <span>%{aboutUsHeader}</span>
+          </div>
+          <div class="modal-body about-us-height about-us-body">
+            <img src="./img/sunfounder-steam-education-large.webp" alt="sunfounder"> %{aboutUs}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--	edit head portrait popup	 start -->
+    <iframe id="frame_profile" name="frame_profile" style="display: none"></iframe>
+    <form id="avatarform" name="avatarform" method="post" enctype="multipart/form-data" autocomplete="off"
+      target="frame_profile">
+      <input type="hidden" value="0" name="x" id="x" />
+      <input type="hidden" value="0" name="y" id="y" />
+      <input type="hidden" value="0" name="w" id="w" />
+      <input type="hidden" value="0" name="h" id="h" />
+      <input type="hidden" name="_token" value="qMrcktPHGWldD76oNw6B0SI0EK27jZ65RtDf0EKe">
+      <div class="cover"></div>
+      <div class="user-editbox">
+        <a href="javascript:;" class="user-ico user-editbox-close"><span class="icon-close"></span></a>
+        <div class="tit">%{editavatar}</div>
+        <div class="ct">
+          <div class="img"></div>
+          <div class="preview-box">
+            <div class="img-preview preview-lg"></div>
+            <p>85PX</p>
+            <div class="img-preview preview-md"></div>
+            <p>50PX</p>
+          </div>
+          <a href="javascript:;" class="btn-up">%{newedit}<input type="file" id="avatarInput" name="myfile_head"
+              accept="image/*" multiple /></a>
+
+          <button style="display: none;"></button>
+
+          <div onclick="PInformation.userEditBoxBtn();" name="profilesubmitbtn" id="profilesubmitbtn" value="true"
+            class="btn" onclick="">%{atasave}
+          </div>
+        </div>
+      </div>
+    </form>
+    <!--  end -->
+    <!-- add IOT popup -->
+    <div id="appendIot" class="modal fade">
+      <div class="modal-dialog appendIot-dialog">
+        <div class="modal-content appendIot-content">
+          <div class="modal-header appendIot-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body appendIot-body">
+            <div class="choose-type">
+              <div class="choose-name">
+                <div class="choose-name-box">
+                  <span class="choose-name-text">%{iot_name}: </span>
+                  <input class="choose-name-input iotName" type="text" autofocus="autofocus">
+                </div>
+
+                <div class="choose-name-box choose-name-position">
+                  <span class="choose-name-text">%{iot_type}: </span>
+                  <div class="choose-select">
+                    <input class="choose-name-input dropdown-toggle choose-name-btn" data-toggle="dropdown"
+                      type="button" value="" style="width: 71%">
+                    <span class="glyphicon glyphicon-play iotRotate"></span>
+                    <ul class="dropdown-menu type-menu" role="menu">
+                      <li class="actuators">
+                        <a>%{iot_type_actuators}</a>
+                      </li>
+                      <li class="sensors">
+                        <a>%{iot_type_sensors}</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="choose-type-select">
+                  <span class="choose-type-text"></span>
+                  <input class="choose-name-input choose-type-select-input dropdown-toggle" data-toggle="dropdown"
+                    type="button" placeholder="Name">
+                  <span class="glyphicon glyphicon-play iotRotate"></span>
+                  <ul class="dropdown-menu input-menu" role="menu"></ul>
+                </div>
+              </div>
+              <div class="show-image"></div>
+            </div>
+
+            <div class="sendBtn">
+              <button class="sendBtn_ok">%{ok}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Line chart popup -->
+    <div id="borken" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header borken-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body borken-body">
+            <div id="borkenMain"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- progress bar popup	-->
+    <div id="progressModal" class="modal fade" data-backdrop="static">
+      <div class="modal-dialog progress-modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+          </div>
+          <div class="modal-body progress_modal">
+            <h1></h1>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- messsage -->
+    <div id="message" class="modal" data-backdrop="static">
+      <div class="modal-dialog message-dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+            <span class="message-dialog-title"></span>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+
+          </div>
+          <div class="modal-body">
+            <div class="msg_modal"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="warning" class="modal" data-backdrop="static">
+      <div class="modal-dialog warning-dialog message-dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+            <span class="warning-dialog-title"></span>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body" style="text-align:center;">
+            <div class="warning_modal msg_modal">
+            </div>
+            <button class="warning_btn"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reference-block dis_none">
+      <img class="arrow" src="./img/reference_arrow_income.webp" alt="">
+      <div class="reference-header">
+        <img class="reference_close" src="./img/coding-zoom-close.webp" alt="">
+      </div>
+      <div class="reference-content" id="referenceContent"></div>
+    </div>
+
+
+    <!-- packages lists popup  -->
+    <div id="libraryModal" class="modal fade">
+      <div class="modal-dialog libraryModal-width">
+        <div class="modal-content libraryModal-modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <span>%{library_list}</span>
+          </div>
+          <div class="modal-body libraryModal-height libraryModal-body">
+            aaa
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- change password popup  -->
+    <div id="changePassword" class="modal fade">
+      <div class="modal-dialog changePassword-dialog">
+        <div class="modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <span>%{change_password}</span>
+          </div>
+          <div class="modal-body changePassword-body">
+            <div class="changPassword-oldPassword">
+              <label for="" class="oldPasswordLabel">%{old_password}</label>
+              <div style="width: 100%;position: relative;">
+                <div class="inputCover" onclick="Home.inputCover('oldPasswordIpt')"></div>
+                <input class="oldPasswordIpt " type="password" maxlength="15" />
+              </div>
+            </div>
+
+            <div class="changPassword-newPassword">
+              <label for="" class="newPasswordLabel">%{new_password}</label>
+              <div style="width: 100%;position: relative;">
+                <div class="inputCover" onclick="Home.inputCover('newPasswordIpt')"></div>
+                <input class="newPasswordIpt " type="password" maxlength="15" />
+              </div>
+
+            </div>
+            <div class="changPassword-reNewPassword">
+              <label for="" class="reNewPasswordLabel">%{re_new_password}</label>
+              <div style="width: 100%;position: relative;">
+                <div class="inputCover" onclick="Home.inputCover('reNewPasswordIpt')"></div>
+                <input class="reNewPasswordIpt " type="password" maxlength="15" />
+              </div>
+
+            </div>
+            <div class="ensure">
+              <button class="ensureBtn" onclick="PInformation.changePwd()">%{confirm}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  end -->
+
+    <!--  change email popup  -->
+    <div id="changeEmail" class="modal fade">
+      <div class="modal-dialog changeEmail-dialog">
+        <div class="modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <span>%{change_email}</span>
+          </div>
+          <div class="modal-body changeEmail-body">
+            <div class="changeEmail-oldPassword">
+              <label for="" class="emailAddressLabel">%{email}</label>
+              <div style="width: 100%; position: relative;">
+                <div class="inputCover" onclick="Home.inputCover('emailAddressIpt')"></div>
+                <input class="emailAddressIpt" type="text" />
+                <button class="btn-get-verifyCode"
+                  onclick="PInformation.getIdentiCode()">%{getverificationCode}</button>
+              </div>
+
+            </div>
+            <div class="changeEmail-verificationCode">
+              <label for="" class="verificationCodeLabel">%{verificationCode}</label>
+              <div style="width: 100%;position: relative;">
+                <div class="inputCover" onclick="Home.inputCover('verificationCodeIpt')"></div>
+                <input type="text" class="verificationCodeIpt">
+              </div>
+
+            </div>
+            <div class="ensure">
+              <button class="ensureBtn" onclick="PInformation.changeEmailAddress()">%{confirm}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  end -->
+
+
+    <!-- cancellation of account popup  -->
+    <div id="deleteAccount" class="modal fade" data-backdrop="static">
+      <div class="modal-dialog deleteAccount-dialog">
+        <div class="modal-content">
+          <div class="modal-body modal-text">
+            <button class="close" data-dismiss="modal" onclick="PInformation.cancel()">
+              <img src="./img/debug_close.webp" />
+            </button>
+            <span>%{cancelUser}</span>
+          </div>
+          <div class="modal-body deleteAccount-body">
+            <div class="deleteAccount-userName" style="display:none;">
+              <label for="" class="userNameLabel">%{username}</label>
+              <input class="userNameIpt" type="text" readonly='readonly' />
+            </div>
+
+            <div class="deleteDescibe">
+              <p>%{deleteDescibe}</p>
+            </div>
+            <div class="deleteAccount-password">
+              <label for="" class="passwordLabel">%{password}</label>
+              <div style="width: 100%;position: relative;">
+                <div class="inputCover" onclick="Home.inputCover('passwordIpt')"></div>
+                <input class="passwordIpt" type="password" maxlength="15" />
+              </div>
+            </div>
+            <div class="ensure">
+              <button class="ensureBtn" onclick="PInformation.cancelUser()"
+                style="background:#f73131;">%{confirmLayout}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  login&&register   -->
+    <div class="logining loginingContent dis_none" id="homeLogin">
+      <div class="cover"></div>
+      <!-- login popup  -->
+      <div id="login" class="logining-modal login-width register" data-backdrop="static">
+        <div class="login-modal-content">
+          <div class="login_close"><button style="background-image: url(./img/coding-zoom-close.webp);"></button></div>
+          <logo class="login_logo"><img src="./img/ezblock-logo-color.webp" alt=""></logo>
+          <div class="modal-body login-height login-body">
+            <!-- tab select -->
+            <div class="login_tab">
+              <div class="tab_login active"><span>%{signIn}</span></div>
+              <div class="tab_rester"><span onclick="Logining.tabRester()">%{createAnAccount}</span></div>
+            </div>
+            <!--  login  -->
+            <div class="table_login_main" style="display: block;">
+              <div class="center">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.userNameEmail')"></div>
+                <input class="inputSize userNameEmail" type="text" placeholder="%{userNameEmailAddress}"
+                  autofocus="autofocus" />
+              </div>
+              <div class="center">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.password')"></div>
+                <input class="inputSize password eyeFlag" id="login_password" type="text" placeholder="%{enterPassWord}"
+                  maxlength="15" />
+                <a class="passwordeye" alt="" onclick="Register.showPwd(event)"></a>
+              </div>
+              <p class="login_errMsg"></p>
+              <div class="center sign-in" style="margin-left: 0px;">
+                <button class="login-in" onclick="Register.login();">%{signIn}</button>
+              </div>
+              <div class="login-in-account">
+                <span class="findPwd-label" data-toggle="modal">%{forgotPwd}</span>
+              </div>
+            </div>
+            <!-- register -->
+            <div id="register_login_main">
+              <div class="center">
+                <span>%{signUp_hint}</span>
+              </div>
+              <!-- <div class="center">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.userName')"></div>
+                <input id="register_username" class="inputSize userName" type="text"
+                  placeholder="%{signUpUsername}" autofocus="autofocus" maxlength="18">
+              </div>
+              <div class="center">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.password')"></div>
+                <input id="register_password" class="inputSize password eyeFlag" type="text"
+                  placeholder="%{signUpPassword}" autofocus="autofocus" maxlength="15">
+                <a class="passwordeye" alt="" onclick="Register.showPwd(event)"></a>
+              </div>
+              <div class="center">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.rePassword')"></div>
+                <input id="register_repassword" class="inputSize rePassword eyeFlag" type="text"
+                  placeholder="%{signUpPwdConfirm}" autofocus="autofocus" maxlength="15">
+                <a class="passwordeye" alt="" onclick="Register.showPwd(event)"></a>
+              </div> -->
+              <!-- <p class="register_errorMsg"></p> -->
+              <div class="center" style="margin-left: 0px;">
+                <!-- <button class="register-btn close-this" data-toggle="modal">%{signUp}</button> -->
+                <button class="register-btn close-this" data-toggle="modal"
+                  onclick="Home.windowOpen('https://docs.sunfounder.com/projects/ezblock3/en/latest/ezblock_studio_release_notes.html#ezblock-studio-3-2')">%{signIn_details}
+                </button>
+              </div>
+              <div class="other-register" style="display: none">
+                <div class="register-line"></div>
+                <span class="register-text">%{or}</span>
+                <div class="other-register-icon"></div>
+              </div>
+            </div>
+            <!--  find password  -->
+            <div id="findPwd_login">
+              <div class="center">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.find_password')"></div>
+                <input id="find_password" class="inputSize find_password" type="text" placeholder="%{enterEmail}">
+
+              </div>
+              <div class="center">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.emailInput')"></div>
+                <input id="findPwdCode" class="inputSize emailInput" type="text" placeholder="%{enterVerificationCode}">
+                <button class="find_verCode" onclick="Register.getIdentiCode();">%{verification}</button>
+              </div>
+              <div class="center">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.password')"></div>
+                <input id="set_password" class="inputSize password eyeFlag" type="text" placeholder="%{enterNewPwd}"
+                  maxlength="15">
+                <a class="passwordeye" alt="" onclick="Register.showPwd(event)"></a>
+              </div>
+              <div class="center">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.rePassword')"></div>
+                <input id="set_repassword" class="inputSize rePassword eyeFlag" type="text"
+                  placeholder="%{enterNewPwdAgain}" maxlength="15">
+                <a class="passwordeye" alt="" onclick="Register.showPwd(event)"></a>
+              </div>
+              <p class="findPwd_errorMsg"></p>
+              <div class="center marTopTen">
+                <button class="findPwdBack" data-toggle="modal">%{back}</button>
+                <button class="findPwdConfirm" data-toggle="modal" onclick="Register.findPwd();">%{confirm}</button>
+              </div>
+            </div>
+            <!-- register e-mail  -->
+            <div id="email_login">
+              <div class="center">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.emailInput.email_address')"></div>
+                <input id="email_address" class="inputSize emailInput email_address" type="text"
+                  placeholder="%{addEmail}" autofocus="autofocus">
+              </div>
+              <div class="center verificEnter">
+                <div class="inputCover" onclick="Home.inputCover('inputSize.email_verificEnter.emailInput')"></div>
+                <input id="email_input" class="inputSize emailInput email_verificEnter" type="text"
+                  placeholder="%{enterVerificationCode}">
+                <button class="email_verCode" onclick="myThrottle(Register.signUpGetVerifyCode,1000)">%{send}</button>
+              </div>
+              <p class="email_errorMsg"></p>
+              <div class="termAnony">
+                <div class="clearfix termAccept">
+                  <input class="checkBox private" type="checkbox">
+                  <div class="accept">%{accept}
+                    <span data-toggle="modal" data-target="#privateTerms">%{termsConditions}</span>
+                  </div>
+                </div>
+                <div style="text-align: left;" class="clearfix serviceAccept">
+                  <input class="checkBox allowUpload" type="checkbox">
+                  <div class="anonymousData">
+                    %{anonymousData}
+                  </div>
+                </div>
+              </div>
+
+              <div class="center marLeftZero">
+                <button class="register-btn  register-label back-btn" data-toggle="modal">%{back}</button>
+                <button class="register-btn close-abvoe email-v" data-toggle="modal">%{logout_confirm}</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--select language -->
+        <div id="changeLanguage" class="modal ">
+          <div class="modal-dialog change-langulage-width">
+            <div class="modal-content">
+              <div class="modal-body modal-text">
+                <button class="close" data-dismiss="modal">
+                  <img src="./img/debug_close.webp" />
+                </button>
+                <span>%{language_language}</span>
+              </div>
+              <div class="modal-body lan_modal"></div>
+            </div>
+            <div class="modal-body lan_modal"></div>
+          </div>
+          <div class="modal-body lan_modal"></div>
+        </div>
+      </div>
+    </div>
+    <!--  end -->
+    <div class="personal_left dis_none">
+      <div class="personal_tab">
+        <ul>
+          <li class="tab_personal_project">
+            <div class="personal_tab_icon"></div>
+            <span>%{my_project}</span>
+          </li>
+          <li class="tab_personal_library">
+            <div class="personal_tab_icon"></div>
+            <span>%{my_library}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="ezblockContent">
+      <!-- home -->
+      <div class="home homeContent">
+        <div class="homeContent_box">
+          <!-- jun -->
+          <div class="homeMuen">
+            <div class="homeTeach" onclick="EzBlock.renderPage('examplesProject')">
+              <img src="./img/calibration/smallTeact3.1.webp" alt="">
+              <span>%{myTeact}</span>
+            </div>
+            <div class="homeProject"
+              onclick="EzBlock.renderPage('pInformation');PInformation.renderPage('personal_project');">
+              <img src="./img/calibration/smallMypro3.1.webp" alt="">
+              <span>%{myproject}</span>
+            </div>
+            <div class="homeProjectBox">
+              <div class="homeCreate" onclick="mydialog.openDialog('newProject_dialog')">
+                <img src="./img/calibration/smallCreate3.1.webp" alt="">
+                <span>%{ceartPro}</span>
+              </div>
+              <div class="homeImport" onclick="MyProject.importProject()">
+                <img src="./img/calibration/homeImport.png" alt="">
+                <span>%{importFile}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  calibrate homepage  --jun -->
+      <div class="calibration_mian">
+        <div class="calibration_data">
+          <div class="col-xs-3 col-md-3 cal_data_left">
+            <span class="cal_name"></span>
+            <span class="cal_position"></span>
+          </div>
+          <div class="col-xs-6 col-md-6 cal_data_md">
+            <div>
+              <span class="cal_name_tip">%{cal_holder}</span>
+            </div>
+            <div>
+              <span class="cal_x">%{x_zhou}</span>
+              <p class="holderX"></p>
+            </div>
+            <div>
+              <span class="cal_y">%{y_zhou}</span>
+              <p class="holderY"></p>
+            </div>
+            <div>
+              <span class="cal_z">%{z_zhou}</span>
+              <p class="holderZ"></p>
+            </div>
+          </div>
+          <div class="col-xs-3 col-md-3 cal_data_right">
+            <div class="cal_reset">
+              <span>%{cal_reset}</span>
+            </div>
+            <div class="cal_btn">
+              <span>%{my_confirm}</span>
+            </div>
+          </div>
+        </div>
+        <div class="calibration_body"></div>
+        <!-- select page -->
+        <div class="selectBoardContent dis_none">
+          <div class="selectBoard clearfix">
+            <div class="selectBoardLeft  clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <!-- personal information page -->
+      <div class="personalContent personContent dis_none">
+        <!-- <div class="personal_left dis_none">
+          <div class="personal_tab">
+            <ul>
+              <li onclick="PInformation.renderPage('personal_project'); MyProject.select_null()"
+                class="tab_personal_project">
+                <div class="personal_tab_icon"></div>
+                <span>%{my_project}</span>
+              </li>
+
+              <li onclick="PInformation.renderPage('personal_library'); MyProject.select_null()"
+                class="tab_personal_library">
+                <div class="personal_tab_icon"></div>
+                <span>%{my_library}</span>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+        <div class="personal_right dis_none">
+          <!--  personal information  -->
+          <!-- personal project && collection page 个人项目及收藏界面 -->
+          <div class="personal_project dis_none" style="background: #fff;">
+            <div class="tab_ul">
+              <div style="width: 92%;display: inline-block;overflow: hidden;">
+                <ul class="products_lists"></ul>
+              </div>
+              <button class="products_button"></button>
+            </div>
+            <div class="personal_project_mianContent scrollbar"></div>
+          </div>
+          <!-- personal library个人库界面 -->
+          <div class="personal_library dis_none" style="background: #fff;"></div>
+
+          <!-- Setting  我的设置界面 -->
+          <div class="personal_accountSafe dis_none">
+            <div class="personal_accountSafe_content">
+              <ul>
+                <li onclick="$('#changePassword').modal('show')"
+                  style="height: 40px;margin: 15px 0;border-bottom: 1px solid #ccc;position: relative;padding-left: 0;line-height: 40px;cursor: pointer;">
+                  <span>%{change_password}</span>
+                  <!-- <div class="personal_rightBtn"><img src="./img/personMobile_arrow.webp" alt="">
+                  </div> -->
+                </li>
+                <li onclick="$('#changeEmail').modal('show');Utils.setInputCover('.emailAddressIpt');"
+                  style="height: 40px;margin: 15px 0;border-bottom: 1px solid #ccc;position: relative;padding-left: 0;line-height: 40px;cursor: pointer;">
+                  <span>%{change_email}</span>
+                  <!-- <div class="personal_rightBtn"><img src="./img/personMobile_arrow.webp" alt="">
+                  </div> -->
+                </li>
+                <li onclick="$('#deleteAccount').modal('show')"
+                  style="height: 40px;margin: 15px 0;border-bottom: 1px solid #ccc;position: relative;padding-left: 0;line-height: 40px;cursor: pointer;">
+                  <span>%{cancelUser}</span>
+                  <!-- <div class="personal_rightBtn"><img src="./img/personMobile_arrow.webp" alt="">
+                  </div> -->
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- myProjectContent -->
+    <div class="myProjectContent dis_none">
+      <div class="tab-content myProject-main"></div>
+    </div>
+
+    <div class="tutorialsContent dis_none">
+    </div>
+
+    <!--Coding-->
+    <div class="codingContent dis_none">
+      <div id="coding_mask" class="mask">
+      </div>
+      <div class="c-sm-1 c-lg-1 tagIcon" style="display: none;">
+        <!-- <img src="./img/coding_expand.webp" alt=""> -->
+      </div>
+      <div id="coding_wrap" class="coding_wrap">
+        <div class="coding_button"></div>
+        <div class="coding_toolbox">
+          <div id="blockContent">
+            <div class="coding_novice blockContent_program_novice">
+              <p>%{Project_interface_Programming_Area}</p>
+            </div>
+            <div class="coding_novice blockContent_category_novice">
+              <p style="margin-right: 40px;">%{Project_interface_Category}</p>
+            </div>
+            <div class="coding_novice dconbtn_novice">
+              <p style="margin-left: 20px;">%{functionBar}</p>
+            </div>
+          </div>
+          <div class="scriptcode dis_none">
+            <div id="main" class="vbox">
+              <div class="ace-cmd-btn clearfix">
+                <button onclick="Coding.platform.selectMore()">%{select}</button>
+                <button onclick="Coding.platform.undo()">%{undo}</button>
+                <button onclick="Coding.platform.redo()">%{redo}</button>
+                <button onclick="Coding.platform.findIptShow()">%{find}</button>
+                <button onclick="Coding.platform.setKeyboard()" class="dis_none">%{keyborad}</button>
+                <button onclick="Coding.platform.tab()" class="ace-tab-btn dis_none">%{tab}</button>
+                <select id="ace-selectheme" onchange="Coding.platform.setTheme()"></select>
+              </div>
+              <div class="hbox flex1">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Remote -->
+        <div class="remoteContent dis_none">
+          <div id="remote_mask" class="mask" onclick="mask_hide()"></div>
+          <div class="remote_novice products_novice">
+            <p>%{controlBar}</p>
+          </div>
+          <div id="products">
+            <div id="catalog" style="overflow: auto; height: 100%;">
+              <ul></ul>
+            </div>
+          </div>
+          <div class="remoteToggle"><img src="./img/remote_add2.webp" alt=""></div>
+          <div id="cart">
+            <div class="editorModal"></div>
+            <div class="ui-widget-content">
+              <div class="contain_remote" id="contain_remote"></div>
+            </div>
+          </div>
+        </div>
+        <!-- debug -->
+        <div id="coding_debugIpt" style="left: 4%; top: 60%; opacity: 1; cursor: default;">
+          <div class="clearfix topTitle">
+            <img src="./img/debug_close.webp" alt="" class="debug_close">
+            <div ontouchstart="WebBLE.debugClear(event)" onmousedown="WebBLE.debugClear(event)">%{clear}
+            </div>
+          </div>
+          <!-- <div class ="my_box"> -->
+          <div class="getMessage" ontouchstart="Coding.debugStop(event)" onmousedown="Coding.debugStop(event)"></div>
+        </div>
+        <!-- download -->
+        <div class="dragfooter dis_none">
+          <div class="clear margin">
+            <div id="runCode" class="active" onclick="myThrottle(Coding.download,1000)">
+              <img src="./img/play.webp">
+            </div>
+            <div id="stopCode" onclick="myThrottle(Coding._stop ,500)">
+              <img src="./img/stop.webp">
+            </div>
+            <!-- <div class="flash" onclick="myThrottle(Coding.download,500)">
+              <div class="flt">
+                <button class="flashbtn">
+                  <img src="./img/download.webp">
+                </button>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <!-- addModulePackages -->
+        <div id="addModulePackages" class="dis_none">
+          <div class="addModulePackages_wrap">
+            <div class="addModulePackages_top">
+              <div class="closeBtn">
+                <img src="./img/debug_close.webp" onclick="addModulePackages.hide()" />
+              </div>
+              <div class="addModulePackages_title">
+                <span>%{addPackageTitle}</span>
+              </div>
+            </div>
+            <div class="addModulePackages_content">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Routing -->
+    <div class="routingContent dis_none">
+      <div id="products">
+        <div id="catalog"></div>
+      </div>
+      <div class="routingToggle">x</div>
+      <div id="cart">
+        <div class="ui-widget-content">
+          <div class="contain_routing" id="contain_routing">
+          </div>
+          <div id="list" class="dis_none"></div>
+          <div class="r-garbage">
+            <div class="trashcan-lid">
+              <img src="">
+            </div>
+            <div style="margin-top: -5px;" class="trashcan-bucket">
+              <img src="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- libraryList 库列表 -->
+    <div class="libraryListContent dis_none" onclick="LibraryList.searchBlur()">
+      <div class="libraryList">
+        <div class="lib_box">
+          <ul class="personal_lib_list">
+          </ul>
+        </div>
+        <div class="libraryList_pager">
+          <button class="libraryList_prevMsg" onclick="LibraryList.changePageNo(--LibraryList.pageNo)">%{prev}</button>
+          <span class="libraryList_pageNum"></span>
+          <button class="libraryList_nextMsg" onclick="LibraryList.changePageNo(++LibraryList.pageNo)">%{next}</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- shadow	阴影 -->
+    <div id="shadow" style="display:none;">
+      <div class="loading"></div>
+    </div>
+
+    <div id="tutorials_modal" class="modal fade">
+      <div class="modal-dialog tutorials_modal_dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+            <span class="tutorials_header_title"></span>
+            <button type="button" class="close tutorials_header_close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body tutorials_modal_body">
+            <div class="modal-body tutorials_modal_body">
+              <div class="tutorials_modal_msg"></div>
+              <div class="tutorials_modal_img">
+                <span></span>
+                <img src="" alt="">
+              </div>
+
+            </div>
+          </div>
+          <div class="tutorials_modal_btn_block">
+            <button class="tutorials_modal_btn" onclick="Tutorials.autoNext()">%{ok}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- tutorials intorduction modal -->
+    <div id="tutorials_introduct_modal" class="modal fade">
+      <div class="modal-dialog tutorials_introduct_modal_dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+            <span class="tutorials_introduct_modal_title"></span>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" />
+            </button>
+          </div>
+          <div class="modal-body tutorials_introduct_modal_body">
+            <div class="tutorials_introduct_modal_desc"></div>
+            <div class="tutorials_introduct_modal_btn_block">
+              <button class="tutorials_introduct_modal_btn">%{go}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- examples intorduction modal -->
+    <div id="examples_intorduction_modal" class="modal fade">
+      <div class="modal-dialog examples_intorduction_modal_dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+            <img class="example_close" src="./img/debug_close.webp" onclick="ExamplesProject.intorductionDescHide()" />
+
+          </div>
+          <div class="modal-body examples_intorduction_modal_body">
+            <div class="examples_intorduction_modal_desc"></div>
+            <div class="examples_intorduction_btn_block">
+              <button class="examples_intorduction_modal_btn" onclick="ExamplesProject.loadProject()">%{ok}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Release Note modal -->
+    <div id="release_note_modal" class="modal fade">
+      <div class="modal-dialog release_note_modal_dialog">
+        <div class="modal-content">
+          <div class="modal-header package-header projectName-header">
+            <span class="release_note_modal_title">%{release_note_title}</span>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <img src="./img/debug_close.webp" style="width: 18px;" />
+            </button>
+          </div>
+          <div class="modal-body release_note_modal_body">
+            <div class="release_img_block">
+              <img src="./img/release_note_logo.webp">
+            </div>
+            <h1 style="text-align: center;font-size: 40px;">%{app_name}</h1>
+            <p class="release_note_modal_version"></p>
+            <p style="text-align: right;">
+              <span class="releaseGetStart"
+                style="padding: 5px 10px;border-radius: 4px;color: #fff;width: auto;text-align: center;font-size: 14px;background-color: rgb(255, 202, 75);margin: auto;">%{release_getstarted}</span>
+            </p>
+            <ul class="release_note_modal_update_list" style="padding-top:10px;font-size: 16px;">
+              %{release_note}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- pc connect device  pc 连接设置输入ip 地址 -->
+    <div id="pcInputIp">
+      <div class="ipContent">
+        <div class="ipTop">
+          <title class="topTitle">%{pcConnectTitle}</title>
+          <button class="close topClose" data-dismiss="modal" onclick="Device.pcModalHide()">
+            <img src="./img/debug_close.webp" />
+          </button>
+        </div>
+        <div class="ipMain">
+          <input type="text" placeholder="%{please_enter_ip}" class="ipMainInput" list="hostName">
+          <datalist id="hostName">
+          </datalist>
+          <div class="ipSure" onclick="Device.pcConnectDevice()">%{my_confirm}</div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- pc http message -->
+    <div id="httpMessage">
+      <div class="messageWrap">
+        <div class="messageContent">
+          %{pc_message}
+        </div>
+        <div class="messageBtn">
+          <div class="messageBtnCheckBox">
+            <input type="checkbox" class="checkBoxBtn" />%{noTips}
+          </div>
+          <div class="sureBtn" onclick="Home.httpTipsHide()">%{my_confirm}</div>
+        </div>
+      </div>
+    </div>
+    <!--weakReminder  -->
+    <div id="weakReminder">
+      <div class="weakReminder_background"></div>
+      <p>weakReminder</p>
+      <div class="weakReminder_close " onclick="Home.weakReminderHide();"></div>
+      <!-- <img  src="./img/debug_close.webp" alt="" style="width: 20px;height: auto;margin-top: 5px;"> -->
+    </div>
+  </div>
+
+  <canvas id="canvas" style="display: none;"></canvas>
+  <div id="bleSearchContent">
+    <div class="searchResult resultIcon">
+      <p class="resultIcon">
+        %{bluetoothSearchResults}
+      </p>
+      <span class="searchResultClose" onclick="_cordovaBle.bleSearchNone()"></span>
+    </div>
+    <ul id="bleSearchList">
+    </ul>
+  </div>
+  <div id="bluetoothMask"></div>
+  <!-- maskingLayer 弹窗遮罩层 -->
+  <div id="maskingLayer"></div>
+  <!-- input 假模拟框 -->
+  <div id="keyBoardShowInput">
+    <input type="text" class="keyBoardShowInput">
+  </div>
+  <div class="noticeBox">
+    <div id="notice">
+      <div class="notice_top">
+        <!-- <button><img src="./img/debug_close.webp" alt=""></button> -->
+      </div>
+      <div class="notice_mian">
+        <p>%{signIn_hint}<span
+            onclick="Home.windowOpen('https://docs.sunfounder.com/projects/ezblock3/en/latest/ezblock_studio_release_notes.html#ezblock-studio-3-2')">%{signIn_details}</span>
+        </p>
+        <button class="hold_bot" onclick="Register.saveLocal()">%{save_local}</button>
+        <button class="hold_bot" onclick="PInformation.deleteUsertoken()">%{exit}</button>
+        <button class="hold_bot" onclick="PInformation.cancelUserExit()">%{delete_account}</button>
+      </div>
+    </div>
+  </div>
+  <div class="save_contrastBox">
+    <div class="save_contrast">
+      <div class="save_contrast_top">
+        <div class="save_close" onclick="MyProject.saveContrastBox()"></div>
+      </div>
+      <class class="save_mian">
+        <p class="save_mian_p">%{importClash_head}</p>
+        <div class="import_show_box">
+          <span>%{importClash_import}</span>
+          <div class="import_show">
+            <li>
+              <p class="import_showName">%{importClash_name}</p>
+              <p class="import_showTiem">%{importClash_time}</p>
+            </li>
+            <li>
+              <p class="import_showLenght">%{importClash_extent}</p>
+            </li>
+          </div>
+        </div>
+        <div class="import_show_box2">
+          <span>%{importClash_local}</span>
+          <div class="import_show">
+            <li>
+              <p class="localNmae">%{importClash_name}</p>
+              <p class="localTime">%{importClash_time}</p>
+            </li>
+            <li>
+              <p class="localLenght">%{importClash_extent}</p>
+            </li>
+          </div>
+        </div>
+        <div class="import_showSelect_box">
+          <div class="import_showSelect">
+            <input type="checkbox" name="import_showSelect_Input" class="import_showSelect_Input">
+            <p>%{importClash_all}</p>
+          </div>
+        </div>
+        <div class="butBox">
+          <button class="keepBoth" onclick="MyProject.coexistData()">%{importClash_keep}</button>
+          <button class="skip" onclick="MyProject.skipData()">%{importClash_skip}</button>
+          <button class="replace" onclick="MyProject.replace()">%{importClash_replace}</button>
+        </div>
+    </div>
+  </div>
+  </div>
+  <div class="dowbload_complete">
+    <div class="notice_top">
+      <!-- <button><img src="./img/debug_close.webp" alt=""></button> -->
+    </div>
+    <div class="notice_mian">
+      <p>%{download_complete}</p>
+      <div class="exit_delete">
+        <button class="exit_bot" onclick="PInformation.deleteUsertoken()" style="float: left;">%{exit}</button>
+        <button class="exit_bot" onclick="PInformation.cancelUserExit()"
+          style="float: right;">%{delete_account}</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="noticeMail">
+    <div class="noticeMail_top">
+      <!-- <button><img src="./img/debug_close.webp" alt=""></button> -->
+    </div>
+    <div class="noticeMail_mian">
+      <p>%{connect_usPopup}</p>
+      <button class="hold_bot" onclick="Home.mail()">%{my_confirm}</button>
+    </div>
+  </div>
+</body>
+
+
+<script src="./js/ezblock.min.js"></script>
+<script src="cordova.js"></script>
+
+<script type="text/javascript">
+  // 自动切换国家
+  var changeLocale = async () => {
+    var lang = EzBlock.getStringParamFromUrl("lang", null);
+    var dis = EzBlock.getStringParamFromUrl("distributor", null);
+    var changed = false;
+    var language;
+    if (navigator.appName == "Netscape") {
+      language = navigator.language;
+    } else {
+      language = navigator.userLanguage;
+    }
+    if (lang === null || !["en", "zh-hans"].includes(lang)) {
+      storageLang = window.localStorage.getItem('lang', null);
+      if (storageLang !== null) {
+        lang = storageLang;
+      } else if (language === "zh-CN") {
+        lang = "zh-hans";
+      } else {
+        lang = "en";
+      }
+      changed = true;
+    }
+    if (dis === null || !Object.keys(Distributor).includes(dis)) {
+      storageDis = window.localStorage.getItem('distributor', null);
+      if (storageDis !== null) {
+        dis = storageDis;
+      } else {
+        var locale = language.split("-")[1];
+        if (locale === "CN") {
+          dis = "mammoth";
+        } else {
+          dis = "sunfounder";
+        }
+      }
+      changed = true;
+    }
+    var protocol = window.location.protocol;
+    if (changed) {
+      // 防止iOS端 file: 协议出问题
+      if (protocol == "https:") {
+        protocol = "http:";
+      }
+      window.location.href = `${protocol}//${window.location.host}${window.location.pathname}?lang=${lang}&distributor=${dis}`;
+    } else {
+      if (protocol == "https:") {
+        window.location.href = window.location.href.replace("https", "http")
+      }
+    }
+  }
+  changeLocale();
+
+  // 页面资源是否加载完成
+  function showMainContent() {
+    document.getElementById('progress-label').style.width = 100 + "%";
+    document.getElementById('progress-label').className = "progress-label-animation";
+    setTimeout(function () {
+      document.getElementById('main-content').style.display = 'block';
+      document.getElementById("loading_content").style.display = "none";
+      $("body").css("background-color", "black");
+      EzBlock.init();
+      document.addEventListener('touchstart', function (event) {
+        event.preventDefault();
+      })
+      // All inputCover set height 
+      Array.from($("input")).forEach(function (item) {
+        let getWidth = $(item).width(),
+          getHeight = parseInt($(item).height() + 1);
+        $(item).siblings(".inputCover").css({
+          height: getHeight + 'px'
+        })
+      })
+      return true;
+    }, 1);
+  }
+  document.onreadystatechange = function () {
+    if (document.readyState == 'loading') {
+      document.getElementById('progress-label').style.width = 45 + '%';
+    }
+    if (document.readyState == 'complete' || document.readyState == 'loaded') {
+      showMainContent();
+      const my_timer = setTimeout(function () {
+        if (window.disableReload) {
+          // reload 出现
+          window.disableReload();
+        };
+      }, 1);
+    }
+  };
+
+  MSG = Local[LANG].MSG;
+  Blockly.Msg = Local[LANG];
+  EzBlock.getVersion();
+  // MSG = Local[LANG].MSG;
+  var bodyHtml = document.getElementsByTagName('body')[0].innerHTML;
+  document.getElementsByTagName('body')[0].innerHTML = bodyHtml.replace(/%{(\w+)}/g, function ($1, $2) {
+    return MSG[$2];
+  });
+  // EzBlock.getVersion();
+  window.localStorage.setItem('myVersion', '3.x'); // 保存用户已经进入3.x版本的标识
+  // window.onerror = (msg) => console.error("error", msg); // 全局捕获error 
+  window.onerror = (msg) => Utils.messageModal(`ERROR: ${msg}`);
+  // 适配 iOS 刘海屏
+  window.onload = function () {
+    if (window.cordova && window.cordova.platformId == 'ios') {
+      let screenWidth = window.screen.height;
+      let screenHeight = window.screen.width;
+      var viewport = document.querySelector('meta[name="viewport"]');
+      let view = "initial-scale=1, width=" + screenWidth + ", height=" + screenHeight + ",user-scalable=no, viewport-fit=cover";
+      viewport.setAttribute('content', view);
+    } else {
+      $(".body_bgShow").css("width", "100%");
+      $(".body_bgShow").css("height", "100%");
+    }
+  }
+</script>
+
+</html>

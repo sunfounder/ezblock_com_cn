@@ -1,0 +1,2 @@
+### DIY Voltmeter
+Use a cardboard to make the dial, the range is 0 to 3.3V, how much voltage is measured, and the dial is turned to the corresponding position. The potentiometer is equivalent to an object to be measured, and can be replaced with another device. The potentiometer is rotated and the voltage value changes.

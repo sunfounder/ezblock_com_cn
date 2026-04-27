@@ -1,0 +1,2 @@
+###  Rainbow
+In this lesson, we will use RGB lights to achieve the object that a light can flash different colors. The three letters of RGB represent red, green and blue respectively. The red, green and blue LEDs are packaged into a transparent LED lampshade. By changing the input voltage of the three pins, we can get the colors of the RGB lamp changed.

@@ -1,0 +1,2 @@
+### Count 100
+Make a little game wit button and digital display! The numbers will increase rapidly, so you have to press the button when the number reaches 100, and if the pinch is successful, You Win!

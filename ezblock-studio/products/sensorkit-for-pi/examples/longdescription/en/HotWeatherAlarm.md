@@ -1,0 +1,2 @@
+### Hot Weather Alarm
+Monitor the temperature with the DS18B20! The real-time temperature of the room is seen in the Iot interface. The circuit is also connected to an RGB light that glows red when it is hot, blue when it is cold, and green when it is comfortable. You can test the temperature experiment with a cold water bottle or with warm hands.

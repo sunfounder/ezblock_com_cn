@@ -1,0 +1,2 @@
+### Smart Home
+In this lesson, let's learn how to use the IOT function on the App to simulate a smart home. The functions of reading the value of the sensor and controlling the state of the object can be realized through the control interface on the APP.

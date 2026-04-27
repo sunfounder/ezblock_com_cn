@@ -1,0 +1,2 @@
+### Plant Monitoring
+Make a monitor for your potted plant! With IoT, you can use photoresistor and moisture module to know the current growing environment of your plants even when you are not at home, and to give them additional light.

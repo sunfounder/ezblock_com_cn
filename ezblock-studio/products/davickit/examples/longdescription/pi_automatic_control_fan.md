@@ -1,0 +1,2 @@
+### Automatic Control Fan
+In this lesson, let's make an intelligent fan. As the temperature rises, the speed of the fan is becoming faster and faster, and when the temperature drops, it returns to slow state.

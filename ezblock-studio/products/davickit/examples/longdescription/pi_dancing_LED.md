@@ -1,0 +1,2 @@
+### Dancing LED
+In this lesson, we will learn to make a sound lamp. The changing state of RGB light color is controlled by the volume and pitch of the sound to realize the effect of the light changing with the sound.

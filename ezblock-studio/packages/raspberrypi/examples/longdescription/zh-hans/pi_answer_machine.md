@@ -1,0 +1,2 @@
+### Quiz Buzzer System
+In this lesson, we will use the remote control function we learned in the fifth lesson of the basics to create a four-person responder. You can write the name of you and your friends in the blank space of the cardboard to simulate the answering scene.

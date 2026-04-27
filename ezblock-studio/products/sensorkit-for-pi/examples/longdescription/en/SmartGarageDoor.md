@@ -1,0 +1,2 @@
+### Smart Garage Door
+Let’s build a smart garage system where we press button in the IoT interface, the garage door (controlled by servo) will open and the ultrasonic sensor will sense the car’s position. When the car is far away, the garage door will close automatically.

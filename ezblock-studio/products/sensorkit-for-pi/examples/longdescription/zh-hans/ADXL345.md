@@ -1,0 +1,2 @@
+###  ADXL345 
+Connect a ADXL345 to Raspberry Pi.ADXL345 is a thin and compact three-axis accelerometer that is ideal for mobile devices, measuring static gravitational acceleration in tilt detection applications, and measuring acceleration due to motion or shock. It can determine the presence or absence of motion by comparing the acceleration on any axis with the user's settings.
